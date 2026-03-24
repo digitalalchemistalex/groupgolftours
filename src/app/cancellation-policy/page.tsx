@@ -1,0 +1,6 @@
+import type { Metadata } from 'next'
+import PageHero from '@/components/PageHero'
+export const metadata: Metadata = { title: 'Cancellation Policy — Group Golf Tours', alternates: { canonical: 'https://www.groupgolftours.com/cancellation-policy/' } }
+export default function CancellationPolicy() {
+  return (<><PageHero eyebrow="Legal" title="Cancellation Policy" dark={true} /><section style={{ padding: 'clamp(60px,8vw,100px) 0', background: 'var(--color-white)' }}><div className="section-wrap" style={{ maxWidth: 800 }}><p style={{ fontSize: 16, lineHeight: 1.9, color: 'var(--color-text)', marginBottom: 20 }}>Zoomaway provides its clientele with a 72-hour cancellation policy for all its services except for large group outings which are defined by an individual contract provided to the group leader. Cancellation policies for certain clients can vary and Zoomaway will pass on the vendor&apos;s (host) cancellation policy to its customers.</p><p style={{ fontSize: 16, lineHeight: 1.9, color: 'var(--color-text)' }}>Zoomaway (and its subsidiaries and web products) provide travel bookings and other tourism-related products. Individual and Group cancellation policies are supported and outlined in all our technology pieces and customers must agree to these policies before proceeding to finishing their transactions.</p></div></section></>)
+}

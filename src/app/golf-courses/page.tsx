@@ -1,0 +1,7 @@
+import type { Metadata } from 'next'
+import Link from 'next/link'
+import PageHero from '@/components/PageHero'
+export const metadata: Metadata = { title: 'Golf Courses & Tee Times — Group Golf Tours', description: 'Access premier golf courses and preferred tee times across the USA and internationally. Group Golf Tours secures the courses your group wants to play.', alternates: { canonical: 'https://www.groupgolftours.com/golf-courses/' } }
+export default function GolfCourses() {
+  return (<><PageHero eyebrow="Golf Courses" title="Play the Courses<br/>on Your Bucket List" subtitle="Preferred access and group rates at premier courses across all our destinations — from Pebble Beach to Bandon Dunes." /><section style={{ padding: 'clamp(60px,8vw,100px) 0', background: 'var(--color-white)' }}><div className="section-wrap" style={{ maxWidth: 860 }}><p style={{ fontSize: 17, lineHeight: 1.9, color: 'var(--color-text)', marginBottom: 24 }}>Stay on schedule and in the game with our easy-to-book golf tee times. Whether you&apos;re planning a solo round or coordinating with a large group, we make it simple to secure your preferred slots at top courses — often at rates you can&apos;t get on your own.</p><p style={{ fontSize: 17, lineHeight: 1.9, color: 'var(--color-text)', marginBottom: 40 }}>Our 20+ years of vendor relationships give us access to courses that are otherwise difficult to book for groups. Tell us where you want to play and we&apos;ll make it happen.</p><Link href="/tour-inquiry/" className="btn-primary">Book Tee Times</Link></div></section></>)
+}

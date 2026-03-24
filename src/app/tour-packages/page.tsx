@@ -1,0 +1,7 @@
+import type { Metadata } from 'next'
+import Link from 'next/link'
+import PageHero from '@/components/PageHero'
+export const metadata: Metadata = { title: 'Golf Tour Packages — Group Golf Tours', description: 'Thoughtfully crafted golf tour packages for every budget and group size. All-inclusive options with tee times, lodging, transportation, and activities bundled together.', alternates: { canonical: 'https://www.groupgolftours.com/tour-packages/' } }
+export default function TourPackages() {
+  return (<><PageHero eyebrow="Tour Packages" title="Everything Bundled,<br/>Nothing Forgotten" subtitle="From budget-friendly getaways to full luxury escapes — our packages handle every detail so you just show up and play." /><section style={{ padding: 'clamp(60px,8vw,100px) 0', background: 'var(--color-white)' }}><div className="section-wrap" style={{ maxWidth: 860 }}><p style={{ fontSize: 17, lineHeight: 1.9, color: 'var(--color-text)', marginBottom: 24 }}>Take the guesswork out of planning with our thoughtfully crafted packages. Whether you&apos;re looking for a golf getaway, a corporate retreat, or a multi-destination tour, we offer options designed to suit your needs and budget.</p><p style={{ fontSize: 17, lineHeight: 1.9, color: 'var(--color-text)', marginBottom: 40 }}>Enjoy seamless coordination, exclusive perks, and unbeatable value — all bundled into one unforgettable experience. Let us handle the details while you focus on making memories.</p><Link href="/tour-inquiry/" className="btn-primary">Request a Package Quote</Link></div></section></>)
+}

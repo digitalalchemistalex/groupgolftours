@@ -1,0 +1,7 @@
+import type { Metadata } from 'next'
+import Link from 'next/link'
+import PageHero from '@/components/PageHero'
+export const metadata: Metadata = { title: 'Online Registration System — Group Golf Tours', description: 'Simple online registration for golf group events. Manage attendees, collect information, and coordinate your group effortlessly with our digital registration tools.', alternates: { canonical: 'https://www.groupgolftours.com/online-registration-system/' } }
+export default function OnlineRegistration() {
+  return (<><PageHero eyebrow="Online Registration" title="Group Coordination,<br/>Made Simple" subtitle="Our online registration system makes managing your golf group effortless — from attendee collection to payment coordination." /><section style={{ padding: 'clamp(60px,8vw,100px) 0', background: 'var(--color-white)' }}><div className="section-wrap" style={{ maxWidth: 860 }}><p style={{ fontSize: 17, lineHeight: 1.9, color: 'var(--color-text)', marginBottom: 24 }}>Streamline your planning process with our simple-to-use online registration system. Designed for convenience and efficiency, it allows you to customize event details, manage attendees, and ensure a seamless experience from start to finish.</p><p style={{ fontSize: 17, lineHeight: 1.9, color: 'var(--color-text)', marginBottom: 40 }}>No more chasing down payments or manually tracking who&apos;s confirmed. Our system handles it all digitally, giving you more time to focus on the game.</p><Link href="/tour-inquiry/" className="btn-primary">Get Started</Link></div></section></>)
+}

@@ -1,0 +1,7 @@
+import type { Metadata } from 'next'
+import Link from 'next/link'
+import PageHero from '@/components/PageHero'
+export const metadata: Metadata = { title: 'Golf Group Transportation — Group Golf Tours', description: 'Airport transfers, group shuttles, and private vehicles for golf groups. Group Golf Tours handles all transportation logistics so you can focus on the game.', alternates: { canonical: 'https://www.groupgolftours.com/transportation/' } }
+export default function Transportation() {
+  return (<><PageHero eyebrow="Transportation" title="From the Airport to<br/>the First Tee" subtitle="Seamless group transportation — airport pickups, course shuttles, and everything in between. No logistics headaches." /><section style={{ padding: 'clamp(60px,8vw,100px) 0', background: 'var(--color-white)' }}><div className="section-wrap" style={{ maxWidth: 860 }}><p style={{ fontSize: 17, lineHeight: 1.9, color: 'var(--color-text)', marginBottom: 24 }}>Travel with ease thanks to our reliable transportation options. Whether you need airport transfers, group shuttles between courses, or private vehicles for executive groups — we ensure your journey is smooth and stress-free.</p><p style={{ fontSize: 17, lineHeight: 1.9, color: 'var(--color-text)', marginBottom: 40 }}>Let us handle the logistics so you can focus on enjoying your trip. All transportation is coordinated as part of your overall package — nothing falls through the cracks.</p><Link href="/tour-inquiry/" className="btn-primary">Include Transportation</Link></div></section></>)
+}
