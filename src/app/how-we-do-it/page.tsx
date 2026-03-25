@@ -123,7 +123,7 @@ export default function HowWeDoIt() {
               </Link>
             ))}
           </div>
-          <style>{\`.sxl:hover{background:rgba(255,255,255,0.05)!important;border-left-color:var(--copper)!important}.sxl:hover div:first-child{color:var(--copper)!important}\`}</style>
+          <style>{`.sxl:hover{background:rgba(255,255,255,0.05)!important;border-left-color:var(--copper)!important}.sxl:hover div:first-child{color:var(--copper)!important}`}</style>
         </div>
       </section>
     </>
