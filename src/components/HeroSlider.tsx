@@ -196,14 +196,51 @@ export default function HeroSlider() {
 
         @media(max-width:900px){
           .hs-right{display:none!important}
-          .hs-headline{font-size:clamp(32px,9vw,54px)!important}
+          .hs-headline{font-size:clamp(28px,8vw,48px)!important}
           .hs-pills{display:none!important}
+          .hs-mob-strip{display:flex!important}
+        }
+        @media(min-width:901px){
+          .hs-mob-strip{display:none!important}
         }
         @media(max-width:680px){
-          .hs-region-strip{height:64px}
+          .hs-region-strip{height:58px}
           .hs-region-label{font-size:8px}
-          .hs-region-stat{font-size:12px!important}
-          .hs-region-item.active .hs-region-stat{font-size:14px!important}
+          .hs-region-stat{font-size:11px!important}
+          .hs-region-item.active .hs-region-stat{font-size:13px!important}
+        }
+        /* Mobile intel strip */
+        .hs-mob-strip {
+          position:absolute; left:0; right:0; bottom:58px; z-index:15;
+          display:none;
+          overflow-x:auto; overflow-y:hidden;
+          scroll-snap-type:x mandatory;
+          -webkit-overflow-scrolling:touch;
+          scrollbar-width:none;
+          gap:2px; padding:0 16px 0;
+          background:rgba(0,0,0,.6);
+          backdrop-filter:blur(16px);
+          border-top:1px solid rgba(255,255,255,.1);
+          border-bottom:1px solid rgba(255,255,255,.08);
+        }
+        .hs-mob-strip::-webkit-scrollbar{display:none}
+        .hs-mob-card {
+          flex:0 0 auto; scroll-snap-align:start;
+          padding:10px 14px; min-width:140px;
+          border-right:1px solid rgba(255,255,255,.08);
+          display:flex; flex-direction:column; justify-content:center; gap:3px;
+        }
+        .hs-mob-card:last-child{border-right:none}
+        .hs-mob-label {
+          font-family:var(--sans); font-size:8px; font-weight:700;
+          letter-spacing:.14em; text-transform:uppercase;
+          color:rgba(255,255,255,.4);
+        }
+        .hs-mob-val {
+          font-family:var(--serif); font-size:20px; font-weight:300; line-height:1;
+        }
+        .hs-mob-sub {
+          font-family:var(--sans); font-size:9px; color:rgba(255,255,255,.45); line-height:1.3;
         }
       `}</style>
 
@@ -214,7 +251,7 @@ export default function HeroSlider() {
           width:'clamp(320px,46%,580px)', flexShrink:0,
           background: s.panelBg,
           display:'flex', flexDirection:'column', justifyContent:'center',
-          padding:'72px clamp(22px,4vw,56px) 110px',
+          padding:'clamp(48px,7vh,72px) clamp(18px,4vw,56px) clamp(160px,22vh,200px)',
           position:'relative',
         }}>
           {/* Accent left strip */}
@@ -407,6 +444,67 @@ export default function HeroSlider() {
 
         {/* Top accent line */}
         <div style={{ position:'absolute', top:0, left:0, right:0, height:3, background:`linear-gradient(90deg,${s.accent},rgba(255,255,255,.1) 60%,transparent)`, zIndex:10, transition:'background 1s' }} />
+
+        {/* ── MOBILE INTEL STRIP ── */}
+        <div className="hs-mob-strip" key={`mob-${active}`}>
+          {/* Price */}
+          <div className="hs-mob-card">
+            <div className="hs-mob-label">{s.tag}</div>
+            <div className="hs-mob-val" style={{ color:s.accent }}>{s.facts[0].n}</div>
+            <div className="hs-mob-sub">{s.facts[0].l}</div>
+          </div>
+          {/* Package */}
+          <div className="hs-mob-card">
+            <div className="hs-mob-label">Package</div>
+            <div className="hs-mob-val" style={{ color:s.accent }}>{s.package.price}</div>
+            <div className="hs-mob-sub">{s.package.nights}N · {s.package.rounds}R · {s.package.note.split('·')[0].trim()}</div>
+          </div>
+          {/* Booking */}
+          <div className="hs-mob-card" style={{ minWidth:160 }}>
+            <div className="hs-mob-label">Books out</div>
+            <div className="hs-mob-val" style={{ color:s.accent, fontSize:16 }}>{s.booking.value}</div>
+            <div className="hs-mob-sub">{s.booking.tip}</div>
+          </div>
+          {/* Season */}
+          <div className="hs-mob-card" style={{ minWidth:170 }}>
+            <div className="hs-mob-label" style={{ marginBottom:5 }}>Best Season</div>
+            <div style={{ display:'grid', gridTemplateColumns:'repeat(12,1fr)', gap:1.5, height:20, alignItems:'flex-end', marginBottom:3 }}>
+              {s.season.map((v, i) => {
+                const hex = s.accent.replace('#','')
+                const [r,g,b] = [0,2,4].map(o => parseInt(hex.slice(o,o+2),16))
+                return (
+                  <div key={i} style={{
+                    width:'100%', height: Math.round(v*16)+2, borderRadius:1.5,
+                    background: v>=0.8 ? s.accent : v>=0.45 ? `rgba(${r},${g},${b},.5)` : 'rgba(255,255,255,.18)',
+                    boxShadow: i===NOW_MONTH ? '0 0 0 1px #fff' : 'none',
+                  }} />
+                )
+              })}
+            </div>
+            <div style={{ display:'grid', gridTemplateColumns:'repeat(12,1fr)', gap:1.5 }}>
+              {['J','F','M','A','M','J','J','A','S','O','N','D'].map((m,i) => (
+                <div key={i} style={{ textAlign:'center' }}>
+                  <span style={{ fontFamily:'var(--sans)', fontSize:7, color: i===NOW_MONTH ? s.accent : s.season[i]>=0.8 ? 'rgba(255,255,255,.65)' : 'rgba(255,255,255,.3)', fontWeight: i===NOW_MONTH?800:400 }}>{m}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          {/* Courses */}
+          <div className="hs-mob-card" style={{ minWidth:150 }}>
+            <div className="hs-mob-label" style={{ marginBottom:5 }}>Courses</div>
+            {s.courses.slice(0,3).map((c,i) => (
+              <div key={c} style={{ display:'flex', alignItems:'center', gap:6, padding:'2px 0' }}>
+                <div style={{ width:4, height:4, borderRadius:'50%', background: i===0?s.accent:'rgba(255,255,255,.25)', flexShrink:0 }} />
+                <span style={{ fontFamily:'var(--sans)', fontSize:9, color: i===0?'rgba(255,255,255,.85)':'rgba(255,255,255,.45)', fontWeight:i===0?600:400 }}>{c}</span>
+              </div>
+            ))}
+          </div>
+          {/* Non-golf */}
+          <div className="hs-mob-card" style={{ minWidth:150 }}>
+            <div className="hs-mob-label" style={{ marginBottom:5 }}>Non-Golf</div>
+            <div className="hs-mob-sub" style={{ lineHeight:1.6, whiteSpace:'normal' }}>{s.nonGolf}</div>
+          </div>
+        </div>
 
         {/* ── REGION ANCHOR STRIP ── */}
         <div className="hs-region-strip">
