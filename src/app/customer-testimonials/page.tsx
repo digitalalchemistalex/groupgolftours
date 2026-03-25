@@ -39,7 +39,7 @@ export default function Testimonials() {
             <em style={{ fontStyle: 'italic', color: 'var(--gold)' }}>Zero regrets.</em>
           </h1>
           <p style={{ fontSize: 17, lineHeight: 1.82, color: 'rgba(245,237,216,0.58)', maxWidth: 560, fontWeight: 300 }}>
-            Don't take our word for it. Hear from the golfers we\'ve had the privilege of taking to the world\'s great courses — Pebble Beach, Shadow Creek, Edgewood Tahoe, and beyond.
+            Don&apos;t take our word for it. Hear from the golfers we&apos;ve had the privilege of taking to the world&apos;s great courses — Pebble Beach, Shadow Creek, Edgewood Tahoe, and beyond.
           </p>
         </div>
       </section>
@@ -67,7 +67,7 @@ export default function Testimonials() {
           <div style={{ background: 'rgba(200,121,65,0.08)', border: '1px solid rgba(200,121,65,0.2)', padding: '24px 28px', marginBottom: 48 }}>
             <div style={{ fontFamily: 'var(--sans)', fontSize: 12, fontWeight: 600, color: 'var(--copper)', marginBottom: 8 }}>A note on reviews</div>
             <p style={{ fontSize: 13, lineHeight: 1.75, color: 'rgba(26,20,8,0.55)' }}>
-              The reviews above are from verified Google reviews at Somersett Golf & Country Club — one of our signature Reno partner courses. Our full testimonial library spans 10,000+ outings across all destinations. We\"re actively collecting more. If you've traveled with us, we"d love to hear from you at <a href="mailto:customerservice@zoomaway.com" style={{ color: 'var(--copper)', fontWeight: 600 }}>customerservice@zoomaway.com</a>.
+              The reviews above are from verified Google reviews at Somersett Golf & Country Club — one of our signature Reno partner courses. Our full testimonial library spans 10,000+ outings across all destinations. We&apos;re actively collecting more. If you&apos;ve traveled with us, we&apos;d love to hear from you at <a href="mailto:customerservice@zoomaway.com" style={{ color: 'var(--copper)', fontWeight: 600 }}>customerservice@zoomaway.com</a>.
             </p>
           </div>
 
