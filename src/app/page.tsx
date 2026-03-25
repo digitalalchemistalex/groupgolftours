@@ -2,134 +2,29 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Group Golf Trips | Pebble Beach, Shadow Creek, Edgewood Tahoe | Group Golf Tours',
-  description: 'We book Pebble Beach ($675/round, 18-month advance), Shadow Creek ($1,250/round, America\'s most expensive), and 200+ US courses for golf groups. 20+ years, 10,000+ outings. From $275/person.',
+  title: 'Group Golf Tours — Pebble Beach, Shadow Creek, Edgewood Tahoe | From $275/person',
+  description: 'We book Pebble Beach ($675/round, 18-month advance), Shadow Creek ($1,250/round, America\'s most expensive tee time), and 200+ US courses for golf groups. 20+ years, 10,000+ outings. From $275/person.',
   alternates: { canonical: 'https://www.groupgolftours.com/' },
-  openGraph: {
-    title: 'Group Golf Tours — Pebble Beach, Shadow Creek, Edgewood Tahoe',
-    description: 'We secure tee times at courses groups can\'t book independently. From $275/person Reno packages to $4,119 Edgewood Tahoe. 20+ years, 10,000+ outings.',
-    url: 'https://www.groupgolftours.com/',
-    type: 'website',
-  },
+  openGraph: { title: 'Group Golf Tours — Pebble Beach, Shadow Creek, Edgewood Tahoe', description: 'Tee times at courses groups can\'t book independently. From $275/person.', url: 'https://www.groupgolftours.com/', type: 'website' },
 }
 
+/* ── Region data ── */
 const regions = [
-  {
-    id: 'monterey',
-    name: 'Monterey & Pebble Beach',
-    shortName: 'Pebble Beach',
-    tag: 'California Coast',
-    href: '/portfolio-item/monterey-and-pebble-beach/',
-    accentColor: '#4A9BB8',
-    accentDim: '#2A6B8A',
-    darkColor: '#0E1C24',
-    stat: '$675',
-    statSub: 'per round',
-    statLabel: 'Pebble Beach Links',
-    urgency: 'Book 12–18 months out',
-    fact: '6× US Open host · #1 public course in America',
-    img: 'https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=1200&q=90',
-    position: 'center 35%',
-  },
-  {
-    id: 'tahoe',
-    name: 'Lake Tahoe & Northern Nevada',
-    shortName: 'Lake Tahoe',
-    tag: 'Sierra Nevada',
-    href: '/portfolio-item/lake-tahoe-and-northern-nevada/',
-    accentColor: '#7BBFCF',
-    accentDim: '#5AA0B0',
-    darkColor: '#0B2218',
-    stat: '$275',
-    statSub: 'per person',
-    statLabel: 'Reno packages from',
-    urgency: 'Summer books by February',
-    fact: '6,200 ft elevation · ball flies 10% farther',
-    img: 'https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=1200&q=85',
-    position: 'center 40%',
-  },
-  {
-    id: 'vegas',
-    name: 'Las Vegas & Southern Nevada',
-    shortName: 'Las Vegas',
-    tag: 'Desert Southwest',
-    href: '/portfolio-item/las-vegas-and-southern-nevada/',
-    accentColor: '#E8C060',
-    accentDim: '#C4A040',
-    darkColor: '#0A0A08',
-    stat: '$1,250',
-    statSub: 'per round',
-    statLabel: "America's most expensive tee time",
-    urgency: 'MGM guests Mon–Thu only',
-    fact: 'Shadow Creek · limo + caddie included',
-    img: 'https://images.unsplash.com/photo-1605833556294-ea5c7a74f57d?w=1200&q=85',
-    position: 'center 50%',
-  },
-  {
-    id: 'socal',
-    name: 'Southern California',
-    shortName: 'SoCal',
-    tag: 'Year-Round Golf',
-    href: '/portfolio-item/monterey-and-pebble-beach-2/',
-    accentColor: '#E07A45',
-    accentDim: '#C4622D',
-    darkColor: '#1A1008',
-    stat: '$277–$345',
-    statSub: 'per round',
-    statLabel: 'Torrey Pines South',
-    urgency: 'Non-resident slots limited daily',
-    fact: '2× US Open host · 365-day season',
-    img: 'https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1200&q=85',
-    position: 'center 30%',
-  },
-  {
-    id: 'somersett',
-    name: 'Somersett Golf & CC',
-    shortName: 'Somersett',
-    tag: 'Private Club Access',
-    href: '/portfolio-item/somersett-golf-country-club/',
-    accentColor: '#C49050',
-    accentDim: '#A07030',
-    darkColor: '#131208',
-    stat: '$540',
-    statSub: 'per person',
-    statLabel: 'Private access from',
-    urgency: 'Access by arrangement only',
-    fact: 'Golfweek top private residential · Reno NV',
-    img: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200&q=85',
-    position: 'center 40%',
-  },
+  { id:'monterey', name:'Monterey & Pebble Beach', tag:'California Coast', href:'/portfolio-item/monterey-and-pebble-beach/', accent:'#5ED8C8', accentRgb:'94,216,200', bg:'#184038', stat:'$675', sub:'/round', label:'Pebble Beach Links', urgency:'Book 12–18 months out', fact:'6× US Open host · #1 public course in America', img:'https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=1400&q=90', pos:'center 35%' },
+  { id:'tahoe', name:'Lake Tahoe & Northern Nevada', tag:'Sierra Nevada', href:'/portfolio-item/lake-tahoe-and-northern-nevada/', accent:'#80C8F0', accentRgb:'128,200,240', bg:'#181840', stat:'$275', sub:'/person', label:'Reno packages from', urgency:'Summer books by February', fact:'6,200 ft elevation · ball flies 10% farther', img:'https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=1400&q=85', pos:'center 40%' },
+  { id:'vegas', name:'Las Vegas & Southern Nevada', tag:'Desert Southwest', href:'/portfolio-item/las-vegas-and-southern-nevada/', accent:'#F8C030', accentRgb:'248,192,48', bg:'#401800', stat:'$1,250', sub:'/round', label:"America's most expensive", urgency:'MGM guests Mon–Thu only', fact:'Shadow Creek · limo + caddie included', img:'https://images.unsplash.com/photo-1605833556294-ea5c7a74f57d?w=1400&q=85', pos:'center 50%' },
+  { id:'socal', name:'Southern California', tag:'Year-Round Golf', href:'/portfolio-item/monterey-and-pebble-beach-2/', accent:'#F87050', accentRgb:'248,112,80', bg:'#3A1008', stat:'$2,950', sub:'/person', label:'5-night/4-round package', urgency:'Non-resident slots limited', fact:'Torrey Pines · 2× US Open · 365 days/year', img:'https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1400&q=85', pos:'center 30%' },
+  { id:'somersett', name:'Somersett Golf & Country Club', tag:'Private Club Access', href:'/portfolio-item/somersett-golf-country-club/', accent:'#98D060', accentRgb:'152,208,96', bg:'#182C14', stat:'$540', sub:'/person', label:'Private access from', urgency:'Access by arrangement only', fact:'Golfweek top private residential · 5,200 ft', img:'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1400&q=85', pos:'center 40%' },
 ]
 
 const schema = {
-  '@context': 'https://schema.org',
-  '@graph': [
-    {
-      '@type': 'TravelAgency',
-      '@id': 'https://www.groupgolftours.com/#organization',
-      name: 'Group Golf Tours',
-      alternateName: ['Vacations on the Green', 'Prestige Golf'],
-      url: 'https://www.groupgolftours.com',
-      telephone: '+1-888-584-8232',
-      email: 'customerservice@zoomaway.com',
-      address: { '@type': 'PostalAddress', streetAddress: '3010 LBJ Freeway, Suite 1550', addressLocality: 'Dallas', addressRegion: 'TX', postalCode: '75234', addressCountry: 'US' },
-      description: 'Group Golf Tours plans custom golf travel packages for groups, buddy trips, and corporate events. Specialists in Pebble Beach, Shadow Creek, Edgewood Tahoe, Torrey Pines, and 200+ US courses. 20+ years, 10,000+ outings.',
-      areaServed: ['United States', 'Ireland', 'Scotland', 'Portugal', 'Spain', 'Mexico', 'Dominican Republic'],
-      hasOfferCatalog: {
-        '@type': 'OfferCatalog',
-        name: 'Golf Travel Packages',
-        itemListElement: regions.map(r => ({ '@type': 'Offer', name: r.name + ' Golf Packages', url: 'https://www.groupgolftours.com' + r.href })),
-      },
-    },
-    {
-      '@type': 'FAQPage',
-      mainEntity: [
-        { '@type': 'Question', name: 'How far in advance should a golf group book Pebble Beach?', acceptedAnswer: { '@type': 'Answer', text: 'Golf groups should book Pebble Beach 12 to 18 months in advance. Lodge at Pebble Beach and Inn at Spanish Bay guests may reserve tee times up to 18 months ahead. Non-guests can only book within 24 hours, making it nearly impossible to secure group tee times without resort accommodation. Group Golf Tours coordinates resort rooms and tee times simultaneously for groups.' } },
-        { '@type': 'Question', name: 'How much does Shadow Creek cost in Las Vegas?', acceptedAnswer: { '@type': 'Answer', text: "Shadow Creek's green fee is $1,250 per player in 2025, the most expensive public tee time in the United States. Access is limited to MGM Resorts hotel guests, Monday through Thursday only. The fee includes a private limousine from your hotel and a personal caddie. Group Golf Tours packages MGM hotel stays with Shadow Creek tee times." } },
-        { '@type': 'Question', name: 'What are the cheapest group golf packages in Reno Nevada?', acceptedAnswer: { '@type': 'Answer', text: 'The cheapest documented group golf packages in Reno, Nevada start at $275 per person for a 1-night, 2-round trip at Lakeridge Golf Course. Wolf Run packages start at $395 per person for 2 nights and 3 rounds. Red Hawk Golf Resort packages start at $499 per person for 4 nights and 3 rounds, all including Reno casino hotel accommodations.' } },
-        { '@type': 'Question', name: 'What group sizes does Group Golf Tours handle?', acceptedAnswer: { '@type': 'Answer', text: 'Group Golf Tours handles golf groups from 4 players for small buddy trips up to 200+ players for corporate and incentive events. Small groups typically run 4–24 players. Corporate golf outings have been coordinated for groups exceeding 100 players across multiple courses and hotel properties.' } },
-      ],
-    },
+  '@context':'https://schema.org','@graph':[
+    {'@type':'TravelAgency','@id':'https://www.groupgolftours.com/#organization',name:'Group Golf Tours',alternateName:['Vacations on the Green','Prestige Golf'],url:'https://www.groupgolftours.com',telephone:'+1-888-584-8232',email:'customerservice@zoomaway.com',address:{'@type':'PostalAddress',streetAddress:'3010 LBJ Freeway, Suite 1550',addressLocality:'Dallas',addressRegion:'TX',postalCode:'75234',addressCountry:'US'},description:'Custom golf travel packages for groups. Pebble Beach, Shadow Creek, Edgewood Tahoe, Torrey Pines. 20+ years, 10,000+ outings.'},
+    {'@type':'FAQPage',mainEntity:[
+      {'@type':'Question',name:'How far in advance should a golf group book Pebble Beach?',acceptedAnswer:{'@type':'Answer',text:'Golf groups should book Pebble Beach 12 to 18 months in advance. Lodge guests can book tee times up to 18 months ahead. Non-guests can only book within 24 hours. Group Golf Tours coordinates resort rooms and tee times simultaneously.'}},
+      {'@type':'Question',name:'How much does Shadow Creek cost in Las Vegas in 2025?',acceptedAnswer:{'@type':'Answer',text:"Shadow Creek costs $1,250 per player in 2025, the most expensive public tee time in the United States. Available Monday through Thursday for MGM Resort hotel guests only. Includes private limousine and personal caddie."}},
+      {'@type':'Question',name:'What are the cheapest group golf packages in Reno Nevada?',acceptedAnswer:{'@type':'Answer',text:'Group golf packages in Reno start at $275 per person for a 1-night 2-round trip at Lakeridge Golf Course. Wolf Run packages from $395 per person. Red Hawk from $499 per person for 4 nights 3 rounds.'}},
+    ]},
   ],
 }
 
@@ -137,296 +32,330 @@ export default function HomePage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+
       <style>{`
-        /* ── HERO ── */
-        .hero-word { display: inline-block; }
-        @keyframes fadeSlideUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes shimmer { 0%,100% { opacity: 0.4; } 50% { opacity: 1; } }
-        @keyframes scrollPulse { 0%,100% { transform: scaleY(0.3); opacity: 0; } 50% { transform: scaleY(1); opacity: 1; } }
-        .fade-up-1 { animation: fadeSlideUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.1s both; }
-        .fade-up-2 { animation: fadeSlideUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.3s both; }
-        .fade-up-3 { animation: fadeSlideUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.5s both; }
-        .fade-up-4 { animation: fadeSlideUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.7s both; }
+        /* ── Hero stagger ── */
+        .hline{display:block;overflow:hidden;line-height:0.95}
+        .hline span{display:inline-block;animation:charUp 0.95s cubic-bezier(0.22,1,0.36,1) both}
+        .hline:nth-child(1) span{animation-delay:0.04s}
+        .hline:nth-child(2) span{animation-delay:0.13s}
+        .hline:nth-child(3) span{animation-delay:0.22s}
+        .hline:nth-child(4) span{animation-delay:0.30s}
+        @keyframes charUp{from{opacity:0;transform:translateY(1.05em) skewY(4deg)}to{opacity:1;transform:translateY(0) skewY(0)}}
 
-        /* ── REGION CARDS ── */
-        .region-img { transition: transform 0.7s cubic-bezier(0.22,1,0.36,1); }
-        .region-card:hover .region-img { transform: scale(1.05); }
-        .region-card:hover .region-arrow { transform: translateX(4px); }
-        .region-arrow { transition: transform 0.2s ease; display: inline-block; }
+        /* ── Mesh breathing ── */
+        @keyframes meshFloat{0%,100%{transform:translate(0%,0%)}33%{transform:translate(2.5%,-2%)}66%{transform:translate(-2%,1.5%)}}
+        @keyframes glowPulse{0%,100%{text-shadow:0 0 18px currentColor;opacity:0.88}50%{text-shadow:0 0 50px currentColor,0 0 90px currentColor;opacity:1}}
+        .glow{animation:glowPulse 3.5s ease-in-out infinite}
+        @keyframes scrollPulse{0%,100%{transform:scaleY(0.2);transform-origin:top;opacity:0}40%,60%{transform:scaleY(1);transform-origin:top;opacity:1}}
+        @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+        @keyframes sweepRight{from{transform:scaleX(0);transform-origin:left}to{transform:scaleX(1);transform-origin:left}}
+        @keyframes pulseGlow{0%,100%{box-shadow:0 0 0 1px currentColor}50%{box-shadow:0 0 18px currentColor,0 0 0 1px currentColor}}
 
-        /* ── MOBILE SCROLL STRIP ── */
-        .mobile-scroll-strip {
-          display: none;
-          gap: 12px;
-          overflow-x: auto;
-          scroll-snap-type: x mandatory;
-          -webkit-overflow-scrolling: touch;
-          scrollbar-width: none;
-          padding: 0 var(--pad) 4px;
+        /* ── Price badges float ── */
+        .pbadge{animation:floatY 5s ease-in-out infinite}
+        .pbadge:nth-child(2){animation-delay:-1.8s}
+        .pbadge:nth-child(3){animation-delay:-3.4s}
+
+        /* ── Plum section — pricing ── */
+        .plum-price-cell{transition:background 0.25s}
+        .plum-price-cell:hover{background:rgba(255,255,255,0.06)!important}
+
+        /* ── Saffron trip captain — dark on light ── */
+        .proof-item{border-bottom:1px solid rgba(26,18,0,0.1);padding:22px 0;display:flex;gap:22px;align-items:flex-start;transition:transform 0.2s}
+        .proof-item:hover{transform:translateX(4px)}
+        .proof-item:last-child{border-bottom:none}
+
+        /* ── Experience cards ── */
+        .exp-card{transition:transform 0.35s cubic-bezier(0.22,1,0.36,1),box-shadow 0.35s}
+        .exp-card:hover{transform:translateY(-6px);box-shadow:0 28px 60px rgba(0,0,0,0.5)}
+        .exp-card-img{transition:transform 0.65s cubic-bezier(0.22,1,0.36,1)}
+        .exp-card:hover .exp-card-img{transform:scale(1.06)}
+
+        /* ── Flip card — slate section ── */
+        .flip-card{animation:pulseGlow 4s ease-in-out infinite}
+
+        /* ── CTA section corner marks ── */
+        .corner-tl{position:absolute;top:24px;left:24px;width:40px;height:40px;border-top:1px solid rgba(212,168,50,0.5);border-left:1px solid rgba(212,168,50,0.5)}
+        .corner-br{position:absolute;bottom:24px;right:24px;width:40px;height:40px;border-bottom:1px solid rgba(212,168,50,0.5);border-right:1px solid rgba(212,168,50,0.5)}
+
+        /* ── Responsive ── */
+        @media(max-width:768px){
+          .hero-h1{font-size:clamp(48px,13.5vw,80px)!important;line-height:0.90!important}
+          .hero-trust{grid-template-columns:1fr 1fr!important;gap:18px!important}
+          .hero-sub{font-size:15px!important;max-width:100%!important}
+          .hero-ctas{flex-direction:column!important;align-items:flex-start!important}
+          .plum-grid{grid-template-columns:1fr 1fr!important}
+          .plum-last{display:none!important}
+          .saffron-grid{grid-template-columns:1fr!important;gap:44px!important}
+          .exp-grid{grid-template-columns:1fr!important}
+          .ps-grid{grid-template-columns:1fr 1fr!important;gap:10px!important}
+          .cta-h{font-size:clamp(40px,12vw,64px)!important}
+          .cta-btns{flex-direction:column!important;align-items:center!important}
+          .badge-col{display:none!important}
+          .region-section-header{flex-direction:column!important;align-items:flex-start!important}
         }
-        .mobile-scroll-strip::-webkit-scrollbar { display: none; }
-        .mobile-scroll-card {
-          flex: 0 0 280px;
-          scroll-snap-align: start;
-        }
-
-        /* ── PRICING TICKER ── */
-        .price-cell { transition: background 0.2s; }
-        .price-cell:hover { background: rgba(255,255,255,0.04) !important; }
-
-        /* ── PROBLEM/SOLUTION CARDS ── */
-        .ps-card { transition: border-color 0.2s, transform 0.2s; }
-        .ps-card:hover { border-color: rgba(201,168,76,0.4) !important; transform: translateY(-2px); }
-
-        /* ── RESPONSIVE ── */
-        @media (max-width: 768px) {
-          .hero-h1 { font-size: clamp(44px, 12vw, 72px) !important; }
-          .hero-sub { font-size: 15px !important; }
-          .hero-stats { gap: 20px !important; }
-          .hero-stat-n { font-size: 24px !important; }
-          .region-grid-desktop { display: none !important; }
-          .mobile-scroll-strip { display: flex !important; }
-          .region-section-header { flex-direction: column !important; align-items: flex-start !important; gap: 12px !important; }
-          .price-strip { grid-template-columns: 1fr 1fr !important; }
-          .price-strip-item-3 { display: none; }
-          .trip-cap-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
-          .exp-grid { grid-template-columns: 1fr !important; }
-          .ps-grid { grid-template-columns: 1fr 1fr !important; }
-          .cta-h2 { font-size: clamp(36px, 10vw, 56px) !important; }
-          .cta-btns { flex-direction: column !important; align-items: center !important; }
-          .trust-bar { grid-template-columns: 1fr 1fr !important; gap: 24px !important; }
-        }
-        @media (max-width: 480px) {
-          .ps-grid { grid-template-columns: 1fr !important; }
-          .price-strip { grid-template-columns: 1fr !important; }
-        }
-        @media (min-width: 769px) {
-          .mobile-scroll-strip { display: none !important; }
+        @media(max-width:480px){
+          .ps-grid{grid-template-columns:1fr!important}
+          .plum-grid{grid-template-columns:1fr!important}
         }
       `}</style>
 
-      {/* ══════════════════════════════════════════════════════
-          HERO — FULL BLEED CINEMATIC
-      ══════════════════════════════════════════════════════ */}
-      <section style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', background: '#050C07', overflow: 'hidden' }}>
-        {/* BG image */}
-        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'url(https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=2000&q=90)', backgroundSize: 'cover', backgroundPosition: 'center 35%', opacity: 0.28 }} />
-        {/* Directional gradient — heavier left for text legibility */}
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(110deg, rgba(5,12,7,0.98) 0%, rgba(5,12,7,0.88) 45%, rgba(5,12,7,0.45) 75%, rgba(5,12,7,0.15) 100%)' }} />
-        {/* Subtle vignette bottom */}
-        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '40%', background: 'linear-gradient(to top, rgba(5,12,7,0.9) 0%, transparent 100%)' }} />
-        {/* Accent gold line — desktop only */}
-        <div style={{ position: 'absolute', left: 'clamp(20px, 5vw, 72px)', top: '20%', bottom: '20%', width: 1, background: 'linear-gradient(to bottom, transparent, var(--gold) 25%, var(--gold) 75%, transparent)', opacity: 0.35 }} />
+      {/* ══════════════════════════════════════════════════
+          §1  HERO — Ink black + burning sienna mesh
+              MASSIVE metallic serif, floating price tags
+      ══════════════════════════════════════════════════ */}
+      <section className="grain" style={{ position:'relative', minHeight:'100vh', display:'flex', alignItems:'center', background:'#0A0806', overflow:'hidden' }}>
 
-        <div className="wrap" style={{ position: 'relative', zIndex: 2, paddingTop: 100, paddingBottom: 100, width: '100%' }}>
-          <div style={{ maxWidth: 820, paddingLeft: 'clamp(0px, 2vw, 32px)' }}>
+        {/* Breathing mesh — warm amber-sienna-copper tones */}
+        <div style={{ position:'absolute', inset:0, zIndex:0, overflow:'hidden' }}>
+          <div style={{ position:'absolute', width:'170%', height:'170%', top:'-35%', left:'-35%',
+            background:`
+              radial-gradient(ellipse 65% 55% at 20% 65%, rgba(168,72,32,0.22) 0%, transparent 55%),
+              radial-gradient(ellipse 50% 60% at 80% 30%, rgba(64,24,0,0.32) 0%, transparent 55%),
+              radial-gradient(ellipse 45% 45% at 55% 80%, rgba(61,24,64,0.18) 0%, transparent 50%),
+              radial-gradient(ellipse 35% 35% at 35% 25%, rgba(200,121,65,0.10) 0%, transparent 45%)
+            `,
+            animation:'meshFloat 16s ease-in-out infinite' }} />
+        </div>
+
+        {/* Photo underlay */}
+        <div style={{ position:'absolute', inset:0, backgroundImage:'url(https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=2000&q=90)', backgroundSize:'cover', backgroundPosition:'center 35%', opacity:0.18, zIndex:1 }} />
+        {/* Directional gradient */}
+        <div style={{ position:'absolute', inset:0, background:'linear-gradient(112deg, rgba(10,8,6,0.98) 0%, rgba(10,8,6,0.88) 42%, rgba(10,8,6,0.45) 72%, rgba(10,8,6,0.12) 100%)', zIndex:2 }} />
+        {/* Vignette bottom */}
+        <div style={{ position:'absolute', bottom:0, left:0, right:0, height:'50%', background:'linear-gradient(to top, rgba(10,8,6,0.96) 0%, transparent 100%)', zIndex:2 }} />
+
+        {/* Decorative vertical rule — copper */}
+        <div style={{ position:'absolute', left:'clamp(16px,5vw,80px)', top:'16%', bottom:'16%', width:1, background:'linear-gradient(to bottom, transparent, #C87941 28%, #C87941 72%, transparent)', opacity:0.45, zIndex:3 }} />
+
+        {/* Floating price badges — desktop right side */}
+        <div className="badge-col" style={{ position:'absolute', right:'clamp(32px,5vw,80px)', top:'18%', zIndex:5, display:'flex', flexDirection:'column', gap:14 }}>
+          {[
+            { label:'Pebble Beach Golf Links', price:'$675', sub:'per round', accent:'#5ED8C8', delay:'0s' },
+            { label:'Shadow Creek Las Vegas', price:'$1,250', sub:'per round', accent:'#F8C030', delay:'1.8s' },
+            { label:'Reno Group Packages', price:'$275', sub:'per person', accent:'#80C8F0', delay:'3.5s' },
+          ].map((b,i) => (
+            <div key={b.label} className="pbadge" style={{
+              background:'rgba(10,8,6,0.82)', backdropFilter:'blur(20px)',
+              border:`1px solid rgba(${b.accent.replace('#','').match(/.{2}/g)!.map(h=>parseInt(h,16)).join(',')},0.28)`,
+              padding:'14px 20px', minWidth:196, position:'relative', overflow:'hidden',
+              animationName:`floatY,fadeUp`, animationDuration:`5s,0.88s`, animationTimingFunction:`ease-in-out,cubic-bezier(0.22,1,0.36,1)`, animationFillMode:`none,both`, animationDelay:`${b.delay},${0.7+i*0.12}s`,
+            }}>
+              <div style={{ position:'absolute', top:0, left:0, right:0, height:2, background:b.accent, opacity:0.7 }} />
+              <div style={{ fontFamily:'var(--sans)', fontSize:8, fontWeight:700, letterSpacing:'0.2em', textTransform:'uppercase', color:b.accent, opacity:0.75, marginBottom:5 }}>{b.label}</div>
+              <div style={{ fontFamily:'var(--serif)', fontSize:30, color:b.accent, lineHeight:1 }} className="glow">{b.price}</div>
+              <div style={{ fontSize:10, color:'rgba(245,237,216,0.35)', marginTop:3 }}>{b.sub}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* Main content */}
+        <div className="wrap" style={{ position:'relative', zIndex:4, paddingTop:110, paddingBottom:110, width:'100%' }}>
+          <div style={{ maxWidth:780, paddingLeft:'clamp(0px,2vw,28px)' }}>
 
             {/* Eyebrow */}
-            <div className="fade-up-1" style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 28 }}>
-              <div style={{ width: 28, height: 1, background: 'var(--gold)', flexShrink: 0 }} />
-              <span style={{ fontFamily: 'var(--sans)', fontSize: 11, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--gold)' }}>
-                20+ Years · 10,000+ Outings · Licensed in NV &amp; FL
+            <div className="a1" style={{ display:'flex', alignItems:'center', gap:14, marginBottom:30 }}>
+              <div style={{ width:28, height:1, background:'var(--copper)', flexShrink:0, animation:'sweepRight 0.8s 0.3s both' }} />
+              <span style={{ fontFamily:'var(--sans)', fontSize:9, fontWeight:700, letterSpacing:'0.28em', textTransform:'uppercase', color:'var(--copper)' }}>
+                20+ Years · 10,000+ Outings · Licensed NV &amp; FL
               </span>
             </div>
 
-            {/* Main headline — SEO keywords embedded naturally */}
-            <h1 className="hero-h1 fade-up-2" style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(52px, 7.5vw, 104px)', fontWeight: 400, color: 'var(--cream)', lineHeight: 0.93, letterSpacing: '-0.02em', marginBottom: 32 }}>
-              Pebble Beach.<br />
-              Shadow Creek.<br />
-              <span style={{ color: 'var(--gold)', fontStyle: 'italic' }}>Your group,<br />secured.</span>
+            {/* Headline — metallic shimmer on key words */}
+            <h1 className="hero-h1" style={{ fontFamily:'var(--serif)', fontSize:'clamp(56px,8.5vw,112px)', fontWeight:300, lineHeight:0.93, letterSpacing:'-0.025em', marginBottom:36 }}>
+              <span className="hline" style={{ color:'var(--cream)' }}><span>Pebble Beach.</span></span>
+              <span className="hline" style={{ color:'var(--cream)' }}><span>Shadow Creek.</span></span>
+              <span className="hline"><span className="metal" style={{ fontStyle:'italic' }}>Your group,</span></span>
+              <span className="hline"><span className="metal" style={{ fontStyle:'italic' }}>secured.</span></span>
             </h1>
 
-            {/* Sub — value prop with real numbers */}
-            <p className="hero-sub fade-up-3" style={{ fontSize: 18, lineHeight: 1.75, color: 'rgba(244,239,228,0.72)', maxWidth: 540, marginBottom: 44, fontWeight: 300 }}>
-              We book the tee times your group can&apos;t get alone.
-              Pebble Beach at&nbsp;<strong style={{ color: 'var(--cream)', fontWeight: 600 }}>$675/round</strong> — 18 months advance booking required.
-              Shadow Creek at&nbsp;<strong style={{ color: 'var(--cream)', fontWeight: 600 }}>$1,250/round</strong> — MGM guests only.
-              One call. We handle both.
+            {/* Sub copy */}
+            <p className="hero-sub a3" style={{ fontSize:17, lineHeight:1.82, color:'rgba(245,237,216,0.65)', maxWidth:520, marginBottom:44, fontWeight:300 }}>
+              We book the tee times your group can&apos;t get alone —
+              Pebble Beach at <strong style={{ color:'var(--cream)', fontWeight:600 }}>$675/round</strong> (18-month advance required),
+              Shadow Creek at <strong style={{ color:'var(--cream)', fontWeight:600 }}>$1,250/round</strong> (MGM guests only, limo &amp; caddie included). One call. Everything handled.
             </p>
 
             {/* CTAs */}
-            <div className="fade-up-4" style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 60 }}>
-              <Link href="/tour-inquiry/" className="btn btn-gold" style={{ padding: '15px 40px', fontSize: 12, letterSpacing: '0.14em' }}>
-                Plan My Group Trip
+            <div className="hero-ctas a4" style={{ display:'flex', gap:12, flexWrap:'wrap', marginBottom:56 }}>
+              <Link href="/tour-inquiry/" className="btn btn-gold">
+                <span>Plan My Group Trip</span>
               </Link>
-              <a href="tel:8885848232" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '15px 28px', fontFamily: 'var(--sans)', fontSize: 12, fontWeight: 700, letterSpacing: '0.1em', color: 'rgba(244,239,228,0.55)', textDecoration: 'none', border: '1px solid rgba(255,255,255,0.12)', transition: 'all 0.2s' }}>
-                <span style={{ fontSize: 16 }}>📞</span> 888-584-8232
+              <a href="tel:8885848232" className="btn btn-ghost">
+                888-584-8232
               </a>
             </div>
 
-            {/* Trust bar */}
-            <div className="fade-up-4 trust-bar" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 32, paddingTop: 28, borderTop: '1px solid rgba(201,168,76,0.15)', maxWidth: 580 }}>
+            {/* Trust stats — copper numerals */}
+            <div className="hero-trust a5" style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:28, paddingTop:26, borderTop:'1px solid rgba(200,121,65,0.16)', maxWidth:560 }}>
               {[
-                { n: '20+', l: 'Years' },
-                { n: '10K+', l: 'Outings' },
-                { n: '5', l: 'Regions' },
-                { n: '$275', l: 'From / person' },
+                { n:'20+', l:'Years' },
+                { n:'10K+', l:'Outings' },
+                { n:'$275', l:'From / person' },
+                { n:'200+', l:'Courses' },
               ].map(s => (
                 <div key={s.n}>
-                  <div className="hero-stat-n" style={{ fontFamily: 'var(--serif)', fontSize: 28, fontWeight: 500, color: 'var(--gold)', lineHeight: 1 }}>{s.n}</div>
-                  <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(244,239,228,0.35)', marginTop: 5 }}>{s.l}</div>
+                  <div style={{ fontFamily:'var(--serif)', fontSize:28, fontWeight:300, color:'var(--copper)', lineHeight:1 }}>{s.n}</div>
+                  <div style={{ fontSize:10, fontWeight:600, letterSpacing:'0.16em', textTransform:'uppercase', color:'rgba(245,237,216,0.28)', marginTop:4 }}>{s.l}</div>
                 </div>
               ))}
             </div>
           </div>
         </div>
 
-        {/* Scroll indicator */}
-        <div style={{ position: 'absolute', bottom: 32, left: '50%', transform: 'translateX(-50%)' }}>
-          <div style={{ width: 1, height: 52, background: 'linear-gradient(to bottom, transparent, var(--gold))', animation: 'scrollPulse 2.4s ease-in-out infinite', transformOrigin: 'top' }} />
+        {/* Scroll line */}
+        <div style={{ position:'absolute', bottom:28, left:'50%', transform:'translateX(-50%)', zIndex:5 }}>
+          <div style={{ width:1, height:52, background:'var(--copper)', animation:'scrollPulse 2.2s ease-in-out infinite' }} />
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════
-          PRICING PROOF BAR — Real numbers as credibility
-      ══════════════════════════════════════════════════════ */}
-      <div style={{ background: '#0A0A0A', borderTop: '1px solid rgba(201,168,76,0.12)', borderBottom: '1px solid rgba(201,168,76,0.12)' }}>
-        <div className="wrap price-strip" style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)' }}>
+      {/* ══════════════════════════════════════════════════
+          §2  PRICING BAR — DEEP PLUM BACKGROUND
+              Rose gold numbers on violet — completely
+              unexpected, demands attention
+      ══════════════════════════════════════════════════ */}
+      <div className="grain" style={{ background:'var(--plum)', borderTop:'1px solid rgba(212,136,106,0.2)', borderBottom:'1px solid rgba(212,136,106,0.2)', position:'relative', overflow:'hidden' }}>
+        {/* Subtle texture */}
+        <div style={{ position:'absolute', inset:0, background:'radial-gradient(ellipse 80% 80% at 50% 50%, rgba(61,24,64,0.0) 0%, rgba(212,136,106,0.04) 100%)', pointerEvents:'none' }} />
+        <div className="wrap plum-grid" style={{ display:'grid', gridTemplateColumns:'repeat(5,1fr)', position:'relative', zIndex:1 }}>
           {[
-            { course: 'Pebble Beach', fee: '$675', sub: '/round', note: '18-mo advance booking', color: '#4A9BB8', flag: '6× US Open host' },
-            { course: 'Shadow Creek', fee: '$1,250', sub: '/round', note: 'Limo + caddie included', color: '#E8C060', flag: "Most expensive in America" },
-            { course: 'Edgewood Tahoe', fee: '$350', sub: '/round', note: '6,200 ft elevation', color: '#7BBFCF', flag: 'Golf Digest Top 100' },
-            { course: 'Torrey Pines South', fee: '$345', sub: '/round', note: '2× US Open host', color: '#E07A45', flag: 'Non-resident rate' },
-            { course: 'Reno Packages', fee: '$275', sub: '/person', note: '1-night starter packages', color: '#C49050', flag: 'From (verified)' },
-          ].map((c, i) => (
-            <div key={c.course} className="price-cell price-strip-item" style={{
-              padding: 'clamp(18px, 2.5vw, 28px) clamp(12px, 2vw, 24px)',
-              borderLeft: i > 0 ? '1px solid rgba(255,255,255,0.05)' : 'none',
-              textAlign: 'center',
-              position: 'relative',
-            }}>
-              <div style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: c.color, marginBottom: 6, opacity: 0.8 }}>{c.course}</div>
-              <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'center', gap: 2 }}>
-                <span style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(22px, 3vw, 34px)', color: 'var(--cream)', lineHeight: 1 }}>{c.fee}</span>
-                <span style={{ fontSize: 11, color: 'rgba(244,239,228,0.35)', fontFamily: 'var(--sans)' }}>{c.sub}</span>
+            { course:'Pebble Beach', fee:'$675', sub:'/round', note:'18-month advance', flag:'6× US Open host', c:'#5ED8C8' },
+            { course:'Shadow Creek', fee:'$1,250', sub:'/round', note:'Limo + caddie incl.', flag:"Most expensive in USA", c:'#F8C030' },
+            { course:'Edgewood Tahoe', fee:'~$350', sub:'/round', note:'6,200 ft elevation', flag:'Golf Digest Top 100', c:'#80C8F0' },
+            { course:'Torrey Pines S.', fee:'$277–$345', sub:'/round', note:'Non-resident rate', flag:'2× US Open host', c:'#F87050' },
+            { course:'Reno From', fee:'$275', sub:'/person', note:'82 documented trips', flag:'Starter packages', c:'#98D060' },
+          ].map((c,i) => (
+            <div key={c.course} className="plum-price-cell" style={{ padding:'clamp(16px,2.5vw,28px) clamp(10px,1.5vw,20px)', borderLeft: i>0 ? '1px solid rgba(245,237,216,0.06)' : 'none', textAlign:'center', background:'transparent' }}>
+              <div style={{ fontSize:7, fontWeight:700, letterSpacing:'0.24em', textTransform:'uppercase', color:c.c, opacity:0.72, marginBottom:6 }}>{c.course}</div>
+              <div style={{ display:'flex', alignItems:'baseline', justifyContent:'center', gap:1 }}>
+                <span style={{ fontFamily:'var(--serif)', fontSize:'clamp(18px,2.8vw,32px)', color:c.c, lineHeight:1, textShadow:`0 0 20px rgba(${c.c.replace('#','').match(/.{2}/g)!.map((h:string)=>parseInt(h,16)).join(',')},0.4)` }}>{c.fee}</span>
+                <span style={{ fontSize:9, color:'rgba(245,237,216,0.25)', paddingLeft:2 }}>{c.sub}</span>
               </div>
-              <div style={{ fontSize: 10, color: 'rgba(244,239,228,0.3)', marginTop: 5, letterSpacing: '0.04em' }}>{c.note}</div>
-              <div style={{ fontSize: 9, color: c.color, marginTop: 4, fontWeight: 600, letterSpacing: '0.06em', opacity: 0.7 }}>{c.flag}</div>
+              <div style={{ fontSize:9, color:'rgba(245,237,216,0.3)', marginTop:4, letterSpacing:'0.04em' }}>{c.note}</div>
+              <div style={{ fontSize:8, color:c.c, marginTop:3, fontWeight:700, opacity:0.6, letterSpacing:'0.08em' }}>{c.flag}</div>
             </div>
           ))}
         </div>
       </div>
 
-      {/* ══════════════════════════════════════════════════════
-          5 REGIONS — DESKTOP EDITORIAL GRID + MOBILE SCROLL
-      ══════════════════════════════════════════════════════ */}
-      <section style={{ background: '#060C08', padding: 'clamp(64px, 9vw, 120px) 0 0' }}>
+      {/* ══════════════════════════════════════════════════
+          §3  FIVE REGIONS — Each card its own saturated
+              world. Desktop editorial. Mobile scroll.
+      ══════════════════════════════════════════════════ */}
+      <section className="grain" style={{ background:'#0A0C0A', paddingTop:'clamp(72px,9vw,120px)' }}>
         <div className="wrap">
-          {/* Header */}
-          <div className="region-section-header" style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 24, marginBottom: 40 }}>
+          <div className="region-section-header" style={{ display:'flex', alignItems:'flex-end', justifyContent:'space-between', flexWrap:'wrap', gap:20, marginBottom:44 }}>
             <div>
-              <span style={{ fontFamily: 'var(--sans)', fontSize: 10, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--gold)' }}>Where We Play</span>
-              <div style={{ width: 40, height: 1, background: 'var(--gold)', margin: '14px 0 18px' }} />
-              <h2 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(32px, 5vw, 60px)', color: 'var(--cream)', lineHeight: 1.0, margin: 0 }}>
-                Five Regions.<br /><em style={{ fontStyle: 'italic', color: 'rgba(244,239,228,0.5)' }}>Five Distinct Worlds.</em>
+              <span style={{ fontFamily:'var(--sans)', fontSize:9, fontWeight:700, letterSpacing:'0.28em', textTransform:'uppercase', color:'var(--copper)' }}>Where We Play</span>
+              <div style={{ width:42, height:1, background:'var(--copper)', margin:'14px 0 18px', animation:'sweepRight 0.8s 0.2s both' }} />
+              <h2 style={{ fontFamily:'var(--serif)', fontSize:'clamp(32px,5.5vw,66px)', fontWeight:300, color:'var(--cream)', lineHeight:1.0, letterSpacing:'-0.02em', margin:0 }}>
+                Five Regions.<br />
+                <em style={{ fontStyle:'italic', color:'rgba(245,237,216,0.36)' }}>Five Distinct Worlds.</em>
               </h2>
             </div>
-            <Link href="/destinations/" style={{ fontFamily: 'var(--sans)', fontSize: 11, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--gold)', textDecoration: 'none', opacity: 0.7, whiteSpace: 'nowrap' }}>
+            <Link href="/destinations/" style={{ fontFamily:'var(--sans)', fontSize:9, fontWeight:700, letterSpacing:'0.22em', textTransform:'uppercase', color:'var(--copper)', textDecoration:'none', opacity:0.7, whiteSpace:'nowrap' }}>
               All destinations →
             </Link>
           </div>
         </div>
 
-        {/* ── DESKTOP GRID ── */}
-        <div className="region-grid-desktop wrap" style={{ display: 'grid', gridTemplateColumns: '1.65fr 1fr', gridTemplateRows: 'auto auto', gap: 10, paddingBottom: 10 }}>
-          {/* Hero card — Pebble Beach */}
-          <RegionCardDesktop r={regions[0]} large />
-          {/* Right column stack */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-            <RegionCardDesktop r={regions[1]} />
-            <RegionCardDesktop r={regions[2]} />
+        {/* DESKTOP EDITORIAL GRID */}
+        <div className="desk-only" style={{ display:'grid', gridTemplateColumns:'1.65fr 1fr', gridTemplateRows:'520px 270px', gap:8, padding:'0 8px 8px' }}>
+          <RCard r={regions[0]} size="hero" />
+          <div style={{ display:'grid', gridTemplateRows:'1fr 1fr', gap:8 }}>
+            <RCard r={regions[1]} size="half" />
+            <RCard r={regions[2]} size="half" />
           </div>
-          {/* Bottom row */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
-            <RegionCardDesktop r={regions[3]} />
-            <RegionCardDesktop r={regions[4]} />
+          <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:8 }}>
+            <RCard r={regions[3]} size="sm" />
+            <RCard r={regions[4]} size="sm" />
           </div>
-          {/* Bottom right — CTA card */}
-          <div style={{ background: 'rgba(201,168,76,0.06)', border: '1px solid rgba(201,168,76,0.15)', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '40px 32px', textAlign: 'center', gap: 20 }}>
-            <div style={{ fontFamily: 'var(--sans)', fontSize: 10, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--gold)', opacity: 0.8 }}>Not sure which region?</div>
-            <div style={{ fontFamily: 'var(--serif)', fontSize: 28, color: 'var(--cream)', lineHeight: 1.1 }}>Tell us your budget.<br />We&apos;ll find your course.</div>
-            <Link href="/tour-inquiry/" className="btn btn-gold" style={{ padding: '13px 32px', fontSize: 11 }}>Get a Free Plan</Link>
-            <div style={{ fontSize: 11, color: 'rgba(244,239,228,0.3)', lineHeight: 1.7 }}>Response within 24 hrs<br />No commitment required</div>
+          {/* CTA inset card */}
+          <div className="grain" style={{ background:'linear-gradient(145deg, rgba(200,121,65,0.1) 0%, rgba(61,24,64,0.2) 100%)', border:'1px solid rgba(200,121,65,0.18)', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', padding:'40px 32px', textAlign:'center', gap:18, position:'relative', overflow:'hidden' }}>
+            <div style={{ position:'absolute', top:18, left:18, width:36, height:36, borderTop:'1px solid rgba(200,121,65,0.4)', borderLeft:'1px solid rgba(200,121,65,0.4)' }} />
+            <div style={{ position:'absolute', bottom:18, right:18, width:36, height:36, borderBottom:'1px solid rgba(200,121,65,0.4)', borderRight:'1px solid rgba(200,121,65,0.4)' }} />
+            <span style={{ fontFamily:'var(--sans)', fontSize:9, fontWeight:700, letterSpacing:'0.22em', textTransform:'uppercase', color:'var(--copper)', opacity:0.8 }}>Not sure which region?</span>
+            <div style={{ fontFamily:'var(--serif)', fontSize:'clamp(20px,2.2vw,30px)', fontWeight:300, color:'var(--cream)', lineHeight:1.15, letterSpacing:'-0.01em' }}>Tell us your budget.<br />We&apos;ll find your course.</div>
+            <p style={{ fontSize:13, color:'rgba(245,237,216,0.38)', lineHeight:1.65, maxWidth:220 }}>Response within 24 hrs. No commitment.</p>
+            <Link href="/tour-inquiry/" className="btn btn-gold" style={{ padding:'12px 28px' }}><span>Get Free Plan</span></Link>
           </div>
         </div>
 
-        {/* ── MOBILE HORIZONTAL SCROLL ── */}
-        <div className="mobile-scroll-strip" style={{ paddingBottom: 24 }}>
+        {/* MOBILE HORIZONTAL SCROLL */}
+        <div className="mob-strip">
           {regions.map(r => (
-            <Link key={r.id} href={r.href} className="mobile-scroll-card" style={{ textDecoration: 'none', display: 'block', position: 'relative', height: 380, overflow: 'hidden', background: r.darkColor, borderRadius: 2 }}>
-              <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${r.img})`, backgroundSize: 'cover', backgroundPosition: r.position, opacity: 0.55 }} />
-              <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to top, ${r.darkColor} 0%, ${r.darkColor}CC 35%, transparent 65%)` }} />
-              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: r.accentColor }} />
-              {/* Urgency badge */}
-              <div style={{ position: 'absolute', top: 16, right: 16, background: `${r.accentColor}22`, border: `1px solid ${r.accentColor}55`, padding: '5px 10px', fontSize: 9, fontWeight: 700, letterSpacing: '0.1em', color: r.accentColor, textTransform: 'uppercase' }}>
-                ⚑ {r.urgency}
-              </div>
-              <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '24px 20px' }}>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: r.accentColor, marginBottom: 6 }}>{r.tag}</div>
-                <div style={{ fontFamily: 'var(--serif)', fontSize: 22, color: 'var(--cream)', fontWeight: 400, lineHeight: 1.15, marginBottom: 12 }}>{r.name}</div>
-                <div style={{ fontSize: 12, color: 'rgba(244,239,228,0.55)', lineHeight: 1.6, marginBottom: 14 }}>{r.fact}</div>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: 6 }}>
-                  <span style={{ fontFamily: 'var(--serif)', fontSize: 30, color: r.accentColor, lineHeight: 1 }}>{r.stat}</span>
-                  <span style={{ fontSize: 11, color: 'rgba(244,239,228,0.4)', fontFamily: 'var(--sans)' }}>{r.statSub}</span>
-                </div>
-                <div style={{ fontSize: 9, color: 'rgba(244,239,228,0.35)', letterSpacing: '0.1em', textTransform: 'uppercase', marginTop: 3 }}>{r.statLabel}</div>
+            <Link key={r.id} href={r.href} className="mob-item rc" style={{ textDecoration:'none', height:400, position:'relative', background:r.bg, display:'block' }}>
+              <div className="rc-bg" style={{ position:'absolute', inset:0, backgroundImage:`url(${r.img})`, backgroundSize:'cover', backgroundPosition:r.pos, opacity:0.5 }} />
+              <div style={{ position:'absolute', inset:0, background:`linear-gradient(to top, ${r.bg}F8 0%, ${r.bg}CC 35%, transparent 65%)` }} />
+              <div className="rc-veil" style={{ background:`radial-gradient(ellipse at 50% 100%, rgba(${r.accentRgb},0.35) 0%, transparent 70%)` }} />
+              <div style={{ position:'absolute', top:0, left:0, right:0, height:3, background:`linear-gradient(90deg, ${r.accent}, transparent)` }} />
+              <div style={{ position:'absolute', top:14, right:14, background:`rgba(${r.accentRgb},0.12)`, border:`1px solid rgba(${r.accentRgb},0.35)`, padding:'4px 10px', fontSize:8, fontWeight:700, letterSpacing:'0.12em', color:r.accent, textTransform:'uppercase' }}>⚑ {r.urgency}</div>
+              <div style={{ position:'absolute', bottom:0, padding:'22px 18px' }}>
+                <div style={{ fontSize:8, fontWeight:700, letterSpacing:'0.2em', textTransform:'uppercase', color:r.accent, opacity:0.85, marginBottom:6 }}>{r.tag}</div>
+                <div style={{ fontFamily:'var(--serif)', fontSize:22, fontWeight:300, color:'var(--cream)', lineHeight:1.1, marginBottom:10 }}>{r.name}</div>
+                <div style={{ fontSize:11, color:'rgba(245,237,216,0.48)', lineHeight:1.65, marginBottom:12 }}>{r.fact}</div>
+                <span style={{ fontFamily:'var(--serif)', fontSize:32, color:r.accent, lineHeight:1 }}>{r.stat}</span>
+                <span style={{ fontSize:11, color:'rgba(245,237,216,0.35)', marginLeft:3 }}>{r.sub}</span>
               </div>
             </Link>
           ))}
-          {/* Mobile CTA card */}
-          <Link href="/tour-inquiry/" className="mobile-scroll-card" style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: 380, background: 'rgba(201,168,76,0.07)', border: '1px solid rgba(201,168,76,0.2)', padding: '32px 24px', textAlign: 'center', gap: 16 }}>
-            <div style={{ fontFamily: 'var(--serif)', fontSize: 24, color: 'var(--cream)', lineHeight: 1.15 }}>Not sure?<br />Tell us your budget.</div>
-            <div style={{ fontSize: 13, color: 'rgba(244,239,228,0.5)', lineHeight: 1.7 }}>We&apos;ll match you to the right region and course within 24 hours.</div>
-            <span className="btn btn-gold" style={{ padding: '13px 28px', fontSize: 11 }}>Get Free Plan</span>
+          <Link href="/tour-inquiry/" className="mob-item" style={{ textDecoration:'none', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', height:400, background:'rgba(200,121,65,0.07)', border:'1px solid rgba(200,121,65,0.2)', padding:'28px 20px', textAlign:'center', gap:16 }}>
+            <div style={{ fontFamily:'var(--serif)', fontSize:26, fontWeight:300, color:'var(--cream)', lineHeight:1.1 }}>Not sure?<br />Tell us your budget.</div>
+            <div style={{ fontSize:13, color:'rgba(245,237,216,0.45)', lineHeight:1.7 }}>We match you to the right region within 24 hours.</div>
+            <span className="btn btn-gold" style={{ padding:'12px 24px', fontSize:11 }}><span>Get Free Plan</span></span>
           </Link>
         </div>
-
-        {/* Scroll hint — mobile only */}
-        <div style={{ textAlign: 'center', paddingBottom: 32, paddingTop: 8 }}>
-          <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'rgba(244,239,228,0.2)' }}>← swipe to explore →</span>
+        <div style={{ textAlign:'center', padding:'8px 0 32px' }}>
+          <span style={{ fontSize:9, fontWeight:600, letterSpacing:'0.2em', textTransform:'uppercase', color:'rgba(245,237,216,0.15)' }}>← swipe to explore →</span>
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════
-          TRIP CAPTAIN — Identity psychology section
-      ══════════════════════════════════════════════════════ */}
-      <section style={{ background: '#080C0A', padding: 'clamp(64px, 9vw, 112px) 0', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 15% 60%, rgba(201,168,76,0.05) 0%, transparent 55%)' }} />
-        <div className="wrap trip-cap-grid" style={{ position: 'relative', zIndex: 1, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 72, alignItems: 'center' }}>
-          {/* Left — narrative */}
+      {/* ══════════════════════════════════════════════════
+          §4  TRIP CAPTAIN — SAFFRON / TURMERIC BACKGROUND
+              Dark ink text on warm gold — bold inversion
+              Feels like a Hermès catalog page
+      ══════════════════════════════════════════════════ */}
+      <section className="grain cut-dn" style={{ background:'#C89020', padding:'clamp(80px,10vw,130px) 0', position:'relative', overflow:'hidden' }}>
+        {/* Texture wash */}
+        <div style={{ position:'absolute', inset:0, background:'radial-gradient(ellipse 70% 80% at 80% 50%, rgba(168,72,32,0.2) 0%, transparent 60%), radial-gradient(ellipse 50% 60% at 10% 80%, rgba(0,0,0,0.15) 0%, transparent 55%)', pointerEvents:'none' }} />
+        {/* Decorative large numeral */}
+        <div style={{ position:'absolute', right:'-2%', top:'50%', transform:'translateY(-50%)', fontFamily:'var(--serif)', fontSize:'clamp(200px,25vw,380px)', fontWeight:300, color:'rgba(168,72,32,0.14)', lineHeight:1, userSelect:'none', pointerEvents:'none', letterSpacing:'-0.05em' }}>20+</div>
+
+        <div className="wrap saffron-grid" style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:80, alignItems:'center', position:'relative', zIndex:1 }}>
           <div>
-            <span style={{ fontFamily: 'var(--sans)', fontSize: 10, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--gold)' }}>For the Trip Captain</span>
-            <div style={{ width: 40, height: 1, background: 'var(--gold)', margin: '14px 0 24px' }} />
-            <h2 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(30px, 4vw, 52px)', color: 'var(--cream)', lineHeight: 1.1, marginBottom: 20 }}>
+            <span style={{ fontFamily:'var(--sans)', fontSize:9, fontWeight:700, letterSpacing:'0.28em', textTransform:'uppercase', color:'rgba(64,24,0,0.6)' }}>For the Trip Captain</span>
+            <div style={{ width:40, height:1, background:'rgba(64,24,0,0.5)', margin:'14px 0 24px' }} />
+            <h2 style={{ fontFamily:'var(--serif)', fontSize:'clamp(30px,4.2vw,54px)', fontWeight:300, color:'#1A0800', lineHeight:1.08, marginBottom:22, letterSpacing:'-0.02em' }}>
               You make the<br />
-              <em style={{ color: 'var(--gold)', fontStyle: 'italic' }}>impossible</em> happen.
+              <em style={{ fontStyle:'italic', color:'rgba(64,24,0,0.85)' }}>impossible</em> happen.
             </h2>
-            <p style={{ fontSize: 16, lineHeight: 1.9, color: 'rgba(244,239,228,0.6)', marginBottom: 16 }}>
-              Every group has one person who takes on the trip. That&apos;s you. Pick the wrong course, miss the booking window, lose the room block — and you never hear the end of it.
+            <p style={{ fontSize:16, lineHeight:1.95, color:'rgba(64,24,0,0.62)', marginBottom:18 }}>
+              Every group has one person who takes on the trip everyone talks about for years. That&apos;s you. Miss the booking window, pick the wrong course, lose the room block — and you never hear the end of it.
             </p>
-            <p style={{ fontSize: 16, lineHeight: 1.9, color: 'rgba(244,239,228,0.6)', marginBottom: 36 }}>
-              Since 2004 we&apos;ve been making Trip Captains look like legends.
-              Tee times at courses that shut out the public. Room blocks held before they sell out.
-              You take the credit. We do the work.
+            <p style={{ fontSize:16, lineHeight:1.95, color:'rgba(64,24,0,0.62)', marginBottom:38 }}>
+              Since 2004 we&apos;ve made Trip Captains look like legends. Tee times at courses the public can&apos;t touch. Room blocks held before they vanish.
+              <strong style={{ color:'#1A0800', fontWeight:700 }}> You take the credit. We do the work.</strong>
             </p>
-            <Link href="/tour-inquiry/" className="btn btn-gold" style={{ padding: '14px 36px', fontSize: 12 }}>
-              Start Planning Free
+            <Link href="/tour-inquiry/" className="btn btn-ink" style={{ padding:'15px 38px' }}>
+              <span>Start Planning Free</span>
             </Link>
           </div>
 
-          {/* Right — numbered proof points */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
+          {/* Numbered proof list — on warm saffron, ink text, colored left bars */}
+          <div>
             {[
-              { n: '01', title: 'Preferred tee time access', body: 'Pebble Beach, Shadow Creek, Edgewood Tahoe, Torrey Pines — we hold relationships the public doesn\'t have. Groups get the times that are "unavailable" online.' },
-              { n: '02', title: 'Room blocks held on inquiry', body: 'Atlantis, Peppermill, Eldorado, MGM properties. We hold group room blocks the day you call — before they sell out. Your group stays together.' },
-              { n: '03', title: 'One contact handles everything', body: 'Tee times, hotels, shuttles, dining, insurance. One conversation. One itinerary. Zero logistics emails.' },
-              { n: '04', title: '20 years of backup plans', body: '10,000+ outings. We\'ve seen every cancellation, every weather event, every overbooking. We have the backup and the relationships to fix it.' },
-            ].map((p, i) => (
-              <div key={p.n} style={{ display: 'flex', gap: 20, padding: '22px 0', borderBottom: i < 3 ? '1px solid rgba(255,255,255,0.05)' : 'none' }}>
-                <div style={{ fontFamily: 'var(--serif)', fontSize: 13, color: 'var(--gold)', opacity: 0.5, flexShrink: 0, width: 28, paddingTop: 2 }}>{p.n}</div>
-                <div>
-                  <div style={{ fontFamily: 'var(--sans)', fontSize: 14, fontWeight: 700, color: 'var(--cream)', marginBottom: 6, letterSpacing: '-0.01em' }}>{p.title}</div>
-                  <div style={{ fontSize: 13, lineHeight: 1.75, color: 'rgba(244,239,228,0.48)' }}>{p.body}</div>
+              { n:'01', col:'#184038', bar:'#5ED8C8', title:'Preferred tee time access', body:'Pebble Beach, Shadow Creek, Edgewood Tahoe, Torrey Pines. We hold relationships the public doesn\'t. Groups get the slots marked "unavailable."' },
+              { n:'02', col:'#181840', bar:'#80C8F0', title:'Room blocks held on inquiry', body:'Atlantis, Peppermill, Eldorado, MGM. We hold group blocks the day you call — before they sell. Your group stays together.' },
+              { n:'03', col:'#401800', bar:'#F8C030', title:'One contact handles everything', body:'Tee times, hotels, shuttles, dining, insurance. One call, one itinerary. No forwarded emails.' },
+              { n:'04', col:'#182C14', bar:'#98D060', title:'20 years of backup plans', body:'10,000+ outings. We\'ve handled every cancellation, weather event, and overbooking. We have the backup to fix it.' },
+            ].map((p,i) => (
+              <div key={p.n} className="proof-item" style={{ borderBottom: i<3 ? '1px solid rgba(64,24,0,0.12)' : 'none' }}>
+                <div style={{ width:4, alignSelf:'stretch', background:p.bar, borderRadius:2, flexShrink:0, opacity:0.85 }} />
+                <div style={{ paddingLeft:16, flex:1 }}>
+                  <div style={{ fontFamily:'var(--sans)', fontSize:9, fontWeight:700, letterSpacing:'0.22em', textTransform:'uppercase', color:'rgba(64,24,0,0.45)', marginBottom:6 }}>{p.n}</div>
+                  <div style={{ fontFamily:'var(--sans)', fontSize:14, fontWeight:700, color:'#1A0800', marginBottom:5 }}>{p.title}</div>
+                  <div style={{ fontSize:13, lineHeight:1.78, color:'rgba(64,24,0,0.55)' }}>{p.body}</div>
                 </div>
               </div>
             ))}
@@ -434,63 +363,44 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════
-          EXPERIENCE TYPES
-      ══════════════════════════════════════════════════════ */}
-      <section style={{ background: '#F4EFE4', padding: 'clamp(64px, 9vw, 112px) 0' }}>
-        <div className="wrap">
-          <div style={{ textAlign: 'center', maxWidth: 560, margin: '0 auto 52px' }}>
-            <span style={{ fontFamily: 'var(--sans)', fontSize: 10, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--gold-muted)' }}>Who We Plan For</span>
-            <div style={{ width: 40, height: 1, background: 'var(--gold)', margin: '14px auto 20px' }} />
-            <h2 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(30px, 5vw, 50px)', color: '#0a0a0a', lineHeight: 1.1, margin: 0 }}>
-              Every kind of group.<br />One specialist.
+      {/* ══════════════════════════════════════════════════
+          §5  EXPERIENCE TYPES — TERRACOTTA SECTION
+              Rich fired-clay background, cream cards
+              Unexpected warmth for a golf site
+      ══════════════════════════════════════════════════ */}
+      <section className="grain cut-up" style={{ background:'#6A1E10', padding:'clamp(80px,10vw,130px) 0', position:'relative', overflow:'hidden' }}>
+        <div style={{ position:'absolute', inset:0, background:'radial-gradient(ellipse 60% 70% at 15% 50%, rgba(168,40,24,0.4) 0%, transparent 55%), radial-gradient(ellipse 50% 50% at 85% 30%, rgba(61,24,0,0.5) 0%, transparent 55%)', pointerEvents:'none' }} />
+        <div style={{ position:'absolute', top:0, left:0, right:0, height:1, background:'linear-gradient(90deg, transparent, rgba(245,237,216,0.15), transparent)' }} />
+        <div className="wrap" style={{ position:'relative', zIndex:1 }}>
+          <div style={{ textAlign:'center', maxWidth:560, margin:'0 auto 52px' }}>
+            <span style={{ fontFamily:'var(--sans)', fontSize:9, fontWeight:700, letterSpacing:'0.28em', textTransform:'uppercase', color:'rgba(245,237,216,0.55)' }}>Who We Plan For</span>
+            <div style={{ width:40, height:1, background:'rgba(245,237,216,0.35)', margin:'14px auto 20px' }} />
+            <h2 style={{ fontFamily:'var(--serif)', fontSize:'clamp(30px,5vw,52px)', fontWeight:300, color:'var(--cream)', lineHeight:1.05, letterSpacing:'-0.02em', margin:0 }}>
+              Every kind of group.<br />
+              <em style={{ fontStyle:'italic', color:'rgba(245,237,216,0.45)' }}>One specialist.</em>
             </h2>
           </div>
-          <div className="exp-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 2 }}>
+          <div className="exp-grid" style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:16 }}>
             {[
-              {
-                title: 'Golf Buddy Trips',
-                href: '/golf-buddy-trips/',
-                img: 'https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=800&q=85',
-                group: '4–24 players',
-                desc: 'The trip you\'ve been talking about for years. We make it actually happen — tee times secured, hotels blocked, everyone on the same flight.',
-                pull: '"I can\'t believe you got us on Shadow Creek."',
-                accent: '#2A6B8A',
-              },
-              {
-                title: 'Corporate & Incentive',
-                href: '/corporate-and-incentive-golf-travel/',
-                img: 'https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=800&q=85',
-                group: '20–200 players',
-                desc: 'Top performers deserve Pebble Beach, not a local muni. We plan the events that make people want to earn their invite back next year.',
-                pull: 'The reward they\'ll remember — and fight to earn again.',
-                accent: '#C4A040',
-              },
-              {
-                title: 'International Tours',
-                href: '/destinations/',
-                img: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&q=85',
-                group: 'Scotland · Ireland · Portugal · Spain',
-                desc: 'Links golf in Ireland and Scotland. Clifftop courses in Portugal. We handle the logistics, the language barriers, the cultural complexity.',
-                pull: 'Bucket-list courses on the other side of the Atlantic.',
-                accent: '#4A7A4A',
-              },
+              { title:'Golf Buddy Trips', href:'/golf-buddy-trips/', img:'https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=800&q=85', group:'4–24 players', desc:'The trip you\'ve talked about for years. We make it happen — secured tee times, hotel blocks, the whole experience.', pull:'"I can\'t believe you got us on Shadow Creek."', accent:'#5ED8C8', border:'#5ED8C8' },
+              { title:'Corporate & Incentive', href:'/corporate-and-incentive-golf-travel/', img:'https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=800&q=85', group:'20–200 players', desc:'Your top performers deserve Pebble Beach, not the local muni. Events people fight to earn their invite back to.', pull:'The reward they\'ll remember all year.', accent:'#F8C030', border:'#F8C030' },
+              { title:'International Tours', href:'/destinations/', img:'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&q=85', group:'Scotland · Ireland · Portugal · Spain', desc:'Links golf in Ireland and Scotland. Clifftop courses in Portugal. We handle the logistics. You just play.', pull:'Bucket-list courses on the other side of the Atlantic.', accent:'#98D060', border:'#98D060' },
             ].map(e => (
-              <Link key={e.href} href={e.href} style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', background: '#ffffff', overflow: 'hidden', position: 'relative' }}>
-                {/* Image */}
-                <div style={{ height: 200, backgroundImage: `url(${e.img})`, backgroundSize: 'cover', backgroundPosition: 'center', position: 'relative' }}>
-                  <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 30%, rgba(0,0,0,0.65) 100%)' }} />
-                  <div style={{ position: 'absolute', bottom: 14, left: 18 }}>
-                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--gold)', background: 'rgba(0,0,0,0.5)', padding: '3px 8px' }}>{e.group}</span>
+              <Link key={e.href} href={e.href} className="exp-card rc" style={{ textDecoration:'none', display:'flex', flexDirection:'column', background:'#0E0A08', overflow:'hidden' }}>
+                <div style={{ height:220, position:'relative', overflow:'hidden' }}>
+                  <div className="exp-card-img rc-bg" style={{ position:'absolute', inset:0, backgroundImage:`url(${e.img})`, backgroundSize:'cover', backgroundPosition:'center' }} />
+                  <div style={{ position:'absolute', inset:0, background:'linear-gradient(to bottom, transparent 25%, rgba(14,10,8,0.8) 100%)' }} />
+                  <div className="rc-veil" style={{ background:`radial-gradient(ellipse at 50% 100%, rgba(${e.border.replace('#','').match(/.{2}/g)!.map((h:string)=>parseInt(h,16)).join(',')},0.3) 0%, transparent 70%)` }} />
+                  <div style={{ position:'absolute', bottom:0, left:0, right:0, height:3, background:`linear-gradient(90deg, ${e.border}, transparent)` }} />
+                  <div style={{ position:'absolute', bottom:14, left:16 }}>
+                    <span style={{ fontSize:8, fontWeight:700, letterSpacing:'0.18em', textTransform:'uppercase', color:e.accent, background:'rgba(0,0,0,0.6)', padding:'3px 8px' }}>{e.group}</span>
                   </div>
-                  <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 3, background: e.accent }} />
                 </div>
-                {/* Body */}
-                <div style={{ padding: '24px 24px 28px', flex: 1, display: 'flex', flexDirection: 'column', gap: 10 }}>
-                  <h3 style={{ fontFamily: 'var(--serif)', fontSize: 24, color: '#0a0a0a', lineHeight: 1.1, margin: 0 }}>{e.title}</h3>
-                  <p style={{ fontSize: 14, lineHeight: 1.75, color: '#5a5a5a', flex: 1, margin: 0 }}>{e.desc}</p>
-                  <div style={{ fontSize: 13, fontStyle: 'italic', color: '#7a7a7a', borderLeft: `2px solid ${e.accent}`, paddingLeft: 12, lineHeight: 1.6 }}>{e.pull}</div>
-                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', color: e.accent, marginTop: 4 }}>Plan This Trip →</div>
+                <div style={{ padding:'22px 22px 28px', flex:1, display:'flex', flexDirection:'column', gap:11 }}>
+                  <h3 style={{ fontFamily:'var(--serif)', fontSize:24, fontWeight:300, color:'var(--cream)', lineHeight:1.1, letterSpacing:'-0.01em', margin:0 }}>{e.title}</h3>
+                  <p style={{ fontSize:13, lineHeight:1.8, color:'rgba(245,237,216,0.45)', flex:1, margin:0 }}>{e.desc}</p>
+                  <div style={{ fontSize:13, fontStyle:'italic', color:'rgba(245,237,216,0.55)', borderLeft:`2px solid ${e.border}`, paddingLeft:12, lineHeight:1.6 }}>{e.pull}</div>
+                  <div style={{ fontSize:9, fontWeight:700, letterSpacing:'0.18em', textTransform:'uppercase', color:e.accent, marginTop:4 }}>Plan This Trip <span className="rc-arrow">→</span></div>
                 </div>
               </Link>
             ))}
@@ -498,67 +408,96 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════
-          WHY GROUPS FAIL — Problem/Solution with specificity
-      ══════════════════════════════════════════════════════ */}
-      <section style={{ background: '#060C08', padding: 'clamp(64px, 9vw, 112px) 0', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', right: -80, top: '50%', transform: 'translateY(-50%)', width: 400, height: 400, borderRadius: '50%', background: 'radial-gradient(circle, rgba(201,168,76,0.04) 0%, transparent 70%)' }} />
-        <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
-          <div style={{ textAlign: 'center', maxWidth: 520, margin: '0 auto 56px' }}>
-            <span style={{ fontFamily: 'var(--sans)', fontSize: 10, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--gold)', opacity: 0.9 }}>The Honest Truth</span>
-            <div style={{ width: 40, height: 1, background: 'var(--gold)', margin: '14px auto 20px' }} />
-            <h2 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(28px, 4.5vw, 50px)', color: 'var(--cream)', lineHeight: 1.1, margin: 0 }}>
-              Why groups who book<br />this themselves fail.
+      {/* ══════════════════════════════════════════════════
+          §6  PROBLEM / SOLUTION — DEEP SLATE BLUE
+              3D flip cards — neon-pastel borders glow
+              Electric lime, seafoam, amber outlines
+      ══════════════════════════════════════════════════ */}
+      <section className="grain" style={{ background:'#141824', padding:'clamp(80px,10vw,130px) 0', position:'relative', overflow:'hidden' }}>
+        <div style={{ position:'absolute', inset:0, background:'radial-gradient(ellipse 70% 70% at 50% 100%, rgba(24,24,64,0.6) 0%, transparent 55%)', pointerEvents:'none' }} />
+        <div className="wrap" style={{ position:'relative', zIndex:1 }}>
+          <div style={{ textAlign:'center', maxWidth:520, margin:'0 auto 52px' }}>
+            <span style={{ fontFamily:'var(--sans)', fontSize:9, fontWeight:700, letterSpacing:'0.28em', textTransform:'uppercase', color:'rgba(245,237,216,0.45)' }}>The Honest Truth</span>
+            <div style={{ width:40, height:1, background:'rgba(245,237,216,0.2)', margin:'14px auto 20px' }} />
+            <h2 style={{ fontFamily:'var(--serif)', fontSize:'clamp(28px,4.5vw,52px)', fontWeight:300, color:'var(--cream)', lineHeight:1.08, letterSpacing:'-0.02em', margin:0 }}>
+              Why groups who try<br />
+              <em style={{ fontStyle:'italic', color:'rgba(245,237,216,0.5)' }}>to do this themselves</em> fail.
             </h2>
+            <p style={{ fontSize:12, color:'rgba(245,237,216,0.3)', marginTop:12, letterSpacing:'0.06em', fontStyle:'italic' }}>Hover each card to reveal the solution ↓</p>
           </div>
-          <div className="ps-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
+
+          <div className="ps-grid" style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:12 }}>
             {[
-              { icon: '🔒', problem: 'Pebble Beach requires a resort stay to book in advance.', solution: 'We coordinate your room and tee times at the same moment. You get the window the public never sees.', color: '#4A9BB8' },
-              { icon: '🚗', problem: 'Shadow Creek is MGM hotel guests only, Mon–Thu.', solution: 'We package the MGM stay with the Shadow Creek tee time — limo, caddie, and all.', color: '#E8C060' },
-              { icon: '🏨', problem: 'Group room blocks vanish. Late groups sleep in 3 different hotels.', solution: 'We hold your block the day you inquire. Your group stays together.', color: '#7BBFCF' },
-              { icon: '💰', problem: 'Corporate groups pay retail for 30 tee times. The overage kills the budget.', solution: 'Volume relationships mean group rates on courses, hotels, and transportation.', color: '#C49050' },
-              { icon: '🛡️', problem: 'One cancellation can unravel the entire trip.', solution: '72-hour cancellation policy + travel insurance options + 20 years of backup plans.', color: '#A0B850' },
-              { icon: '⏱️', problem: 'The Trip Captain spends 40+ hours planning instead of golfing.', solution: 'One form. One call. We send you the itinerary. You show up and play.', color: '#B87060' },
-            ].map(item => (
-              <div key={item.problem} className="ps-card" style={{ padding: '24px 22px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)', borderTop: `2px solid ${item.color}44` }}>
-                <div style={{ fontSize: 24, marginBottom: 12 }}>{item.icon}</div>
-                <div style={{ fontSize: 12, lineHeight: 1.7, color: 'rgba(244,239,228,0.35)', marginBottom: 12, fontStyle: 'italic' }}>{item.problem}</div>
-                <div style={{ fontSize: 13, lineHeight: 1.75, color: 'rgba(244,239,228,0.82)', fontWeight: 500 }}>{item.solution}</div>
-              </div>
-            ))}
+              { icon:'🔐', problem:'Pebble Beach requires a resort stay to book more than 24 hours in advance. Groups shut out.', solution:'We coordinate your room and tee times simultaneously. Your group gets the 18-month window the public never sees.', borderColor:'#5ED8C8', solutionBg:'rgba(24,64,56,0.9)' },
+              { icon:'🚘', problem:'Shadow Creek is MGM hotel guests only, Mon–Thu. Most groups don\'t know until it\'s too late.', solution:'We package the MGM stay with Shadow Creek tee times — limo, caddie, the full experience exactly as advertised.', borderColor:'#F8C030', solutionBg:'rgba(64,40,0,0.95)' },
+              { icon:'🏨', problem:'Group room blocks vanish. Late groups end up split across three hotels.', solution:'We hold your block the day you inquire. Group stays together, dines together, plays together.', borderColor:'#80C8F0', solutionBg:'rgba(24,32,64,0.95)' },
+              { icon:'💸', problem:'Corporate groups pay retail for 30+ tee times. The overage destroys the budget.', solution:'Volume relationships mean group rates on every element — courses, hotels, restaurants, transport.', borderColor:'#F87050', solutionBg:'rgba(64,16,8,0.95)' },
+              { icon:'🛡', problem:'One cancellation can cascade across hotels, flights, and tee times.', solution:'72-hour policy + travel insurance options + 20 years of backup relationships. We\'ve seen every scenario.', borderColor:'#98D060', solutionBg:'rgba(24,44,20,0.95)' },
+              { icon:'⏱', problem:'The Trip Captain spends 40+ hours planning. Nobody gets paid for that.', solution:'One form. One call. We send you the itinerary. You show up with your clubs and play.', borderColor:'#D4886A', solutionBg:'rgba(64,24,16,0.95)' },
+            ].map((item,i) => {
+              const rgb = item.borderColor.replace('#','').match(/.{2}/g)!.map((h:string)=>parseInt(h,16)).join(',')
+              return (
+                <div key={i} className="flip" style={{ height:196 }}>
+                  <div className="flip-body">
+                    {/* Front */}
+                    <div className="flip-f" style={{ background:'rgba(20,24,36,0.95)', border:`1px solid rgba(${rgb},0.32)`, padding:'20px 18px', display:'flex', flexDirection:'column', justifyContent:'space-between', boxShadow:`0 0 0 1px rgba(${rgb},0.12), inset 0 0 32px rgba(${rgb},0.04)`, animation:`pulseGlow 4s ${i*0.6}s ease-in-out infinite` }}>
+                      <div>
+                        <div style={{ fontSize:24, marginBottom:12 }}>{item.icon}</div>
+                        <div style={{ fontSize:12, lineHeight:1.75, color:'rgba(245,237,216,0.5)', fontStyle:'italic' }}>{item.problem}</div>
+                      </div>
+                      <div style={{ fontSize:8, fontWeight:700, letterSpacing:'0.18em', textTransform:'uppercase', color:`rgba(${rgb},0.55)`, marginTop:10 }}>hover to solve →</div>
+                    </div>
+                    {/* Back */}
+                    <div className="flip-b" style={{ background:item.solutionBg, border:`1px solid rgba(${rgb},0.4)`, padding:'20px 18px', display:'flex', flexDirection:'column', justifyContent:'center' }}>
+                      <div style={{ fontSize:11, fontWeight:700, letterSpacing:'0.1em', textTransform:'uppercase', color:`rgba(${rgb},0.9)`, marginBottom:12 }}>The solution</div>
+                      <div style={{ fontSize:13, lineHeight:1.82, color:'rgba(245,237,216,0.8)', fontWeight:500 }}>{item.solution}</div>
+                    </div>
+                  </div>
+                </div>
+              )
+            })}
           </div>
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════
-          FINAL CTA
-      ══════════════════════════════════════════════════════ */}
-      <section style={{ background: '#050C07', padding: 'clamp(80px, 11vw, 148px) 0', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'url(https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=1600&q=70)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.07 }} />
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(5,12,7,0.5) 0%, rgba(5,12,7,0.97) 100%)' }} />
-        <div className="wrap" style={{ position: 'relative', zIndex: 2, maxWidth: 660 }}>
-          <span style={{ fontFamily: 'var(--sans)', fontSize: 10, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--gold)', opacity: 0.8 }}>No obligation · Response in 24 hrs</span>
-          <div style={{ width: 40, height: 1, background: 'var(--gold)', margin: '14px auto 24px' }} />
-          <h2 className="cta-h2" style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(40px, 7vw, 80px)', color: 'var(--cream)', lineHeight: 0.97, marginBottom: 24 }}>
+      {/* ══════════════════════════════════════════════════
+          §7  CTA — CHAMPAGNE METALLIC GRADIENT
+              Huge italic serif, glowing copper type
+              Decorative corner brackets
+      ══════════════════════════════════════════════════ */}
+      <section className="grain" style={{ background:'linear-gradient(145deg, #1A1208 0%, #0C0A06 40%, #1A0C04 70%, #0C0806 100%)', padding:'clamp(88px,12vw,156px) 0', textAlign:'center', position:'relative', overflow:'hidden' }}>
+        {/* Warm mesh */}
+        <div style={{ position:'absolute', inset:0, overflow:'hidden', zIndex:0 }}>
+          <div style={{ position:'absolute', width:'160%', height:'160%', top:'-30%', left:'-30%',
+            background:'radial-gradient(ellipse 60% 60% at 50% 50%, rgba(200,121,65,0.09) 0%, transparent 55%), radial-gradient(ellipse 40% 40% at 80% 80%, rgba(61,24,64,0.12) 0%, transparent 55%)',
+            animation:'meshFloat 20s ease-in-out infinite' }} />
+        </div>
+        <div style={{ position:'absolute', inset:0, backgroundImage:'url(https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=1600&q=60)', backgroundSize:'cover', backgroundPosition:'center', opacity:0.055, zIndex:1 }} />
+        <div style={{ position:'absolute', inset:0, background:'linear-gradient(to bottom, rgba(12,10,6,0.45) 0%, rgba(12,10,6,0.98) 100%)', zIndex:2 }} />
+
+        <div className="wrap" style={{ position:'relative', zIndex:3, maxWidth:660 }}>
+          {/* Corner marks */}
+          <div className="corner-tl" />
+          <div className="corner-br" />
+
+          <span style={{ fontFamily:'var(--sans)', fontSize:9, fontWeight:700, letterSpacing:'0.28em', textTransform:'uppercase', color:'rgba(200,152,64,0.7)' }}>No obligation · Response in 24 hrs</span>
+          <div style={{ width:40, height:1, background:'var(--copper)', margin:'16px auto 28px' }} />
+          <h2 className="cta-h" style={{ fontFamily:'var(--serif)', fontSize:'clamp(44px,8vw,88px)', fontWeight:300, color:'var(--cream)', lineHeight:0.93, marginBottom:28, letterSpacing:'-0.025em' }}>
             Tell us where.<br />
-            <em style={{ color: 'var(--gold)', fontStyle: 'italic' }}>We&apos;ll handle the rest.</em>
+            <em className="metal glow" style={{ fontStyle:'italic' }}>We&apos;ll handle<br />the rest.</em>
           </h2>
-          <p style={{ fontSize: 17, lineHeight: 1.8, color: 'rgba(244,239,228,0.6)', marginBottom: 44, maxWidth: 480, margin: '0 auto 44px' }}>
-            Two minutes. Tell us your destination, group size, and budget.
-            A specialist calls you back with a full custom itinerary — tee times, hotel, transport, everything.
+          <p style={{ fontSize:17, lineHeight:1.82, color:'rgba(245,237,216,0.52)', marginBottom:48, maxWidth:480, margin:'0 auto 48px', fontWeight:300 }}>
+            Two minutes. Tell us destination, group size, and budget.
+            A specialist calls back with a full custom itinerary —
+            tee times, hotel, transport, dining, everything.
           </p>
-          <div className="cta-btns" style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 36 }}>
-            <Link href="/tour-inquiry/" className="btn btn-gold" style={{ fontSize: 13, padding: '17px 48px', letterSpacing: '0.12em' }}>
-              Start Planning Now
-            </Link>
-            <a href="tel:8885848232" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '17px 32px', fontFamily: 'var(--sans)', fontSize: 12, fontWeight: 700, letterSpacing: '0.1em', color: 'rgba(244,239,228,0.7)', textDecoration: 'none', border: '1px solid rgba(255,255,255,0.18)', transition: 'all 0.2s' }}>
-              Call 888-584-8232
-            </a>
+          <div className="cta-btns" style={{ display:'flex', gap:14, justifyContent:'center', flexWrap:'wrap', marginBottom:40 }}>
+            <Link href="/tour-inquiry/" className="btn btn-gold" style={{ padding:'17px 52px', fontSize:12 }}><span>Start Planning Now</span></Link>
+            <a href="tel:8885848232" className="btn btn-ghost" style={{ padding:'17px 36px', fontSize:12 }}>Call 888-584-8232</a>
           </div>
-          {/* Micro trust signals */}
-          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '8px 24px' }}>
-            {['Licensed Seller of Travel · NV & FL (ST37472)', '20+ years in business', '10,000+ outings planned', 'Groups from 4 to 200+'].map(t => (
-              <span key={t} style={{ fontSize: 11, color: 'rgba(244,239,228,0.25)', letterSpacing: '0.04em' }}>{t}</span>
+          <div style={{ display:'flex', flexWrap:'wrap', justifyContent:'center', gap:'6px 20px' }}>
+            {['Licensed Seller of Travel · NV & FL', '20+ years in business', '10,000+ outings planned', 'Groups 4–200+'].map(t => (
+              <span key={t} style={{ fontSize:10, color:'rgba(245,237,216,0.2)', letterSpacing:'0.06em' }}>{t}</span>
             ))}
           </div>
         </div>
@@ -567,29 +506,38 @@ export default function HomePage() {
   )
 }
 
-/* ── Desktop region card component ── */
-function RegionCardDesktop({ r, large }: { r: typeof regions[0]; large?: boolean }) {
-  const h = large ? 520 : 240
+/* ──────────────────────────────────────────────────────
+   Region Card — desktop, 3 sizes
+────────────────────────────────────────────────────── */
+function RCard({ r, size }: { r: typeof regions[0]; size: 'hero'|'half'|'sm' }) {
+  const isHero = size === 'hero'
+  const isSm = size === 'sm'
+  const rgb = r.accentRgb
   return (
-    <Link href={r.href} className="region-card" style={{ textDecoration: 'none', display: 'block', position: 'relative', height: h, overflow: 'hidden', background: r.darkColor }}>
-      <div className="region-img" style={{ position: 'absolute', inset: 0, backgroundImage: `url(${r.img})`, backgroundSize: 'cover', backgroundPosition: r.position }} />
-      <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to top, ${r.darkColor}F0 0%, ${r.darkColor}AA 30%, transparent 65%)` }} />
-      {/* Top accent */}
-      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: `linear-gradient(90deg, ${r.accentColor} 0%, ${r.accentDim} 100%)` }} />
-      {/* Urgency badge */}
-      <div style={{ position: 'absolute', top: 16, right: 16, background: `${r.accentColor}1A`, border: `1px solid ${r.accentColor}44`, padding: '4px 10px', fontSize: 9, fontWeight: 700, letterSpacing: '0.1em', color: r.accentColor, textTransform: 'uppercase' }}>
+    <Link href={r.href} className="rc" style={{ textDecoration:'none', height:'100%', display:'block', background:r.bg }}>
+      <div className="rc-bg" style={{ position:'absolute', inset:0, backgroundImage:`url(${r.img})`, backgroundSize:'cover', backgroundPosition:r.pos, opacity: isSm ? 0.48 : 0.58 }} />
+      {/* Color flood */}
+      <div className="rc-veil" style={{ background:`radial-gradient(ellipse at 50% 100%, rgba(${rgb},0.32) 0%, transparent 65%)` }} />
+      {/* Gradient */}
+      <div style={{ position:'absolute', inset:0, background:`linear-gradient(to top, ${r.bg}FA 0%, ${r.bg}CC 28%, transparent 60%)` }} />
+      {/* Top accent bar */}
+      <div style={{ position:'absolute', top:0, left:0, right:0, height: isHero ? 4 : 3, background:`linear-gradient(90deg, ${r.accent} 0%, rgba(${rgb},0.2) 100%)` }} />
+      {/* Sliding bottom reveal bar */}
+      <div className="rc-bar" style={{ background:r.accent, opacity:0.7 }} />
+      {/* Urgency */}
+      <div style={{ position:'absolute', top: isHero ? 20 : 14, right: isHero ? 20 : 14, background:`rgba(${rgb},0.1)`, border:`1px solid rgba(${rgb},0.32)`, padding:'4px 10px', fontSize:8, fontWeight:700, letterSpacing:'0.12em', color:r.accent, textTransform:'uppercase', backdropFilter:'blur(6px)' }}>
         ⚑ {r.urgency}
       </div>
       {/* Content */}
-      <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: large ? '28px 32px' : '20px 22px' }}>
-        <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: r.accentColor, marginBottom: 6, opacity: 0.9 }}>{r.tag}</div>
-        <h3 style={{ fontFamily: 'var(--serif)', fontSize: large ? 'clamp(22px, 2.2vw, 32px)' : 'clamp(16px, 1.6vw, 22px)', color: 'var(--cream)', fontWeight: 400, lineHeight: 1.1, margin: '0 0 8px' }}>{r.name}</h3>
-        {large && <p style={{ fontSize: 13, color: 'rgba(244,239,228,0.55)', lineHeight: 1.65, margin: '0 0 14px', maxWidth: 360 }}>{r.fact}</p>}
-        <div style={{ display: 'flex', alignItems: 'baseline', gap: 4 }}>
-          <span style={{ fontFamily: 'var(--serif)', fontSize: large ? 30 : 24, color: r.accentColor, lineHeight: 1 }}>{r.stat}</span>
-          <span style={{ fontSize: 11, color: 'rgba(244,239,228,0.35)' }}>{r.statSub} · </span>
-          <span style={{ fontSize: 10, color: 'rgba(244,239,228,0.3)', letterSpacing: '0.06em' }}>{r.statLabel}</span>
-          <span className="region-arrow" style={{ fontSize: 14, color: r.accentColor, marginLeft: 'auto' }}>→</span>
+      <div style={{ position:'absolute', bottom:0, left:0, right:0, padding: isHero ? '28px 32px' : isSm ? '16px 18px' : '18px 20px' }}>
+        <div style={{ fontSize:8, fontWeight:700, letterSpacing:'0.22em', textTransform:'uppercase', color:r.accent, opacity:0.85, marginBottom:5 }}>{r.tag}</div>
+        <h3 style={{ fontFamily:'var(--serif)', fontSize: isHero ? 'clamp(20px,2.2vw,32px)' : isSm ? 'clamp(14px,1.4vw,20px)' : 'clamp(15px,1.6vw,22px)', fontWeight:300, color:'var(--cream)', lineHeight:1.1, margin:'0 0 7px', letterSpacing:'-0.01em' }}>{r.name}</h3>
+        {isHero && <p style={{ fontSize:13, color:'rgba(245,237,216,0.48)', lineHeight:1.65, margin:'0 0 14px', maxWidth:360 }}>{r.fact}</p>}
+        <div style={{ display:'flex', alignItems:'baseline', gap:3 }}>
+          <span style={{ fontFamily:'var(--serif)', fontSize: isHero ? 32 : isSm ? 22 : 26, color:r.accent, lineHeight:1 }}>{r.stat}</span>
+          <span style={{ fontSize:10, color:'rgba(245,237,216,0.28)' }}>{r.sub}</span>
+          {!isSm && <span style={{ fontSize:9, color:'rgba(245,237,216,0.22)', letterSpacing:'0.05em', marginLeft:4 }}>{r.label}</span>}
+          <span className="rc-arrow" style={{ fontSize:13, color:r.accent, marginLeft:'auto', opacity:0.7 }}>→</span>
         </div>
       </div>
     </Link>
