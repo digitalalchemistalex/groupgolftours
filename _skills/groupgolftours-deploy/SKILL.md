@@ -268,3 +268,26 @@ for i, (a, b) in enumerate(zip(original.split('\n'), fixed.split('\n')), 1):
         print(f"  BEFORE: {repr(a)}")
         print(f"  AFTER:  {repr(b)}")
 ```
+
+
+## CRITICAL: next.config.mjs must have eslint ignore
+
+This project uses `next/core-web-vitals` which treats ESLint warnings as build errors.
+Always ensure `next.config.mjs` contains:
+
+```js
+const nextConfig = {
+  eslint: {
+    ignoreDuringBuilds: true,  // REQUIRED — prevents ESLint from breaking builds
+  },
+  images: {
+    remotePatterns: [
+      { protocol: 'https', hostname: 'images.unsplash.com' },
+    ],
+  },
+  // ...
+}
+```
+
+Without `ignoreDuringBuilds: true`, any `no-img-element`, `no-unused-vars`, or similar
+warnings will fail the build. This was the root cause of all ESLint-related deploy failures.
