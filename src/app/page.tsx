@@ -188,14 +188,12 @@ export default function HomePage() {
       `}</style>
 
       {/* ═══════════════════════════════════════
-      {/* ═══════════════════════════════════════
-          § 1  HERO — Concept 3: Editorial split
-      ═══════════════════════════════════════ */}
+      {/* HERO - Concept 3: Editorial split */}
       <section style={{
         position:'relative', height:'100vh', minHeight:680,
         overflow:'hidden', display:'grid', gridTemplateColumns:'1fr 1fr',
       }}>
-        {/* ── LEFT: dark gradient copy panel ── */}
+        {/* section */}
         <div style={{
           position:'relative', zIndex:3,
           background:'linear-gradient(90deg, #080E08 0%, #0C130C 60%, rgba(8,14,8,0) 100%)',
@@ -263,7 +261,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* ── RIGHT: full-bleed photo ── */}
+        {/* section */}
         <div style={{ position:'relative', overflow:'hidden' }}>
           {/* Photo */}
           <div className="hero-img" style={{
@@ -340,9 +338,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* ═══════════════════════════════════════
-          § 3  INTRO COPY — editorial section
-      ═══════════════════════════════════════ */}
+      {/* section */}
       <section style={{ background:'#fff', padding:'clamp(72px,9vw,120px) 0' }}>
         <div className="wrap two-col" style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'clamp(40px,6vw,100px)', alignItems:'center' }}>
           <div className="sr">
@@ -396,9 +392,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════
-          § 4  DESTINATIONS
-      ═══════════════════════════════════════ */}
+      {/* section */}
       <section style={{ background:'var(--parchment)', padding:'clamp(72px,9vw,120px) 0' }}>
         <div className="wrap">
           <div className="sr" style={{ marginBottom:48 }}>
@@ -477,9 +471,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════
-          § 5  SERVICES — clean list
-      ═══════════════════════════════════════ */}
+      {/* section */}
       <section style={{ background:'#fff', padding:'clamp(72px,9vw,120px) 0' }}>
         <div className="wrap">
           <div className="sr" style={{ marginBottom:52 }}>
@@ -521,9 +513,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════
-          § 6  SOCIAL PROOF — testimonials
-      ═══════════════════════════════════════ */}
+      {/* section */}
       <section style={{ background:'var(--parchment)', padding:'clamp(72px,9vw,120px) 0' }}>
         <div className="wrap">
           <div className="sr" style={{ textAlign:'center', maxWidth:560, margin:'0 auto 52px' }}>
@@ -558,9 +548,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════
-          § 7  TRIP TYPES
-      ═══════════════════════════════════════ */}
+      {/* section */}
       <section style={{ background:'#fff', padding:'clamp(72px,9vw,120px) 0' }}>
         <div className="wrap">
           <div className="sr" style={{ marginBottom:48 }}>
@@ -607,9 +595,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════
-          § 8  TICKER
-      ═══════════════════════════════════════ */}
+      {/* section */}
       <div style={{ background:'var(--ink)', padding:'12px 0', overflow:'hidden', borderTop:'1px solid rgba(255,255,255,.06)' }}>
         <div className="ticker">
           {[...Array(2)].map((_, r) =>
@@ -629,9 +615,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* ═══════════════════════════════════════
-          § 9  FINAL CTA — dark forest green
-      ═══════════════════════════════════════ */}
+      {/* section */}
       <section style={{ background:'#0F1F0F', padding:'clamp(80px,11vw,140px) 0', position:'relative', overflow:'hidden' }}>
         <div style={{ position:'absolute', inset:0, backgroundImage:'url(https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1600&q=60)', backgroundSize:'cover', backgroundPosition:'center', opacity:.08 }} />
         <div style={{ position:'absolute', inset:0, background:'linear-gradient(135deg, rgba(15,31,15,.95) 0%, rgba(15,31,15,.85) 100%)' }} />
