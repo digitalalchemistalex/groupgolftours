@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://www.groupgolftours.com/how-we-do-it/' },
   openGraph: {
     title: 'How Group Golf Tours Plans Your Trip',
-    description: 'One call. Custom itinerary in 24 hours. Tee times, hotels, transport, dining — all handled. Here\'s exactly how it works.',
+    description: "One call. Custom itinerary in 24 hours. Tee times, hotels, transport, dining — all handled. Here's exactly how it works.",
     url: 'https://www.groupgolftours.com/how-we-do-it/',
   },
 }
@@ -28,7 +28,7 @@ const steps = [
   {
     n: '03', color: '#80C8F0',
     title: 'You approve. We book.',
-    desc: 'We present your full custom itinerary. Review every element. Adjustments made until it\'s exactly right. No payment until you\'re satisfied with the plan.',
+    desc: "We present your full custom itinerary. Review every element. Adjustments made until it's exactly right. No payment until you're satisfied with the plan.",
     detail: 'No surprises. No hidden costs added at booking. What you approve is what you pay.',
   },
   {
@@ -40,7 +40,7 @@ const steps = [
   {
     n: '05', color: '#F87050',
     title: 'You focus on the game',
-    desc: 'We\'re on-call throughout. Any issue is handled before you notice it. Any change is managed without the group feeling a thing. You play. We manage.',
+    desc: "We're on-call throughout. Any issue is handled before you notice it. Any change is managed without the group feeling a thing. You play. We manage.",
     detail: 'This is how it was always supposed to work.',
   },
 ]
