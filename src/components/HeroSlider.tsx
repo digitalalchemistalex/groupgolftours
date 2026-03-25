@@ -147,6 +147,9 @@ export default function HeroSlider() {
         @keyframes hsOut   { from{opacity:1} to{opacity:0} }
         @keyframes hsBar   { from{width:0%} to{width:100%} }
         @keyframes urgencyFill { from{width:0} to{width:var(--uw)} }
+        @keyframes swipeHint { 0%{transform:translateX(0);opacity:.7} 60%{transform:translateX(10px);opacity:1} 100%{transform:translateX(0);opacity:.7} }
+        @keyframes fadeInOut { 0%,100%{opacity:0} 20%,80%{opacity:1} }
+        .hs-swipe-hint { animation: swipeHint 1.8s ease-in-out 1.2s 3 both }
 
         .hs-in      { animation: hsIn    .75s cubic-bezier(.22,1,.36,1) both }
         .hs-img-in  { animation: hsImgIn .7s ease both }
@@ -199,16 +202,17 @@ export default function HeroSlider() {
           .hs-headline{font-size:clamp(26px,7.5vw,44px)!important}
           .hs-pills{display:none!important}
           .hs-mob-strip{display:flex!important}
+          .hs-mob-wrap{display:block!important}
           .hs-fact-cards{display:none!important}
-          .hs-dots-row{bottom:152px!important}
+          .hs-dots-row{bottom:156px!important}
           .hs-section{height:auto!important;min-height:0!important}
-          .hs-left{height:auto!important;min-height:0!important;padding-top:72px!important;padding-bottom:220px!important}
+          .hs-left{height:auto!important;min-height:0!important;padding-top:72px!important;padding-bottom:228px!important}
         }
         @media(min-width:901px){
           .hs-mob-strip{display:none!important}
         }
         @media(max-width:680px){
-          .hs-region-strip{height:52px}
+          .hs-region-strip{height:56px}
           .hs-region-label{font-size:8px}
           .hs-region-stat{font-size:11px!important}
           .hs-region-item.active .hs-region-stat{font-size:13px!important}
@@ -457,6 +461,18 @@ export default function HeroSlider() {
         <div style={{ position:'absolute', top:0, left:0, right:0, height:3, background:`linear-gradient(90deg,${s.accent},rgba(255,255,255,.1) 60%,transparent)`, zIndex:10, transition:'background 1s' }} />
 
         {/* ── MOBILE INTEL STRIP ── */}
+        <div style={{ position:'absolute', left:0, right:0, bottom:52, zIndex:15, display:'none' }} className="hs-mob-wrap">
+          {/* Swipe hint label */}
+          <div style={{
+            position:'absolute', right:0, top:0, bottom:0, width:56, zIndex:2, pointerEvents:'none',
+            background:'linear-gradient(90deg, transparent, rgba(0,0,0,.85))',
+            display:'flex', alignItems:'center', justifyContent:'center',
+          }}>
+            <div className="hs-swipe-hint" style={{ display:'flex', flexDirection:'column', alignItems:'center', gap:2 }}>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M4 7h6M7 4l3 3-3 3" stroke="rgba(255,255,255,.7)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              <span style={{ fontFamily:'var(--sans)', fontSize:7, fontWeight:700, letterSpacing:'.1em', textTransform:'uppercase', color:'rgba(255,255,255,.5)' }}>swipe</span>
+            </div>
+          </div>
         <div className="hs-mob-strip" key={`mob-${active}`}>
           {/* Price */}
           <div className="hs-mob-card">
@@ -516,6 +532,7 @@ export default function HeroSlider() {
             <div className="hs-mob-sub" style={{ lineHeight:1.6, whiteSpace:'normal' }}>{s.nonGolf}</div>
           </div>
         </div>
+        </div>
 
         {/* ── REGION ANCHOR STRIP ── */}
         <div className="hs-region-strip">
@@ -531,7 +548,10 @@ export default function HeroSlider() {
               <div className="hs-region-bar" style={{ background: i===active ? sl.accent : 'rgba(255,255,255,.12)' }} />
               <div className="hs-region-num">{String(i+1).padStart(2,'0')}</div>
               <div className="hs-region-content">
-                <div className="hs-region-label" style={{ color: i===active ? sl.accent : 'rgba(255,255,255,.75)' }}>{sl.region}</div>
+                <div style={{ display:'flex', alignItems:'center', gap:4, marginBottom:2 }}>
+                  <div className="hs-region-label" style={{ color: i===active ? sl.accent : 'rgba(255,255,255,.75)' }}>{sl.region}</div>
+                  {i !== active && <span style={{ fontSize:8, color:'rgba(255,255,255,.3)', fontFamily:'var(--sans)', letterSpacing:'.08em' }}>tap</span>}
+                </div>
                 <div className="hs-region-stat" style={{ color: i===active ? 'rgba(255,255,255,.85)' : 'rgba(255,255,255,.45)' }}>
                   {sl.package.price} <span style={{ fontSize:'.75em', opacity:.65 }}>{sl.package.note.split('·')[0].trim()}</span>
                 </div>
