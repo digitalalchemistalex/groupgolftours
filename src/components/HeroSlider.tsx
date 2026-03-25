@@ -410,7 +410,7 @@ export default function HeroSlider() {
               <div className="hs-region-content">
                 <div className="hs-region-label" style={{ color: i===active ? sl.accent : 'rgba(255,255,255,.75)' }}>{sl.region}</div>
                 <div className="hs-region-stat" style={{ color: i===active ? 'rgba(255,255,255,.85)' : 'rgba(255,255,255,.45)' }}>
-                  {sl.stat} <span style={{ fontSize:'.75em', opacity:.65 }}>{sl.package.note.split('·')[0].trim()}</span>
+                  {sl.package.price} <span style={{ fontSize:'.75em', opacity:.65 }}>{sl.package.note.split('·')[0].trim()}</span>
                 </div>
               </div>
             </button>
