@@ -181,21 +181,9 @@ export default function HeroSlider() {
         }
       `}</style>
 
-      <section style={{ position:'relative', height:'100vh', minHeight:660, overflow:'hidden', display:'flex', background: slides[0].panelBg }}>
+      <section style={{ position:'relative', height:'100vh', minHeight:660, overflow:'hidden', display:'flex' }}>
 
-        {/* === PHOTO LAYERS — full width behind everything === */}
-        {p && (
-          <div className="hs-photo-out" style={{ position:'absolute', inset:0, zIndex:0 }}>
-            <div style={{ position:'absolute', inset:0, backgroundImage:`url(${p.img})`, backgroundSize:'cover', backgroundPosition:p.imgPos }} />
-          </div>
-        )}
-        <div className={mounted ? 'hs-photo-in' : ''} key={`ph-${active}`} style={{ position:'absolute', inset:0, zIndex:1 }}>
-          <div className="hs-photo-kb" style={{ position:'absolute', inset:0, backgroundImage:`url(${s.img})`, backgroundSize:'cover', backgroundPosition:s.imgPos }} />
-        </div>
-        {/* Soft vignette — dark at edges, clear in center */}
-        <div style={{ position:'absolute', inset:0, zIndex:2, background:'radial-gradient(ellipse 120% 100% at 75% 50%, rgba(0,0,0,.1) 0%, rgba(0,0,0,.35) 100%)' }} />
-
-        {/* === LEFT PANEL — solid opaque dark, no bleed === */}
+        {/* === LEFT PANEL — solid opaque dark === */}
         <div
           key={`panel-${active}`}
           style={{
@@ -302,7 +290,7 @@ export default function HeroSlider() {
           {/* Price card */}
           <div key={`card-${active}`} className={mounted ? "hs-in" : ""} style={{
             position:'absolute', right:36, top:'50%', transform:'translateY(-50%)',
-            zIndex:4, minWidth:220, animationDelay:'.5s',
+            zIndex:3, minWidth:220, animationDelay:'.5s',
           }}>
             <div className="hs-price-card" style={{ borderTop:`3px solid ${s.accent}` }}>
               <div style={{ fontFamily:'var(--sans)', fontSize:10, fontWeight:700, letterSpacing:'.2em', textTransform:'uppercase', color:s.accent, marginBottom:10 }}>
@@ -334,7 +322,7 @@ export default function HeroSlider() {
           </div>
 
           {/* Progress bar at bottom */}
-          <div style={{ position:'absolute', bottom:0, left:0, right:0, height:3, background:'rgba(255,255,255,.1)', zIndex:4 }}>
+          <div style={{ position:'absolute', bottom:0, left:0, right:0, height:3, background:'rgba(255,255,255,.1)', zIndex:2 }}>
             <div key={`bar-${active}`} className="hs-bar" style={{ height:'100%', background:s.accent }} />
           </div>
         </div>
