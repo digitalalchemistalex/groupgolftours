@@ -190,7 +190,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════
           § 1  HERO — full-bleed course photo
       ═══════════════════════════════════════ */}
-      <section style={{ position:'relative', height:'92vh', minHeight:600, overflow:'hidden', display:'flex', alignItems:'flex-end' }}>
+      <section style={{ position:'relative', height:'100vh', minHeight:700, overflow:'hidden', display:'flex', alignItems:'flex-end' }}>
 
         {/* Photo */}
         <div style={{ position:'absolute', inset:0 }} className="fade-img">
@@ -208,22 +208,23 @@ export default function HomePage() {
         <div className="wrap" style={{ position:'relative', zIndex:2, paddingBottom:'clamp(52px,8vh,96px)', width:'100%' }}>
           <div className="hero-text" style={{ maxWidth:760 }}>
 
-            <div className="fade-1" style={{ display:'inline-flex', alignItems:'center', gap:10, marginBottom:20, background:'rgba(255,255,255,.12)', backdropFilter:'blur(12px)', padding:'7px 16px', border:'1px solid rgba(255,255,255,.2)' }}>
-              <span style={{ width:6, height:6, borderRadius:'50%', background:'#D4A832', display:'inline-block', flexShrink:0 }} />
-              <span style={{ fontFamily:'var(--sans)', fontSize:11, fontWeight:600, letterSpacing:'.18em', textTransform:'uppercase', color:'rgba(255,255,255,.9)' }}>
+            {/* Eyebrow */}
+            <div className="fade-1" style={{ display:'flex', alignItems:'center', gap:14, marginBottom:28 }}>
+              <div style={{ width:40, height:1, background:'var(--gold)', flexShrink:0 }} />
+              <span style={{ fontFamily:'var(--sans)', fontSize:10, fontWeight:700, letterSpacing:'.26em', textTransform:'uppercase', color:'rgba(212,168,50,.9)' }}>
                 20+ Years · 10,000+ Outings · Licensed NV &amp; FL
               </span>
             </div>
 
+            {/* Headline */}
             <h1 className="hero-h fade-2" style={{
-              fontFamily:'var(--serif)', fontSize:'clamp(48px,7.5vw,104px)',
-              fontWeight:300, lineHeight:.94, letterSpacing:'-.02em',
-              color:'#fff', marginBottom:28,
-              textShadow:'0 2px 32px rgba(0,0,0,.3)',
+              fontFamily:'var(--serif)', fontSize:'clamp(52px,8vw,110px)',
+              fontWeight:300, lineHeight:.92, letterSpacing:'-.025em',
+              color:'#fff', marginBottom:32,
             }}>
-              The courses<br />
-              your group<br />
-              <em style={{ fontStyle:'italic', color:'#D4A832' }}>deserves.</em>
+              Pebble Beach.<br />
+              Shadow Creek.<br />
+              <em style={{ fontStyle:'italic', color:'#D4A832' }}>Your group,<br />secured.</em>
             </h1>
 
             <p className="fade-3" style={{
