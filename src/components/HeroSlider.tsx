@@ -115,13 +115,14 @@ export default function HeroSlider() {
     <>
       <style>{`
         @keyframes hsIn   { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:none} }
-        @keyframes hsImgIn{ from{opacity:0;transform:scale(1.05)} to{opacity:1;transform:scale(1)} }
+        @keyframes hsImgIn{ from{opacity:.2;transform:scale(1.03)} to{opacity:1;transform:scale(1)} }
         @keyframes hsKB   { from{transform:scale(1)} to{transform:scale(1.06)} }
         @keyframes hsOut  { from{opacity:1} to{opacity:0} }
         @keyframes hsBar  { from{width:0%} to{width:100%} }
 
         .hs-in { animation: hsIn .8s cubic-bezier(.22,1,.36,1) both }
-        .hs-photo-in  { animation: hsImgIn .85s cubic-bezier(.22,1,.36,1) both }
+        .hs-photo-in  { animation: hsImgIn .6s cubic-bezier(.22,1,.36,1) both }
+        .hs-photo-in-first { opacity: 1 !important; transform: none !important }
         .hs-photo-kb  { animation: hsKB 14s ease-in-out infinite alternate }
         .hs-photo-out { animation: hsOut .55s ease both }
         .hs-bar { animation: hsBar 7s linear both }
@@ -177,7 +178,7 @@ export default function HeroSlider() {
         }
       `}</style>
 
-      <section style={{ position:'relative', height:'100vh', minHeight:660, overflow:'hidden', display:'flex' }}>
+      <section style={{ position:'relative', height:'100vh', minHeight:660, overflow:'hidden', display:'flex', background: slides[0].panelBg }}>
 
         {/* === PHOTO LAYERS — full width behind everything === */}
         {p && (
@@ -188,8 +189,8 @@ export default function HeroSlider() {
         <div className="hs-photo-in" key={`ph-${active}`} style={{ position:'absolute', inset:0, zIndex:1 }}>
           <div className="hs-photo-kb" style={{ position:'absolute', inset:0, backgroundImage:`url(${s.img})`, backgroundSize:'cover', backgroundPosition:s.imgPos }} />
         </div>
-        {/* Dark tint over full photo */}
-        <div style={{ position:'absolute', inset:0, zIndex:2, background:'rgba(0,0,0,.45)' }} />
+        {/* Soft vignette — dark at edges, clear in center */}
+        <div style={{ position:'absolute', inset:0, zIndex:2, background:'radial-gradient(ellipse 120% 100% at 75% 50%, rgba(0,0,0,.1) 0%, rgba(0,0,0,.35) 100%)' }} />
 
         {/* === LEFT PANEL — solid opaque dark, no bleed === */}
         <div
@@ -292,8 +293,8 @@ export default function HeroSlider() {
 
         {/* === RIGHT — photo shows through, price card overlay === */}
         <div style={{ flex:1, position:'relative', zIndex:3 }}>
-          {/* Subtle left edge blend */}
-          <div style={{ position:'absolute', inset:0, background:'linear-gradient(90deg, rgba(0,0,0,.3) 0%, transparent 20%)', zIndex:1, pointerEvents:'none' }} />
+          {/* Subtle left edge blend - soft fade only */}
+          <div style={{ position:'absolute', inset:0, background:'linear-gradient(90deg, rgba(0,0,0,.15) 0%, transparent 15%)', zIndex:1, pointerEvents:'none' }} />
 
           {/* Price card */}
           <div key={`card-${active}`} className="hs-in" style={{
