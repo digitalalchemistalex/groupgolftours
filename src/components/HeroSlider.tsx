@@ -346,48 +346,39 @@ export default function HeroSlider() {
 
             {/* Season strip */}
             <div className="hs-intel" style={{ padding:'12px 14px', marginBottom:2 }}>
-              <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:10 }}>
-                <div style={{ fontFamily:'var(--sans)', fontSize:8, fontWeight:700, letterSpacing:'.16em', textTransform:'uppercase', color:'rgba(255,255,255,.4)' }}>Best Season</div>
-                <div style={{ fontFamily:'var(--sans)', fontSize:9, fontWeight:700, color:s.accent }}>
+              {/* Header */}
+              <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:8 }}>
+                <span style={{ fontFamily:'var(--sans)', fontSize:8, fontWeight:700, letterSpacing:'.16em', textTransform:'uppercase', color:'rgba(255,255,255,.4)' }}>Best Season</span>
+                <span style={{ fontFamily:'var(--sans)', fontSize:9, fontWeight:700, color:s.accent }}>
                   {['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][NOW_MONTH]} now
-                </div>
+                </span>
               </div>
-              {/* Bar chart — fixed height container so bars grow upward */}
-              <div style={{ display:'flex', alignItems:'flex-end', gap:2, height:28, marginBottom:6 }}>
+              {/* Combined bar + label grid — each column has bar on top, letter below */}
+              <div style={{ display:'grid', gridTemplateColumns:'repeat(12,1fr)', gap:2, alignItems:'end' }}>
                 {s.season.map((v, i) => {
                   const hex = s.accent.replace('#','')
                   const [r,g,b] = [0,2,4].map(o => parseInt(hex.slice(o,o+2),16))
                   const isNow = i === NOW_MONTH
                   const isPeak = v >= 0.8
                   const isMid  = v >= 0.45
+                  const barH = Math.round(v * 28) + 4
                   return (
-                    <div key={i} style={{ flex:1, display:'flex', flexDirection:'column', alignItems:'center', gap:2 }}>
+                    <div key={i} style={{ display:'flex', flexDirection:'column', alignItems:'center', gap:3 }}>
+                      {/* Bar */}
                       <div style={{
-                        width:'100%',
-                        height: Math.round(v * 24) + 4,
-                        borderRadius:2,
-                        background: isPeak ? s.accent : isMid ? `rgba(${r},${g},${b},0.5)` : 'rgba(255,255,255,.18)',
-                        outline: isNow ? `2px solid #fff` : 'none',
-                        outlineOffset: isNow ? 1 : 0,
-                        transition:'height .3s',
+                        width:'100%', height: barH, borderRadius:2, flexShrink:0,
+                        background: isPeak ? s.accent : isMid ? `rgba(${r},${g},${b},.5)` : 'rgba(255,255,255,.2)',
+                        boxShadow: isNow ? `0 0 0 1.5px #fff` : 'none',
                       }} />
+                      {/* Month letter */}
+                      <span style={{
+                        fontFamily:'var(--sans)', fontSize:8, lineHeight:1, flexShrink:0,
+                        fontWeight: isNow ? 800 : 400,
+                        color: isNow ? s.accent : isPeak ? 'rgba(255,255,255,.7)' : 'rgba(255,255,255,.38)',
+                      }}>{['J','F','M','A','M','J','J','A','S','O','N','D'][i]}</span>
                     </div>
                   )
                 })}
-              </div>
-              {/* Month labels — always visible */}
-              <div style={{ display:'flex', gap:2 }}>
-                {['J','F','M','A','M','J','J','A','S','O','N','D'].map((m, i) => (
-                  <div key={i} style={{ flex:1, textAlign:'center' }}>
-                    <span style={{
-                      fontFamily:'var(--sans)',
-                      fontSize:8,
-                      fontWeight: i === NOW_MONTH ? 800 : 500,
-                      color: i === NOW_MONTH ? s.accent : s.season[i] >= 0.8 ? 'rgba(255,255,255,.7)' : 'rgba(255,255,255,.35)',
-                      display:'block',
-                    }}>{m}</span>
-                  </div>
-                ))}
               </div>
             </div>
 
