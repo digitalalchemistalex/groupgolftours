@@ -303,7 +303,7 @@ export default function HeroSlider() {
             <div className="hs-intel" style={{ borderTop:`3px solid ${s.accent}`, padding:'18px 20px 14px', marginBottom:2 }}>
               <div style={{ fontFamily:'var(--sans)', fontSize:9, fontWeight:700, letterSpacing:'.2em', textTransform:'uppercase', color:s.accent, marginBottom:8 }}>{s.tag}</div>
               <div style={{ fontFamily:'var(--serif)', fontSize:48, fontWeight:300, color:'#fff', lineHeight:1, marginBottom:4 }}>{s.stat}</div>
-              <div style={{ fontFamily:'var(--sans)', fontSize:10, color:'rgba(255,255,255,.6)', marginBottom:14, lineHeight:1.4 }}>{s.statSub || s.facts[0].l}</div>
+              <div style={{ fontFamily:'var(--sans)', fontSize:10, color:'rgba(255,255,255,.6)', marginBottom:14, lineHeight:1.4 }}>{s.facts[0].l}</div>
 
               {/* Sample package */}
               <div style={{ background:'rgba(255,255,255,.06)', border:`1px solid rgba(255,255,255,.1)`, padding:'10px 12px', marginBottom:12 }}>
