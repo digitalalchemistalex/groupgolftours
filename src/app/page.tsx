@@ -188,7 +188,6 @@ export default function HomePage() {
         }
       `}</style>
 
-      {/* ═══════════════════════════════════════
       <HeroSlider />
 
       <div style={{ background:'var(--parchment)', borderBottom:'1px solid rgba(0,0,0,.08)' }}>
