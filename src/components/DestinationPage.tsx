@@ -249,6 +249,69 @@ export default function DestinationPage({
         </div>
       </section>
 
+      {/* CROSS-LINKS: Other Destinations */}
+      <section style={{ background: '#060A08', padding: 'clamp(48px,6vw,72px) 0', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+        <div className="section-wrap" style={{ maxWidth: 'var(--max)' }}>
+          <div style={{ marginBottom: 24 }}>
+            <span style={{ fontFamily: 'var(--sans)', fontSize: 9, fontWeight: 700, letterSpacing: '0.24em', textTransform: 'uppercase', color: st.accent }}>Also Explore</span>
+            <div style={{ width: 36, height: 1, background: st.accent, marginTop: 10, opacity: 0.7 }} />
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px,1fr))', gap: 2 }}>
+            {[
+              { label: 'Lake Tahoe & Northern Nevada', href: '/portfolio-item/lake-tahoe-and-northern-nevada/', sub: 'From $275/person · Sierra Nevada' },
+              { label: 'Las Vegas & Southern Nevada', href: '/portfolio-item/las-vegas-and-southern-nevada/', sub: 'Shadow Creek $1,250/round' },
+              { label: 'Monterey & Pebble Beach', href: '/portfolio-item/monterey-and-pebble-beach/', sub: 'Pebble Beach $675/round' },
+              { label: 'Southern California', href: '/portfolio-item/monterey-and-pebble-beach-2/', sub: 'Torrey Pines · Year-Round Golf' },
+              { label: 'Somersett Golf & Country Club', href: '/portfolio-item/somersett-golf-country-club/', sub: 'Private Club · Reno NV' },
+            ].filter(d => !d.href.includes(region)).map(d => (
+              <Link key={d.href} href={d.href} style={{ display: 'block', padding: '14px 18px', background: 'rgba(255,255,255,0.025)', textDecoration: 'none', borderLeft: '2px solid transparent', transition: 'all 0.18s' }}
+                className="dest-xl">
+                <div style={{ fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 500, color: 'rgba(245,237,216,0.7)', lineHeight: 1.2 }}>{d.label}</div>
+                <div style={{ fontSize: 10, color: 'rgba(245,237,216,0.3)', marginTop: 3 }}>{d.sub}</div>
+              </Link>
+            ))}
+            <Link href="/destinations/" style={{ display: 'block', padding: '14px 18px', background: 'rgba(255,255,255,0.025)', textDecoration: 'none', borderLeft: '2px solid transparent', transition: 'all 0.18s' }}
+              className="dest-xl">
+              <div style={{ fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 500, color: 'rgba(245,237,216,0.7)' }}>International Destinations</div>
+              <div style={{ fontSize: 10, color: 'rgba(245,237,216,0.3)', marginTop: 3 }}>Ireland · Scotland · Portugal · Spain</div>
+            </Link>
+          </div>
+        </div>
+        <style>{`.dest-xl:hover{background:rgba(255,255,255,0.05)!important;border-left-color:${st.accent}!important}.dest-xl:hover>div:first-child{color:${st.accent}!important}`}</style>
+      </section>
+
+      {/* CROSS-LINKS: Services */}
+      <section style={{ background: '#0A0806', padding: 'clamp(48px,6vw,72px) 0', borderTop: '1px solid rgba(255,255,255,0.04)' }}>
+        <div className="section-wrap" style={{ maxWidth: 'var(--max)' }}>
+          <div style={{ marginBottom: 24 }}>
+            <span style={{ fontFamily: 'var(--sans)', fontSize: 9, fontWeight: 700, letterSpacing: '0.24em', textTransform: 'uppercase', color: 'var(--copper)' }}>Everything We Handle</span>
+            <div style={{ width: 36, height: 1, background: 'var(--copper)', marginTop: 10, opacity: 0.7 }} />
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px,1fr))', gap: 2 }}>
+            {[
+              { icon: '⛳', label: 'Golf Courses & Tee Times', href: '/golf-courses/', sub: 'Preferred access at 200+ courses' },
+              { icon: '🏨', label: 'Hotel Reservations', href: '/hotel-reservations/', sub: 'Group blocks · Best rates' },
+              { icon: '🚌', label: 'Transportation', href: '/transportation/', sub: 'Airport transfers · Shuttles' },
+              { icon: '🍽', label: 'Dining & Events', href: '/dining-events-and-arrangements/', sub: 'Group dining arrangements' },
+              { icon: '🛡', label: 'Travel Insurance', href: '/travel-insurance/', sub: 'Protect your investment' },
+              { icon: '📋', label: 'Tour Packages', href: '/tour-packages/', sub: 'All-inclusive from $275/person' },
+              { icon: '🗺', label: 'Sightseeing & Activities', href: '/site-seeing-and-non-golf-activities/', sub: 'Beyond the greens' },
+              { icon: '✅', label: 'Online Registration', href: '/online-registration-system/', sub: 'Manage your group digitally' },
+            ].map(s => (
+              <Link key={s.href} href={s.href} style={{ display: 'flex', gap: 12, padding: '14px 18px', background: 'rgba(255,255,255,0.02)', textDecoration: 'none', borderLeft: '2px solid transparent', transition: 'all 0.18s', alignItems: 'flex-start' }}
+                className="svc-xl">
+                <span style={{ fontSize: 16, flexShrink: 0, opacity: 0.75, marginTop: 1 }}>{s.icon}</span>
+                <div>
+                  <div style={{ fontFamily: 'var(--sans)', fontSize: 12, fontWeight: 500, color: 'rgba(245,237,216,0.65)', lineHeight: 1.2 }}>{s.label}</div>
+                  <div style={{ fontSize: 10, color: 'rgba(245,237,216,0.28)', marginTop: 2 }}>{s.sub}</div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+        <style>{`.svc-xl:hover{background:rgba(255,255,255,0.05)!important;border-left-color:var(--copper)!important}.svc-xl:hover div:first-child{color:var(--copper)!important}`}</style>
+      </section>
+
       {/* PREV/NEXT */}
       {(prevDest || nextDest) && (
         <div style={{ display: 'flex', justifyContent: 'space-between', background: st.mid, padding: '20px var(--pad)', borderTop: `1px solid ${st.accent}22` }}>
