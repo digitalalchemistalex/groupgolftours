@@ -291,3 +291,11 @@ const nextConfig = {
 
 Without `ignoreDuringBuilds: true`, any `no-img-element`, `no-unused-vars`, or similar
 warnings will fail the build. This was the root cause of all ESLint-related deploy failures.
+
+
+## CRITICAL: next.config.mjs must have eslint ignore
+
+This project uses next/core-web-vitals which treats ESLint warnings as build errors.
+Always ensure next.config.mjs contains eslint.ignoreDuringBuilds: true and images.remotePatterns for Unsplash.
+Without it, no-img-element and no-unused-vars warnings will fail the build.
+This was the root cause of all ESLint-related deploy failures on this project.
