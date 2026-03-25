@@ -188,76 +188,139 @@ export default function HomePage() {
       `}</style>
 
       {/* ═══════════════════════════════════════
-          § 1  HERO — full-bleed course photo
+      {/* ═══════════════════════════════════════
+          § 1  HERO — Concept 3: Editorial split
       ═══════════════════════════════════════ */}
-      <section style={{ position:'relative', height:'100vh', minHeight:700, overflow:'hidden', display:'flex', alignItems:'flex-end' }}>
+      <section style={{
+        position:'relative', height:'100vh', minHeight:680,
+        overflow:'hidden', display:'grid', gridTemplateColumns:'1fr 1fr',
+      }}>
+        {/* ── LEFT: dark gradient copy panel ── */}
+        <div style={{
+          position:'relative', zIndex:3,
+          background:'linear-gradient(90deg, #080E08 0%, #0C130C 60%, rgba(8,14,8,0) 100%)',
+          display:'flex', flexDirection:'column', justifyContent:'center',
+          padding:'0 64px 0 clamp(24px,5vw,80px)',
+        }}>
+          {/* Eyebrow */}
+          <div style={{ display:'flex', alignItems:'center', gap:12, marginBottom:28, animation:'fadeUp .8s .15s both' }}>
+            <div style={{ width:32, height:1, background:'#C9981A', flexShrink:0 }} />
+            <span style={{ fontFamily:'var(--sans)', fontSize:9, fontWeight:700, letterSpacing:'.26em', textTransform:'uppercase', color:'rgba(201,152,26,.85)' }}>
+              Premier Group Golf Travel
+            </span>
+          </div>
 
-        {/* Photo */}
-        <div style={{ position:'absolute', inset:0 }} className="fade-img">
-          <div className="hero-img" style={{
-            position:'absolute', inset:0,
-            backgroundImage:`url(https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=2000&q=92)`,
-            backgroundSize:'cover', backgroundPosition:'center 30%',
-          }} />
-        </div>
+          {/* Headline */}
+          <h1 style={{
+            fontFamily:'var(--serif)', fontSize:'clamp(46px,6.5vw,88px)',
+            fontWeight:300, lineHeight:.92, letterSpacing:'-.022em',
+            color:'#fff', marginBottom:26, animation:'fadeUp .9s .3s both',
+          }}>
+            We get your<br />
+            group onto<br />
+            <em style={{ fontStyle:'italic', color:'#C9981A' }}>Pebble Beach.</em>
+          </h1>
 
-        {/* Gradient overlay — lighter at top, strong at bottom */}
-        <div style={{ position:'absolute', inset:0, background:'linear-gradient(to bottom, rgba(0,0,0,.15) 0%, rgba(0,0,0,.08) 30%, rgba(0,0,0,.55) 70%, rgba(0,0,0,.82) 100%)' }} />
+          {/* Sub */}
+          <p style={{
+            fontSize:15, lineHeight:1.85, color:'rgba(255,255,255,.52)',
+            maxWidth:340, marginBottom:36, fontWeight:300,
+            animation:'fadeUp .9s .45s both',
+          }}>
+            18-month advance booking. Resort hotel &amp; tee times coordinated
+            simultaneously. 20 years of relationships that open doors.
+          </p>
 
-        {/* Content */}
-        <div className="wrap" style={{ position:'relative', zIndex:2, paddingBottom:'clamp(52px,8vh,96px)', width:'100%' }}>
-          <div className="hero-text" style={{ maxWidth:760 }}>
+          {/* CTAs */}
+          <div style={{ display:'flex', gap:10, flexWrap:'wrap', animation:'fadeUp .9s .58s both' }}>
+            <Link href="/tour-inquiry/" className="btn btn-gold" style={{ padding:'13px 30px', fontSize:11 }}>
+              <span>Plan My Group Trip</span>
+            </Link>
+            <a href="tel:8885848232" style={{
+              display:'inline-flex', alignItems:'center', padding:'13px 22px',
+              border:'1px solid rgba(255,255,255,.22)', color:'rgba(255,255,255,.65)',
+              textDecoration:'none', fontFamily:'var(--sans)', fontSize:13, fontWeight:400,
+              transition:'all .2s', letterSpacing:'.02em',
+            }}>888-584-8232</a>
+          </div>
 
-            {/* Eyebrow */}
-            <div className="fade-1" style={{ display:'flex', alignItems:'center', gap:14, marginBottom:28 }}>
-              <div style={{ width:40, height:1, background:'var(--gold)', flexShrink:0 }} />
-              <span style={{ fontFamily:'var(--sans)', fontSize:10, fontWeight:700, letterSpacing:'.26em', textTransform:'uppercase', color:'rgba(212,168,50,.9)' }}>
-                20+ Years · 10,000+ Outings · Licensed NV &amp; FL
-              </span>
-            </div>
-
-            {/* Headline */}
-            <h1 className="hero-h fade-2" style={{
-              fontFamily:'var(--serif)', fontSize:'clamp(52px,8vw,110px)',
-              fontWeight:300, lineHeight:.92, letterSpacing:'-.025em',
-              color:'#fff', marginBottom:32,
-            }}>
-              Pebble Beach.<br />
-              Shadow Creek.<br />
-              <em style={{ fontStyle:'italic', color:'#D4A832' }}>Your group,<br />secured.</em>
-            </h1>
-
-            <p className="fade-3" style={{
-              fontSize:'clamp(15px,1.5vw,18px)', lineHeight:1.75,
-              color:'rgba(255,255,255,.82)', maxWidth:480,
-              marginBottom:36, fontWeight:300,
-              textShadow:'0 1px 8px rgba(0,0,0,.4)',
-            }}>
-              Pebble Beach. Shadow Creek. Edgewood Tahoe.
-              We secure the tee times, hotel blocks, and logistics
-              your group can&apos;t arrange alone. One call. 20 years. Everything handled.
-            </p>
-
-            <div className="fade-4" style={{ display:'flex', gap:12, flexWrap:'wrap' }}>
-              <Link href="/tour-inquiry/" className="btn btn-gold" style={{ fontSize:12, padding:'14px 36px', letterSpacing:'.14em' }}>
-                <span>Plan My Group Trip</span>
-              </Link>
-              <a href="tel:8885848232" style={{
-                display:'inline-flex', alignItems:'center', gap:8,
-                padding:'14px 28px', border:'1px solid rgba(255,255,255,.45)',
-                color:'#fff', textDecoration:'none',
-                fontFamily:'var(--sans)', fontSize:13, fontWeight:500,
-                backdropFilter:'blur(8px)', background:'rgba(255,255,255,.08)',
-                transition:'all .2s',
+          {/* Bottom stats row */}
+          <div style={{
+            position:'absolute', bottom:0, left:0, right:0,
+            display:'grid', gridTemplateColumns:'1fr 1fr 1fr',
+            borderTop:'1px solid rgba(255,255,255,.07)',
+            animation:'fadeUp .8s .7s both',
+          }}>
+            {[{n:'20+',l:'Years'},{n:'10,000+',l:'Outings'},{n:'$275',l:'From / Person'}].map((s,i) => (
+              <div key={s.n} style={{
+                padding:'18px 20px',
+                borderRight: i < 2 ? '1px solid rgba(255,255,255,.07)' : 'none',
               }}>
-                888-584-8232
-              </a>
-            </div>
+                <div style={{ fontFamily:'var(--serif)', fontSize:26, fontWeight:300, color:'#C9981A', lineHeight:1 }}>{s.n}</div>
+                <div style={{ fontFamily:'var(--sans)', fontSize:9, fontWeight:600, letterSpacing:'.18em', textTransform:'uppercase', color:'rgba(255,255,255,.28)', marginTop:4 }}>{s.l}</div>
+              </div>
+            ))}
           </div>
         </div>
+
+        {/* ── RIGHT: full-bleed photo ── */}
+        <div style={{ position:'relative', overflow:'hidden' }}>
+          {/* Photo */}
+          <div className="hero-img" style={{
+            position:'absolute', inset:0,
+            backgroundImage:`url(https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=1400&q=92)`,
+            backgroundSize:'cover', backgroundPosition:'center 55%',
+          }} />
+          {/* Left fade to blend with copy panel */}
+          <div style={{ position:'absolute', inset:0, background:'linear-gradient(90deg, rgba(8,14,8,.95) 0%, rgba(8,14,8,.4) 25%, rgba(8,14,8,.0) 55%)' }} />
+          {/* Bottom fade */}
+          <div style={{ position:'absolute', bottom:0, left:0, right:0, height:'40%', background:'linear-gradient(to top, rgba(8,14,8,.75), transparent)' }} />
+          {/* Dark base tint */}
+          <div style={{ position:'absolute', inset:0, background:'rgba(0,0,0,.28)' }} />
+
+          {/* Floating price cards */}
+          <div style={{
+            position:'absolute', right:36, bottom:100,
+            display:'flex', flexDirection:'column', gap:8,
+            animation:'fadeUp .9s .65s both',
+          }}>
+            {[
+              { price:'$675', label:'Pebble Beach Golf Links', sub:'per round' },
+              { price:'$1,250', label:'Shadow Creek Las Vegas', sub:'per round' },
+              { price:'$275', label:'Reno Group Packages', sub:'from / person' },
+            ].map(c => (
+              <div key={c.price} style={{
+                background:'rgba(6,10,6,.88)', backdropFilter:'blur(16px)',
+                border:'1px solid rgba(201,152,26,.22)',
+                borderLeft:'3px solid rgba(201,152,26,.75)',
+                padding:'14px 20px', minWidth:200,
+              }}>
+                <div style={{ fontFamily:'var(--serif)', fontSize:28, fontWeight:300, color:'#C9981A', lineHeight:1 }}>{c.price}</div>
+                <div style={{ fontFamily:'var(--sans)', fontSize:10, fontWeight:600, letterSpacing:'.16em', textTransform:'uppercase', color:'rgba(255,255,255,.38)', marginTop:4 }}>{c.label}</div>
+                <div style={{ fontFamily:'var(--sans)', fontSize:10, color:'rgba(255,255,255,.25)', marginTop:2 }}>{c.sub}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Urgency badge top right */}
+          <div style={{
+            position:'absolute', top:32, right:36,
+            background:'rgba(201,152,26,.12)', backdropFilter:'blur(8px)',
+            border:'1px solid rgba(201,152,26,.3)',
+            padding:'8px 16px',
+            fontFamily:'var(--sans)', fontSize:9, fontWeight:700,
+            letterSpacing:'.18em', textTransform:'uppercase',
+            color:'rgba(201,152,26,.9)',
+            animation:'fadeUp .8s .9s both',
+          }}>
+            ⚑ &nbsp;Summer 2026 tee sheets filling now
+          </div>
+        </div>
+
+        {/* Gold top rule */}
+        <div style={{ position:'absolute', top:0, left:0, right:0, height:3, background:'linear-gradient(90deg,#C9981A 0%,rgba(201,152,26,.3) 50%,transparent 100%)', zIndex:10 }} />
       </section>
 
-      {/* ═══════════════════════════════════════
           § 2  STATS BAR — cream background
       ═══════════════════════════════════════ */}
       <div style={{ background:'var(--parchment)', borderBottom:'1px solid rgba(0,0,0,.08)' }}>
