@@ -199,6 +199,8 @@ export default function HeroSlider() {
           .hs-headline{font-size:clamp(28px,8vw,48px)!important}
           .hs-pills{display:none!important}
           .hs-mob-strip{display:flex!important}
+          .hs-fact-cards{display:none!important}
+          .hs-dots-row{bottom:166px!important}
         }
         @media(min-width:901px){
           .hs-mob-strip{display:none!important}
@@ -300,7 +302,7 @@ export default function HeroSlider() {
           </div>
 
           {/* Nav dots + arrows */}
-          <div style={{ position:'absolute', bottom:104, left:'clamp(22px,4vw,56px)', display:'flex', alignItems:'center', gap:6 }}>
+          <div className="hs-dots-row" style={{ position:'absolute', bottom:104, left:'clamp(22px,4vw,56px)', display:'flex', alignItems:'center', gap:6 }}>
             {slides.map((sl, i) => (
               <button key={sl.id} className={`hs-dot${i===active?' on':''}`} style={{ background:i===active?s.accent:'transparent' }} onClick={() => goTo(i)} />
             ))}
