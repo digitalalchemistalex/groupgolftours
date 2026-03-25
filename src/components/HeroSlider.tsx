@@ -94,6 +94,9 @@ export default function HeroSlider() {
   const [active, setActive] = useState(0)
   const [prev, setPrev] = useState<number | null>(null)
   const [animating, setAnimating] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => { setMounted(true) }, [])
 
   const goTo = useCallback((idx: number) => {
     if (animating || idx === active) return
@@ -186,7 +189,7 @@ export default function HeroSlider() {
             <div style={{ position:'absolute', inset:0, backgroundImage:`url(${p.img})`, backgroundSize:'cover', backgroundPosition:p.imgPos }} />
           </div>
         )}
-        <div className="hs-photo-in" key={`ph-${active}`} style={{ position:'absolute', inset:0, zIndex:1 }}>
+        <div className={mounted ? 'hs-photo-in' : ''} key={`ph-${active}`} style={{ position:'absolute', inset:0, zIndex:1 }}>
           <div className="hs-photo-kb" style={{ position:'absolute', inset:0, backgroundImage:`url(${s.img})`, backgroundSize:'cover', backgroundPosition:s.imgPos }} />
         </div>
         {/* Soft vignette — dark at edges, clear in center */}
@@ -207,7 +210,7 @@ export default function HeroSlider() {
           <div style={{ position:'absolute', left:0, top:'15%', bottom:'15%', width:3, background:`linear-gradient(to bottom, transparent, ${s.accent}, transparent)` }} />
 
           {/* Tag */}
-          <div className="hs-in" style={{ display:'flex', alignItems:'center', gap:10, marginBottom:20, animationDelay:'.05s' }}>
+          <div className={mounted ? "hs-in" : ""} style={{ display:'flex', alignItems:'center', gap:10, marginBottom:20, animationDelay:'.05s' }}>
             <div style={{ width:24, height:2, background:s.accent, flexShrink:0 }} />
             <span style={{ fontFamily:'var(--sans)', fontSize:11, fontWeight:700, letterSpacing:'.22em', textTransform:'uppercase', color:s.accent }}>
               {s.tag}
@@ -241,7 +244,7 @@ export default function HeroSlider() {
           </div>
 
           {/* CTAs */}
-          <div className="hs-in" style={{ display:'flex', gap:10, flexWrap:'wrap', marginBottom:32, animationDelay:'.38s' }}>
+          <div className={mounted ? "hs-in" : ""} style={{ display:'flex', gap:10, flexWrap:'wrap', marginBottom:32, animationDelay:'.38s' }}>
             <Link href="/tour-inquiry/" style={{
               display:'inline-flex', alignItems:'center', padding:'13px 28px',
               background: s.accent, color:'#050805',
@@ -262,7 +265,7 @@ export default function HeroSlider() {
           </div>
 
           {/* Fact cards */}
-          <div className="hs-in" style={{ display:'grid', gridTemplateColumns:'1fr 1fr 1fr', gap:2, animationDelay:'.44s' }}>
+          <div className={mounted ? "hs-in" : ""} style={{ display:'grid', gridTemplateColumns:'1fr 1fr 1fr', gap:2, animationDelay:'.44s' }}>
             {s.facts.map(f => (
               <div key={f.n} className="hs-fact-card">
                 <div style={{ fontFamily:'var(--serif)', fontSize:22, fontWeight:300, color:s.accent, lineHeight:1, marginBottom:4 }}>{f.n}</div>
@@ -297,7 +300,7 @@ export default function HeroSlider() {
           <div style={{ position:'absolute', inset:0, background:'linear-gradient(90deg, rgba(0,0,0,.15) 0%, transparent 15%)', zIndex:1, pointerEvents:'none' }} />
 
           {/* Price card */}
-          <div key={`card-${active}`} className="hs-in" style={{
+          <div key={`card-${active}`} className={mounted ? "hs-in" : ""} style={{
             position:'absolute', right:36, top:'50%', transform:'translateY(-50%)',
             zIndex:4, minWidth:220, animationDelay:'.5s',
           }}>
