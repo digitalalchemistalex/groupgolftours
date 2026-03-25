@@ -1,28 +1,28 @@
 'use client'
 import { useState } from 'react'
+import Link from 'next/link'
 
 const destinations = [
-  'Lake Tahoe & Northern Nevada',
-  'Las Vegas & Southern Nevada',
-  'Monterey & Pebble Beach',
-  'Southern California',
-  'Arizona',
-  'Bandon, Oregon',
-  'Ireland',
-  'Scotland',
-  'Portugal / Spain',
-  'Mexico / Caribbean',
-  'Not Sure — Help Me Decide',
+  { name: 'Pebble Beach & Monterey', sub: 'Peak dates fill 6–8 months out' },
+  { name: 'Lake Tahoe & Northern Nevada', sub: 'Summer weekends go fast' },
+  { name: 'Las Vegas & Southern Nevada', sub: 'Shadow Creek access is limited' },
+  { name: 'Southern California', sub: 'Year-round availability' },
+  { name: 'Arizona', sub: 'Scottsdale, Sedona & more' },
+  { name: 'Bandon, Oregon', sub: 'Bucket-list links golf' },
+  { name: 'Ireland', sub: '3–7 day international tours' },
+  { name: 'Scotland', sub: 'St Andrews, Carnoustie & more' },
+  { name: 'Portugal / Spain', sub: 'European golf tours' },
+  { name: 'Mexico / Caribbean', sub: 'All-inclusive options' },
+  { name: 'Not Sure — Help Me Decide', sub: 'Tell us your vibe and budget' },
 ]
 
 const tripTypes = [
-  'Golf Buddy Trip',
-  'Corporate Outing',
-  'Incentive Travel',
-  'Bachelor / Celebration Trip',
-  'International Golf Tour',
-  'Family Golf Vacation',
-  'Other',
+  { name: 'Golf Buddy Trip', sub: 'Annual outing, boys trip, friend group' },
+  { name: 'Corporate Outing', sub: 'Client entertainment, team event' },
+  { name: 'Incentive Trip', sub: 'Reward top performers' },
+  { name: 'Bachelor / Celebration', sub: 'Milestone event' },
+  { name: 'International Golf Tour', sub: 'Ireland, Scotland, Europe' },
+  { name: 'Family Golf Trip', sub: 'Multi-generational travel' },
 ]
 
 type Step = 1 | 2 | 3 | 4
@@ -31,217 +31,251 @@ export default function TourInquiryForm() {
   const [step, setStep] = useState<Step>(1)
   const [submitted, setSubmitted] = useState(false)
   const [form, setForm] = useState({
-    tripType: '',
-    destination: '',
-    groupSize: '',
-    dates: '',
-    flexibility: '',
-    budget: '',
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    notes: '',
+    tripType: '', destination: '', groupSize: '',
+    budget: '', dates: '', flexibility: '',
+    firstName: '', lastName: '', email: '', phone: '', notes: '',
   })
 
   const set = (k: string, v: string) => setForm(f => ({ ...f, [k]: v }))
 
-  const handleSubmit = async () => {
-    // For now, log and show success — Supabase/email integration added later
-    console.log('Tour inquiry:', form)
-    setSubmitted(true)
+  const iStyle: React.CSSProperties = {
+    width: '100%', padding: '14px 16px',
+    border: '1px solid #d4c8b0',
+    background: '#faf8f4',
+    fontFamily: 'var(--sans)', fontSize: 14,
+    color: 'var(--text)', outline: 'none',
+    transition: 'border-color 0.2s',
+  }
+
+  const lStyle: React.CSSProperties = {
+    display: 'block', fontSize: 10, fontWeight: 600,
+    letterSpacing: '0.16em', textTransform: 'uppercase',
+    color: 'var(--text-mid)', marginBottom: 8,
+  }
+
+  const chipActive: React.CSSProperties = {
+    padding: '12px 18px', border: '1px solid var(--green)',
+    background: 'var(--green)', color: 'var(--cream)',
+    fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 500,
+    cursor: 'pointer', transition: 'all 0.15s', textAlign: 'left',
+  }
+  const chipInactive: React.CSSProperties = {
+    ...chipActive,
+    border: '1px solid var(--cream-mid)',
+    background: 'var(--white)', color: 'var(--text)',
   }
 
   if (submitted) {
     return (
-      <div style={{ textAlign: 'center', padding: '80px 40px' }}>
-        <div style={{ fontSize: 56, marginBottom: 24 }}>⛳</div>
-        <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 40, color: 'var(--color-dark)', marginBottom: 16 }}>
+      <div style={{ textAlign: 'center', padding: '72px 32px' }}>
+        <div style={{ width: 72, height: 72, borderRadius: '50%', background: 'var(--green)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 28px', fontSize: 32 }}>✓</div>
+        <h2 style={{ fontFamily: 'var(--serif)', fontSize: 40, color: 'var(--dark)', marginBottom: 16 }}>
           We&apos;ve Got Your Request
         </h2>
-        <p style={{ fontSize: 16, lineHeight: 1.8, color: 'var(--color-text-muted)', maxWidth: 480, margin: '0 auto 32px' }}>
-          One of our golf travel specialists will reach out within 24 hours to start building your custom package.
+        <p style={{ fontFamily: 'var(--sans)', fontSize: 16, lineHeight: 1.85, color: 'var(--text-mid)', maxWidth: 440, margin: '0 auto 12px' }}>
+          A golf travel specialist will reach out within 24 hours with a custom package built around your group&apos;s exact preferences.
         </p>
-        <div style={{ fontSize: 14, color: 'var(--color-text-muted)' }}>
-          Questions in the meantime? Call us at{' '}
-          <a href="tel:8885848232" style={{ color: 'var(--color-green)', fontWeight: 600, textDecoration: 'none' }}>888-584-8232</a>
+        <p style={{ fontFamily: 'var(--sans)', fontSize: 14, color: 'var(--text-light)', marginBottom: 36 }}>
+          In the meantime, expect a confirmation to <strong>{form.email}</strong>
+        </p>
+        <div style={{ padding: '24px', background: 'var(--cream)', borderTop: '2px solid var(--gold)', maxWidth: 400, margin: '0 auto', textAlign: 'left' }}>
+          <div style={{ fontFamily: 'var(--sans)', fontSize: 10, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: 16 }}>Your Trip Summary</div>
+          {[['Trip', form.tripType], ['Destination', form.destination], ['Group', form.groupSize], ['Budget', form.budget], ['Dates', form.dates || 'Flexible']].map(([k, v]) => (
+            <div key={k} style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: '1px solid var(--cream-mid)', fontFamily: 'var(--sans)', fontSize: 13 }}>
+              <span style={{ color: 'var(--text-light)' }}>{k}</span>
+              <span style={{ color: 'var(--text)', fontWeight: 500 }}>{v}</span>
+            </div>
+          ))}
         </div>
+        <p style={{ fontFamily: 'var(--sans)', fontSize: 13, color: 'var(--text-light)', marginTop: 28 }}>
+          Prefer to talk now? <a href="tel:8885848232" style={{ color: 'var(--green)', fontWeight: 600, textDecoration: 'none' }}>Call 888-584-8232</a>
+        </p>
       </div>
     )
   }
 
-  const inputStyle: React.CSSProperties = {
-    width: '100%', padding: '14px 16px',
-    border: '1px solid var(--color-cream-dark)',
-    background: 'var(--color-white)',
-    fontFamily: 'var(--font-sans)', fontSize: 14,
-    color: 'var(--color-text)', outline: 'none',
-    transition: 'border-color 0.2s',
-  }
-
-  const labelStyle: React.CSSProperties = {
-    display: 'block', fontSize: 11, fontWeight: 600,
-    letterSpacing: '0.12em', textTransform: 'uppercase',
-    color: 'var(--color-text-muted)', marginBottom: 8,
-  }
-
-  const chipStyle = (selected: boolean): React.CSSProperties => ({
-    padding: '10px 18px', border: `1px solid ${selected ? 'var(--color-green)' : 'var(--color-cream-dark)'}`,
-    background: selected ? 'var(--color-green)' : 'var(--color-white)',
-    color: selected ? 'var(--color-cream)' : 'var(--color-text)',
-    fontSize: 13, fontWeight: 500, cursor: 'pointer',
-    transition: 'all 0.15s', fontFamily: 'var(--font-sans)',
-  })
-
   return (
-    <div style={{ maxWidth: 720, margin: '0 auto' }}>
-      {/* Progress bar */}
-      <div style={{ display: 'flex', gap: 4, marginBottom: 48 }}>
-        {([1, 2, 3, 4] as Step[]).map(s => (
-          <div key={s} style={{ flex: 1, height: 3, background: step >= s ? 'var(--color-gold)' : 'var(--color-cream-dark)', transition: 'background 0.3s' }} />
-        ))}
+    <div style={{ maxWidth: 740, margin: '0 auto' }}>
+      {/* Progress */}
+      <div style={{ marginBottom: 48 }}>
+        <div style={{ display: 'flex', gap: 3, marginBottom: 12 }}>
+          {([1,2,3,4] as Step[]).map(s => (
+            <div key={s} style={{ flex: 1, height: 3, background: step >= s ? 'var(--gold)' : 'var(--cream-mid)', transition: 'background 0.35s' }} />
+          ))}
+        </div>
+        <div style={{ fontFamily: 'var(--sans)', fontSize: 11, color: 'var(--text-light)', letterSpacing: '0.08em' }}>
+          Step {step} of 4 — {['What kind of trip?', 'Where & how many?', 'When?', 'Your details'][step - 1]}
+        </div>
       </div>
 
-      {/* STEP 1 — Trip Type */}
+      {/* STEP 1 */}
       {step === 1 && (
         <div>
           <p className="eyebrow" style={{ marginBottom: 12 }}>Step 1 of 4</p>
-          <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 36, color: 'var(--color-dark)', marginBottom: 8 }}>What kind of trip is this?</h2>
-          <p style={{ fontSize: 15, color: 'var(--color-text-muted)', marginBottom: 36 }}>This helps us match you with the right specialist.</p>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginBottom: 48 }}>
+          <h2 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(26px,4vw,40px)', color: 'var(--dark)', marginBottom: 10 }}>What kind of trip is this?</h2>
+          <p style={{ fontFamily: 'var(--sans)', fontSize: 14, color: 'var(--text-mid)', marginBottom: 36, lineHeight: 1.7 }}>
+            This tells us which specialist to connect you with. Different trip types need very different packages.
+          </p>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(220px,1fr))', gap: 10, marginBottom: 48 }}>
             {tripTypes.map(t => (
-              <button key={t} style={chipStyle(form.tripType === t)} onClick={() => set('tripType', t)}>{t}</button>
+              <button key={t.name} style={form.tripType === t.name ? chipActive : chipInactive} onClick={() => set('tripType', t.name)}>
+                <div style={{ fontWeight: 600, marginBottom: 4 }}>{t.name}</div>
+                <div style={{ fontSize: 11, opacity: 0.65 }}>{t.sub}</div>
+              </button>
             ))}
           </div>
-          <button className="btn-primary" onClick={() => form.tripType && setStep(2)} style={{ opacity: form.tripType ? 1 : 0.4 }}>
+          <button className="btn-gold" onClick={() => form.tripType && setStep(2)} style={{ opacity: form.tripType ? 1 : 0.35 }}>
             Continue →
           </button>
         </div>
       )}
 
-      {/* STEP 2 — Destination + Group */}
+      {/* STEP 2 */}
       {step === 2 && (
         <div>
           <p className="eyebrow" style={{ marginBottom: 12 }}>Step 2 of 4</p>
-          <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 36, color: 'var(--color-dark)', marginBottom: 8 }}>Where do you want to play?</h2>
-          <p style={{ fontSize: 15, color: 'var(--color-text-muted)', marginBottom: 36 }}>Pick a destination — or let us recommend one based on your group.</p>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginBottom: 36 }}>
-            {destinations.map(d => (
-              <button key={d} style={chipStyle(form.destination === d)} onClick={() => set('destination', d)}>{d}</button>
-            ))}
+          <h2 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(26px,4vw,40px)', color: 'var(--dark)', marginBottom: 10 }}>Where & how many?</h2>
+          <p style={{ fontFamily: 'var(--sans)', fontSize: 14, color: 'var(--text-mid)', marginBottom: 36, lineHeight: 1.7 }}>
+            Don&apos;t worry if you&apos;re not sure — we can recommend destinations based on your group size and budget.
+          </p>
+          <div style={{ marginBottom: 32 }}>
+            <label style={lStyle}>Destination</label>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+              {destinations.map(d => (
+                <button key={d.name} onClick={() => set('destination', d.name)} style={{
+                  padding: '9px 16px', border: `1px solid ${form.destination === d.name ? 'var(--green)' : 'var(--cream-mid)'}`,
+                  background: form.destination === d.name ? 'var(--green)' : 'var(--white)',
+                  color: form.destination === d.name ? 'var(--cream)' : 'var(--text)',
+                  fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 500, cursor: 'pointer', transition: 'all 0.15s',
+                }}>
+                  {d.name}
+                  {form.destination === d.name && <div style={{ fontSize: 10, opacity: 0.65, marginTop: 2 }}>{d.sub}</div>}
+                </button>
+              ))}
+            </div>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 40 }}>
             <div>
-              <label style={labelStyle}>Group Size</label>
-              <select style={{ ...inputStyle }} value={form.groupSize} onChange={e => set('groupSize', e.target.value)}>
+              <label style={lStyle}>Group Size</label>
+              <select style={iStyle} value={form.groupSize} onChange={e => set('groupSize', e.target.value)}>
                 <option value="">Select...</option>
-                {['2–4 players','5–8 players','9–16 players','17–24 players','25–40 players','40+ players'].map(o => <option key={o}>{o}</option>)}
+                {['2–4 players','5–8 players','9–16 players','17–24 players','25–40 players','41–80 players','80+ players'].map(o => <option key={o}>{o}</option>)}
               </select>
             </div>
             <div>
-              <label style={labelStyle}>Budget Per Person</label>
-              <select style={{ ...inputStyle }} value={form.budget} onChange={e => set('budget', e.target.value)}>
+              <label style={lStyle}>Budget Per Person</label>
+              <select style={iStyle} value={form.budget} onChange={e => set('budget', e.target.value)}>
                 <option value="">Select...</option>
-                {['Under $500','$500–$1,000','$1,000–$2,000','$2,000–$3,500','$3,500–$5,000','$5,000+','Flexible'].map(o => <option key={o}>{o}</option>)}
+                {['Under $500','$500 – $1,000','$1,000 – $2,000','$2,000 – $3,500','$3,500 – $5,000','$5,000+','Flexible / Not Sure'].map(o => <option key={o}>{o}</option>)}
               </select>
             </div>
           </div>
           <div style={{ display: 'flex', gap: 12 }}>
-            <button className="btn-outline" onClick={() => setStep(1)} style={{ color: 'var(--color-text)', borderColor: 'var(--color-cream-dark)' }}>← Back</button>
-            <button className="btn-primary" onClick={() => form.destination && form.groupSize && setStep(3)} style={{ opacity: form.destination && form.groupSize ? 1 : 0.4 }}>Continue →</button>
+            <button onClick={() => setStep(1)} style={{ ...chipInactive, padding: '14px 24px' }}>← Back</button>
+            <button className="btn-gold" onClick={() => form.destination && form.groupSize && setStep(3)} style={{ opacity: form.destination && form.groupSize ? 1 : 0.35 }}>Continue →</button>
           </div>
         </div>
       )}
 
-      {/* STEP 3 — Dates */}
+      {/* STEP 3 */}
       {step === 3 && (
         <div>
           <p className="eyebrow" style={{ marginBottom: 12 }}>Step 3 of 4</p>
-          <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 36, color: 'var(--color-dark)', marginBottom: 8 }}>When are you planning to go?</h2>
-          <p style={{ fontSize: 15, color: 'var(--color-text-muted)', marginBottom: 36 }}>Approximate dates are fine — we&apos;ll work around your schedule.</p>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 28 }}>
+          <h2 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(26px,4vw,40px)', color: 'var(--dark)', marginBottom: 10 }}>When are you planning to go?</h2>
+          <p style={{ fontFamily: 'var(--sans)', fontSize: 14, color: 'var(--text-mid)', marginBottom: 8, lineHeight: 1.7 }}>
+            Approximate is fine. The earlier we know, the better the tee time access we can secure.
+          </p>
+          {form.destination === 'Pebble Beach & Monterey' && (
+            <div className="scarcity-badge" style={{ marginBottom: 24, display: 'inline-flex' }}>
+              <span className="scarcity-dot" />
+              Pebble group tee times often fill 6–8 months out
+            </div>
+          )}
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 24 }}>
             <div>
-              <label style={labelStyle}>Preferred Dates / Month</label>
-              <input style={inputStyle} placeholder="e.g. March 2026 or June 10–14" value={form.dates} onChange={e => set('dates', e.target.value)} />
+              <label style={lStyle}>Preferred Dates / Month</label>
+              <input style={iStyle} placeholder="e.g. October 2025 or June 12–17" value={form.dates} onChange={e => set('dates', e.target.value)} />
             </div>
             <div>
-              <label style={labelStyle}>Date Flexibility</label>
-              <select style={inputStyle} value={form.flexibility} onChange={e => set('flexibility', e.target.value)}>
+              <label style={lStyle}>Date Flexibility</label>
+              <select style={iStyle} value={form.flexibility} onChange={e => set('flexibility', e.target.value)}>
                 <option value="">Select...</option>
-                {['Exact dates only','±3 days','±1 week','Very flexible','Not sure yet'].map(o => <option key={o}>{o}</option>)}
+                {['Exact dates only','Flexible ± 3 days','Flexible ± 1 week','Very flexible','Not sure yet'].map(o => <option key={o}>{o}</option>)}
               </select>
             </div>
           </div>
           <div style={{ marginBottom: 40 }}>
-            <label style={labelStyle}>Anything else we should know?</label>
-            <textarea style={{ ...inputStyle, minHeight: 100, resize: 'vertical' }} placeholder="Special requests, must-play courses, non-golf activities for the group, dietary needs..." value={form.notes} onChange={e => set('notes', e.target.value)} />
+            <label style={lStyle}>Anything Else We Should Know?</label>
+            <textarea style={{ ...iStyle, minHeight: 110, resize: 'vertical' }}
+              placeholder="Must-play courses, non-golf activities for partners, dietary needs, special occasions, any courses you've already played and want to skip..."
+              value={form.notes} onChange={e => set('notes', e.target.value)} />
           </div>
           <div style={{ display: 'flex', gap: 12 }}>
-            <button className="btn-outline" onClick={() => setStep(2)} style={{ color: 'var(--color-text)', borderColor: 'var(--color-cream-dark)' }}>← Back</button>
-            <button className="btn-primary" onClick={() => setStep(4)}>Continue →</button>
+            <button onClick={() => setStep(2)} style={{ ...chipInactive, padding: '14px 24px' }}>← Back</button>
+            <button className="btn-gold" onClick={() => setStep(4)}>Continue →</button>
           </div>
         </div>
       )}
 
-      {/* STEP 4 — Contact */}
+      {/* STEP 4 */}
       {step === 4 && (
         <div>
-          <p className="eyebrow" style={{ marginBottom: 12 }}>Step 4 of 4</p>
-          <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 36, color: 'var(--color-dark)', marginBottom: 8 }}>Almost there — how do we reach you?</h2>
-          <p style={{ fontSize: 15, color: 'var(--color-text-muted)', marginBottom: 36 }}>A golf travel specialist will follow up within 24 hours.</p>
+          <p className="eyebrow" style={{ marginBottom: 12 }}>Step 4 of 4 — Almost Done</p>
+          <h2 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(26px,4vw,40px)', color: 'var(--dark)', marginBottom: 10 }}>How do we reach you?</h2>
+          <p style={{ fontFamily: 'var(--sans)', fontSize: 14, color: 'var(--text-mid)', marginBottom: 36, lineHeight: 1.7 }}>
+            A specialist will follow up within 24 hours with a custom package. No pressure, no commitment — just the best options for your group.
+          </p>
 
-          {/* Summary */}
-          <div style={{ background: 'var(--color-cream)', border: '1px solid var(--color-cream-dark)', padding: '20px 24px', marginBottom: 36 }}>
-            <div className="eyebrow" style={{ marginBottom: 12 }}>Your Trip Summary</div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
-              {[
-                ['Trip Type', form.tripType],
-                ['Destination', form.destination],
-                ['Group Size', form.groupSize],
-                ['Budget / Person', form.budget],
-                ['Dates', form.dates || 'TBD'],
-              ].map(([label, val]) => (
-                <div key={label}>
-                  <span style={{ fontSize: 11, fontWeight: 600, color: 'var(--color-text-muted)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{label}: </span>
-                  <span style={{ fontSize: 13, color: 'var(--color-text)', fontWeight: 500 }}>{val}</span>
+          {/* Trip summary */}
+          <div style={{ background: 'var(--cream)', borderTop: '2px solid var(--gold)', padding: '20px 24px', marginBottom: 36 }}>
+            <div style={{ fontFamily: 'var(--sans)', fontSize: 10, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: 14 }}>Your Trip Request</div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
+              {[['Type', form.tripType], ['Destination', form.destination], ['Group Size', form.groupSize], ['Budget/Person', form.budget], ['Dates', form.dates || 'Flexible']].map(([k, v]) => (
+                <div key={k} style={{ fontFamily: 'var(--sans)', fontSize: 13 }}>
+                  <span style={{ color: 'var(--text-light)', marginRight: 6 }}>{k}:</span>
+                  <span style={{ color: 'var(--text)', fontWeight: 500 }}>{v}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 20 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 36 }}>
             <div>
-              <label style={labelStyle}>First Name *</label>
-              <input style={inputStyle} value={form.firstName} onChange={e => set('firstName', e.target.value)} placeholder="John" />
+              <label style={lStyle}>First Name *</label>
+              <input style={iStyle} value={form.firstName} onChange={e => set('firstName', e.target.value)} placeholder="John" />
             </div>
             <div>
-              <label style={labelStyle}>Last Name *</label>
-              <input style={inputStyle} value={form.lastName} onChange={e => set('lastName', e.target.value)} placeholder="Smith" />
+              <label style={lStyle}>Last Name *</label>
+              <input style={iStyle} value={form.lastName} onChange={e => set('lastName', e.target.value)} placeholder="Smith" />
             </div>
             <div>
-              <label style={labelStyle}>Email Address *</label>
-              <input style={inputStyle} type="email" value={form.email} onChange={e => set('email', e.target.value)} placeholder="john@example.com" />
+              <label style={lStyle}>Email Address *</label>
+              <input style={iStyle} type="email" value={form.email} onChange={e => set('email', e.target.value)} placeholder="john@example.com" />
             </div>
             <div>
-              <label style={labelStyle}>Phone Number</label>
-              <input style={inputStyle} type="tel" value={form.phone} onChange={e => set('phone', e.target.value)} placeholder="(555) 000-0000" />
+              <label style={lStyle}>Phone Number</label>
+              <input style={iStyle} type="tel" value={form.phone} onChange={e => set('phone', e.target.value)} placeholder="(555) 000-0000" />
             </div>
           </div>
 
-          <div style={{ fontSize: 12, color: 'var(--color-text-muted)', marginBottom: 32, lineHeight: 1.6 }}>
-            By submitting this form you agree to our{' '}
-            <a href="/terms-and-conditions/" style={{ color: 'var(--color-green)', textDecoration: 'none' }}>Terms & Conditions</a>{' '}
-            and{' '}
-            <a href="/privacy-policy/" style={{ color: 'var(--color-green)', textDecoration: 'none' }}>Privacy Policy</a>.
-          </div>
+          <p style={{ fontFamily: 'var(--sans)', fontSize: 12, color: 'var(--text-light)', marginBottom: 28, lineHeight: 1.65 }}>
+            By submitting you agree to our{' '}
+            <Link href="/terms-and-conditions/" style={{ color: 'var(--green)', textDecoration: 'none' }}>Terms & Conditions</Link>
+            {' '}and{' '}
+            <Link href="/privacy-policy/" style={{ color: 'var(--green)', textDecoration: 'none' }}>Privacy Policy</Link>.
+            We will never sell your information or spam you.
+          </p>
 
-          <div style={{ display: 'flex', gap: 12 }}>
-            <button className="btn-outline" onClick={() => setStep(3)} style={{ color: 'var(--color-text)', borderColor: 'var(--color-cream-dark)' }}>← Back</button>
-            <button className="btn-primary"
-              onClick={handleSubmit}
-              style={{ opacity: form.firstName && form.lastName && form.email ? 1 : 0.4 }}>
-              Submit My Request ✓
+          <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>
+            <button onClick={() => setStep(3)} style={{ ...chipInactive, padding: '14px 24px' }}>← Back</button>
+            <button className="btn-gold"
+              onClick={() => { if (form.firstName && form.lastName && form.email) setSubmitted(true) }}
+              style={{ opacity: form.firstName && form.lastName && form.email ? 1 : 0.35 }}>
+              Send My Request →
             </button>
+            <div style={{ fontFamily: 'var(--sans)', fontSize: 12, color: 'var(--text-light)' }}>
+              or call <a href="tel:8885848232" style={{ color: 'var(--green)', fontWeight: 600, textDecoration: 'none' }}>888-584-8232</a>
+            </div>
           </div>
         </div>
       )}

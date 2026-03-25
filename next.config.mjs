@@ -1,4 +1,9 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
-
-export default nextConfig;
+const nextConfig = {
+  staticPageGenerationTimeout: 300,
+  experimental: {
+    workerThreads: false,
+    cpus: 1,
+  },
+}
+export default nextConfig

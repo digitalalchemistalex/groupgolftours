@@ -1,55 +1,345 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================================
+   MASTER DESIGN TOKENS
+   ============================================================ */
 :root {
-  --color-dark:        #0d1a0f;
-  --color-green:       #1a3d1f;
-  --color-green-mid:   #2a5c32;
-  --color-green-light: #3d7a47;
-  --color-gold:        #c9a84c;
-  --color-gold-light:  #e4c97e;
-  --color-cream:       #f5f0e8;
-  --color-cream-dark:  #e8e0d0;
-  --color-white:       #ffffff;
-  --color-text:        #1a1a1a;
-  --color-text-muted:  #5a6b5c;
-  --font-serif:  'Cormorant Garamond', Georgia, serif;
-  --font-sans:   'DM Sans', system-ui, sans-serif;
-  --max-width: 1280px;
+  /* Brand */
+  --gold:          #C9A84C;
+  --gold-bright:   #E8C96A;
+  --gold-muted:    #8B6E32;
+  --cream:         #F4EFE4;
+  --cream-dark:    #E2D9C8;
+  --off-white:     #FAF8F4;
+
+  /* Region: Lake Tahoe */
+  --tahoe-dark:    #0B2218;
+  --tahoe-mid:     #163A28;
+  --tahoe-accent:  #7BBFCF;
+  --tahoe-silver:  #C8D8E0;
+  --tahoe-text:    #A8C5BC;
+
+  /* Region: Las Vegas */
+  --vegas-dark:    #080808;
+  --vegas-mid:     #111111;
+  --vegas-accent:  #D4A843;
+  --vegas-ember:   #C45E2A;
+  --vegas-text:    #8A7860;
+
+  /* Region: Monterey */
+  --monterey-dark:   #1C2B35;
+  --monterey-mid:    #253B48;
+  --monterey-accent: #2A6B8A;
+  --monterey-sea:    #A8C5BC;
+  --monterey-text:   #9BB5BF;
+
+  /* Region: SoCal */
+  --socal-dark:    #1A1610;
+  --socal-mid:     #2A2218;
+  --socal-accent:  #C4622D;
+  --socal-citrus:  #E8A830;
+  --socal-text:    #C4A882;
+
+  /* Region: Somersett */
+  --somersett-dark:   #131A0F;
+  --somersett-mid:    #1E2B18;
+  --somersett-accent: #B87333;
+  --somersett-cream:  #E8DCC8;
+  --somersett-text:   #A89878;
+
+  /* Typography */
+  --serif:    'Playfair Display', 'DM Serif Display', Georgia, serif;
+  --serif-alt: 'DM Serif Display', Georgia, serif;
+  --sans:     'Outfit', system-ui, sans-serif;
+
+  /* Layout */
+  --max:      1320px;
+  --pad:      clamp(20px, 5vw, 72px);
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
 body {
-  font-family: var(--font-sans);
-  font-size: 16px;
-  color: var(--color-text);
-  background: var(--color-white);
+  font-family: var(--sans);
+  color: #1a1a1a;
+  background: var(--off-white);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-.serif { font-family: var(--font-serif); }
-h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 500; line-height: 1.15; letter-spacing: -0.01em; }
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+.serif { font-family: var(--serif) !important; }
+.serif-alt { font-family: var(--serif-alt) !important; }
 
-.eyebrow { font-family: var(--font-sans); font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-gold); }
-.eyebrow-light { font-family: var(--font-sans); font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-gold-light); }
+h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.1; }
+h4, h5, h6 { font-family: var(--sans); font-weight: 600; }
 
-.btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; background: var(--color-gold); color: var(--color-dark); font-family: var(--font-sans); font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; border: none; cursor: pointer; transition: background 0.2s, transform 0.15s; }
-.btn-primary:hover { background: var(--color-gold-light); transform: translateY(-1px); }
+.display {
+  font-family: var(--serif);
+  font-size: clamp(52px, 8vw, 110px);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+}
 
-.btn-outline { display: inline-flex; align-items: center; gap: 8px; padding: 13px 30px; background: transparent; color: var(--color-cream); font-family: var(--font-sans); font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; border: 1px solid rgba(255,255,255,0.4); cursor: pointer; transition: border-color 0.2s, background 0.2s; }
-.btn-outline:hover { border-color: var(--color-gold); color: var(--color-gold); }
+.display-md {
+  font-family: var(--serif);
+  font-size: clamp(36px, 5vw, 68px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
 
-.btn-dark { display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; background: var(--color-dark); color: var(--color-cream); font-family: var(--font-sans); font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; border: none; cursor: pointer; transition: background 0.2s; }
-.btn-dark:hover { background: var(--color-green); }
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
 
-.divider-gold { width: 48px; height: 2px; background: var(--color-gold); margin: 16px 0 24px; }
-.divider-gold-center { width: 48px; height: 2px; background: var(--color-gold); margin: 16px auto 24px; }
+.eyebrow-light {
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+}
 
-.section-wrap { max-width: var(--max-width); margin: 0 auto; padding: 0 clamp(20px, 4vw, 60px); }
+/* ============================================================
+   LAYOUT UTILITIES
+   ============================================================ */
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--pad);
+}
 
-.fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.fade-up.visible { opacity: 1; transform: translateY(0); }
+.section { padding: clamp(72px, 10vw, 140px) 0; }
+.section-sm { padding: clamp(48px, 6vw, 80px) 0; }
+
+/* ============================================================
+   GOLD RULES
+   ============================================================ */
+.rule {
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+  margin: 18px 0 22px;
+}
+.rule-center { margin: 18px auto 22px; }
+.rule-lg { width: 80px; height: 2px; }
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 36px;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-gold {
+  background: var(--gold);
+  color: #0a0a0a;
+}
+.btn-gold:hover { background: var(--gold-bright); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.3); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--cream);
+  border: 1px solid rgba(255,255,255,0.25);
+}
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+.btn-dark {
+  background: rgba(255,255,255,0.06);
+  color: var(--cream);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+.btn-dark:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.25); }
+
+/* ============================================================
+   SCARCITY / URGENCY BAR
+   ============================================================ */
+.urgency-bar {
+  background: linear-gradient(90deg, var(--gold-muted) 0%, var(--gold) 50%, var(--gold-muted) 100%);
+  padding: 10px var(--pad);
+  text-align: center;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #0a0a0a;
+  position: relative;
+  z-index: 200;
+}
+
+/* ============================================================
+   REGION THEMING — applied as data attributes
+   ============================================================ */
+[data-region="tahoe"] { --region-dark: var(--tahoe-dark); --region-mid: var(--tahoe-mid); --region-accent: var(--tahoe-accent); --region-text: var(--tahoe-text); }
+[data-region="vegas"] { --region-dark: var(--vegas-dark); --region-mid: var(--vegas-mid); --region-accent: var(--vegas-accent); --region-text: var(--vegas-text); }
+[data-region="monterey"] { --region-dark: var(--monterey-dark); --region-mid: var(--monterey-mid); --region-accent: var(--monterey-accent); --region-text: var(--monterey-text); }
+[data-region="socal"] { --region-dark: var(--socal-dark); --region-mid: var(--socal-mid); --region-accent: var(--socal-accent); --region-text: var(--socal-text); }
+[data-region="somersett"] { --region-dark: var(--somersett-dark); --region-mid: var(--somersett-mid); --region-accent: var(--somersett-accent); --region-text: var(--somersett-text); }
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slideRight {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+@keyframes pulse-gold {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.anim-fade-up { animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.anim-fade-up-d1 { animation-delay: 0.15s; }
+.anim-fade-up-d2 { animation-delay: 0.3s; }
+.anim-fade-up-d3 { animation-delay: 0.45s; }
+.anim-fade-up-d4 { animation-delay: 0.6s; }
+
+/* ============================================================
+   GRAIN TEXTURE OVERLAY
+   ============================================================ */
+.grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: overlay;
+}
+
+/* ============================================================
+   PRICE TAG COMPONENT
+   ============================================================ */
+.price-tag {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 20px;
+  background: rgba(0,0,0,0.4);
+  border: 1px solid rgba(201,168,76,0.3);
+  backdrop-filter: blur(12px);
+  text-align: center;
+}
+
+/* ============================================================
+   SCARCITY CHIPS
+   ============================================================ */
+.scarcity-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: rgba(196,94,42,0.15);
+  border: 1px solid rgba(196,94,42,0.4);
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #E8855A;
+}
+
+.availability-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: rgba(122,191,207,0.12);
+  border: 1px solid rgba(122,191,207,0.3);
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #7BBFCF;
+}
+
+/* ============================================================
+   BACKWARD COMPAT CSS VARS (legacy stub pages)
+   ============================================================ */
+:root {
+  --color-dark:       #060d08;
+  --color-white:      #ffffff;
+  --color-cream:      var(--cream);
+  --color-text:       #1a1a1a;
+  --color-text-muted: rgba(26,26,26,0.6);
+  --font-serif:       var(--serif);
+}
+
+/* Legacy button classes */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 36px;
+  background: var(--gold);
+  color: #0a0a0a;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.22s ease;
+}
+.btn-primary:hover { background: var(--gold-bright); }
+
+.section-wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--pad);
+}
+.divider-gold-center {
+  width: 40px;
+  height: 2px;
+  background: var(--gold);
+  margin: 16px auto 22px;
+}
+.eyebrow-light {
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+}
