@@ -345,26 +345,48 @@ export default function HeroSlider() {
             </div>
 
             {/* Season strip */}
-            <div className="hs-intel" style={{ padding:'10px 14px', marginBottom:2 }}>
-              <div style={{ fontFamily:'var(--sans)', fontSize:8, fontWeight:700, letterSpacing:'.16em', textTransform:'uppercase', color:'rgba(255,255,255,.4)', marginBottom:8 }}>Best Season</div>
-              <div style={{ display:'flex', gap:3, alignItems:'center' }}>
-                {s.season.map((v, i) => (
-                  <div
-                    key={i}
-                    className={`hs-season-dot${i===NOW_MONTH?' now':''}`}
-                    title={MONTHS[i]}
-                    style={{
-                      width:12, height: Math.max(4, v * 22),
-                      borderRadius:2,
-                      background: v >= 0.8 ? s.accent : v >= 0.5 ? `rgba(${s.accent.replace('#','').match(/.{2}/g)!.map((h:string)=>parseInt(h,16)).join(',')},0.45)` : 'rgba(255,255,255,.15)',
-                      flexShrink:0,
-                    }}
-                  />
-                ))}
+            <div className="hs-intel" style={{ padding:'12px 14px', marginBottom:2 }}>
+              <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:10 }}>
+                <div style={{ fontFamily:'var(--sans)', fontSize:8, fontWeight:700, letterSpacing:'.16em', textTransform:'uppercase', color:'rgba(255,255,255,.4)' }}>Best Season</div>
+                <div style={{ fontFamily:'var(--sans)', fontSize:9, fontWeight:700, color:s.accent }}>
+                  {['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][NOW_MONTH]} now
+                </div>
               </div>
-              <div style={{ display:'flex', justifyContent:'space-between', marginTop:4 }}>
-                {['J','F','M','A','M','J','J','A','S','O','N','D'].map((m,i) => (
-                  <span key={i} style={{ fontFamily:'var(--sans)', fontSize:7, color: i===NOW_MONTH ? s.accent : 'rgba(255,255,255,.25)', fontWeight: i===NOW_MONTH ? 700 : 400 }}>{m}</span>
+              {/* Bar chart — fixed height container so bars grow upward */}
+              <div style={{ display:'flex', alignItems:'flex-end', gap:2, height:28, marginBottom:6 }}>
+                {s.season.map((v, i) => {
+                  const hex = s.accent.replace('#','')
+                  const [r,g,b] = [0,2,4].map(o => parseInt(hex.slice(o,o+2),16))
+                  const isNow = i === NOW_MONTH
+                  const isPeak = v >= 0.8
+                  const isMid  = v >= 0.45
+                  return (
+                    <div key={i} style={{ flex:1, display:'flex', flexDirection:'column', alignItems:'center', gap:2 }}>
+                      <div style={{
+                        width:'100%',
+                        height: Math.round(v * 24) + 4,
+                        borderRadius:2,
+                        background: isPeak ? s.accent : isMid ? `rgba(${r},${g},${b},0.5)` : 'rgba(255,255,255,.18)',
+                        outline: isNow ? `2px solid #fff` : 'none',
+                        outlineOffset: isNow ? 1 : 0,
+                        transition:'height .3s',
+                      }} />
+                    </div>
+                  )
+                })}
+              </div>
+              {/* Month labels — always visible */}
+              <div style={{ display:'flex', gap:2 }}>
+                {['J','F','M','A','M','J','J','A','S','O','N','D'].map((m, i) => (
+                  <div key={i} style={{ flex:1, textAlign:'center' }}>
+                    <span style={{
+                      fontFamily:'var(--sans)',
+                      fontSize:8,
+                      fontWeight: i === NOW_MONTH ? 800 : 500,
+                      color: i === NOW_MONTH ? s.accent : s.season[i] >= 0.8 ? 'rgba(255,255,255,.7)' : 'rgba(255,255,255,.35)',
+                      display:'block',
+                    }}>{m}</span>
+                  </div>
                 ))}
               </div>
             </div>
