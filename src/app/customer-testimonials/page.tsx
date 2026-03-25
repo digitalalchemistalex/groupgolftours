@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Customer Testimonials | What Groups Say | Group Golf Tours',
-  description: 'Read what golfers say about Group Golf Tours. 10,000+ outings over 20+ years — hear from the groups we\'ve taken to Pebble Beach, Shadow Creek, Edgewood Tahoe, and beyond.',
+  description: "Read what golfers say about Group Golf Tours. 10,000+ outings over 20+ years — hear from the groups we've taken to Pebble Beach, Shadow Creek, Edgewood Tahoe, and beyond.",
   alternates: { canonical: 'https://www.groupgolftours.com/customer-testimonials/' },
 }
 
@@ -67,7 +67,7 @@ export default function Testimonials() {
           <div style={{ background: 'rgba(200,121,65,0.08)', border: '1px solid rgba(200,121,65,0.2)', padding: '24px 28px', marginBottom: 48 }}>
             <div style={{ fontFamily: 'var(--sans)', fontSize: 12, fontWeight: 600, color: 'var(--copper)', marginBottom: 8 }}>A note on reviews</div>
             <p style={{ fontSize: 13, lineHeight: 1.75, color: 'rgba(26,20,8,0.55)' }}>
-              The reviews above are from verified Google reviews at Somersett Golf & Country Club — one of our signature Reno partner courses. Our full testimonial library spans 10,000+ outings across all destinations. We\'re actively collecting more. If you\'ve traveled with us, we'd love to hear from you at <a href="mailto:customerservice@zoomaway.com" style={{ color: 'var(--copper)', fontWeight: 600 }}>customerservice@zoomaway.com</a>.
+              The reviews above are from verified Google reviews at Somersett Golf & Country Club — one of our signature Reno partner courses. Our full testimonial library spans 10,000+ outings across all destinations. We\"re actively collecting more. If you've traveled with us, we"d love to hear from you at <a href="mailto:customerservice@zoomaway.com" style={{ color: 'var(--copper)', fontWeight: 600 }}>customerservice@zoomaway.com</a>.
             </p>
           </div>
 
