@@ -297,20 +297,20 @@ export default function HeroSlider() {
           <div style={{ position:'absolute', inset:0, zIndex:3, pointerEvents:'none', background:'linear-gradient(to bottom,rgba(0,0,0,.18) 0%,transparent 35%,rgba(0,0,0,.55) 100%)' }} />
 
           {/* ── INTEL CARD ── */}
-          <div className={mounted?'hs-in':''} key={`intel-${active}`} style={{ position:'absolute', right:20, top:'50%', transform:'translateY(-50%)', zIndex:5, width:'min(210px, calc(100% - 24px))', animationDelay:'.45s' }}>
+          <div className={mounted?'hs-in':''} key={`intel-${active}`} style={{ position:'absolute', right:20, top:16, bottom:100, zIndex:5, width:'min(210px, calc(100% - 24px))', animationDelay:'.45s', display:'flex', flexDirection:'column', gap:2, overflow:'hidden' }}>
 
             {/* Price block */}
-            <div className="hs-intel" style={{ borderTop:`3px solid ${s.accent}`, padding:'14px 16px 12px', marginBottom:2 }}>
+            <div className="hs-intel" style={{ borderTop:`3px solid ${s.accent}`, padding:'12px 14px 10px', flexShrink:0 }}>
               <div style={{ fontFamily:'var(--sans)', fontSize:9, fontWeight:700, letterSpacing:'.2em', textTransform:'uppercase', color:s.accent, marginBottom:8 }}>{s.tag}</div>
-              <div style={{ fontFamily:'var(--serif)', fontSize:40, fontWeight:300, color:'#fff', lineHeight:1, marginBottom:4 }}>{s.facts[0].n}</div>
+              <div style={{ fontFamily:'var(--serif)', fontSize:34, fontWeight:300, color:'#fff', lineHeight:1, marginBottom:3 }}>{s.facts[0].n}</div>
               <div style={{ fontFamily:'var(--sans)', fontSize:10, color:'rgba(255,255,255,.6)', marginBottom:14, lineHeight:1.4 }}>{s.facts[0].l}</div>
 
               {/* Sample package */}
-              <div style={{ background:'rgba(255,255,255,.06)', border:`1px solid rgba(255,255,255,.1)`, padding:'10px 12px', marginBottom:12 }}>
+              <div style={{ background:'rgba(255,255,255,.06)', border:`1px solid rgba(255,255,255,.1)`, padding:'8px 10px', marginBottom:8 }}>
                 <div style={{ fontFamily:'var(--sans)', fontSize:8, fontWeight:700, letterSpacing:'.16em', textTransform:'uppercase', color:'rgba(255,255,255,.4)', marginBottom:5 }}>{s.package.label}</div>
                 <div style={{ display:'flex', justifyContent:'space-between', alignItems:'baseline' }}>
                   <div>
-                    <span style={{ fontFamily:'var(--serif)', fontSize:22, color:s.accent, fontWeight:300 }}>{s.package.price}</span>
+                    <span style={{ fontFamily:'var(--serif)', fontSize:18, color:s.accent, fontWeight:300 }}>{s.package.price}</span>
                     <div style={{ fontFamily:'var(--sans)', fontSize:9, color:'rgba(255,255,255,.4)', marginTop:2 }}>{s.package.note}</div>
                   </div>
                   <div style={{ textAlign:'right' }}>
@@ -345,7 +345,7 @@ export default function HeroSlider() {
             </div>
 
             {/* Season strip */}
-            <div className="hs-intel" style={{ padding:'12px 14px', marginBottom:2 }}>
+            <div className="hs-intel" style={{ padding:'10px 12px', flexShrink:0 }}>
               {/* Header */}
               <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:8 }}>
                 <span style={{ fontFamily:'var(--sans)', fontSize:8, fontWeight:700, letterSpacing:'.16em', textTransform:'uppercase', color:'rgba(255,255,255,.4)' }}>Best Season</span>
@@ -354,14 +354,14 @@ export default function HeroSlider() {
                 </span>
               </div>
               {/* ROW 1: bars — fixed 32px height, bars anchor to bottom via flex align-items:flex-end */}
-              <div style={{ display:'grid', gridTemplateColumns:'repeat(12,1fr)', gap:2, height:32, alignItems:'flex-end', marginBottom:4 }}>
+              <div style={{ display:'grid', gridTemplateColumns:'repeat(12,1fr)', gap:2, height:24, alignItems:'flex-end', marginBottom:3 }}>
                 {s.season.map((v, i) => {
                   const hex = s.accent.replace('#','')
                   const [r,g,b] = [0,2,4].map(o => parseInt(hex.slice(o,o+2),16))
                   return (
                     <div key={i} style={{
                       width:'100%',
-                      height: Math.round(v * 28) + 4,
+                      height: Math.round(v * 20) + 3,
                       borderRadius:2,
                       background: v >= 0.8 ? s.accent : v >= 0.45 ? `rgba(${r},${g},${b},.5)` : 'rgba(255,255,255,.18)',
                       boxShadow: i === NOW_MONTH ? '0 0 0 1.5px #fff' : 'none',
@@ -370,9 +370,9 @@ export default function HeroSlider() {
                 })}
               </div>
               {/* ROW 2: month labels — fixed 12px height, always visible, never clipped */}
-              <div style={{ display:'grid', gridTemplateColumns:'repeat(12,1fr)', gap:2, height:12 }}>
+              <div style={{ display:'grid', gridTemplateColumns:'repeat(12,1fr)', gap:2, height:11 }}>
                 {['J','F','M','A','M','J','J','A','S','O','N','D'].map((m, i) => (
-                  <div key={i} style={{ display:'flex', alignItems:'center', justifyContent:'center', height:12 }}>
+                  <div key={i} style={{ display:'flex', alignItems:'center', justifyContent:'center', height:11 }}>
                     <span style={{
                       fontFamily:'var(--sans)', fontSize:8, lineHeight:1, display:'block',
                       fontWeight: i === NOW_MONTH ? 800 : 400,
@@ -387,7 +387,7 @@ export default function HeroSlider() {
             <div className="hs-intel" style={{ padding:'10px 14px' }}>
               <div style={{ fontFamily:'var(--sans)', fontSize:8, fontWeight:700, letterSpacing:'.16em', textTransform:'uppercase', color:'rgba(255,255,255,.4)', marginBottom:8 }}>Courses We Book</div>
               {s.courses.map((c,i) => (
-                <div key={c} className="hs-course">
+                <div key={c} className="hs-course" style={{ padding:'4px 0' }}>
                   <div style={{ width:5, height:5, borderRadius:'50%', background: i===0 ? s.accent : 'rgba(255,255,255,.25)', flexShrink:0 }} />
                   <span style={{ fontFamily:'var(--sans)', fontSize:10, color: i===0 ? 'rgba(255,255,255,.85)' : 'rgba(255,255,255,.5)', fontWeight: i===0 ? 600 : 400 }}>{c}</span>
                 </div>
