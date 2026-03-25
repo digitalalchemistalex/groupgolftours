@@ -240,68 +240,345 @@ export default function HomePage() {
       </div>
 
       {/* ══════════════════════════════════════════════════
-          §3  FIVE REGIONS — Each card its own saturated
-              world. Desktop editorial. Mobile scroll.
+          §3  FIVE REGIONS — Five completely different
+              visual identities. No shared template.
       ══════════════════════════════════════════════════ */}
       <section className="grain" style={{ background:'#0A0C0A', paddingTop:'clamp(72px,9vw,120px)' }}>
         <div className="wrap">
-          <div className="region-section-header" style={{ display:'flex', alignItems:'flex-end', justifyContent:'space-between', flexWrap:'wrap', gap:20, marginBottom:44 }}>
+          <div style={{ display:'flex', alignItems:'flex-end', justifyContent:'space-between', flexWrap:'wrap', gap:20, marginBottom:44 }}>
             <div>
               <span style={{ fontFamily:'var(--sans)', fontSize:9, fontWeight:700, letterSpacing:'0.28em', textTransform:'uppercase', color:'var(--copper)' }}>Where We Play</span>
-              <div style={{ width:42, height:1, background:'var(--copper)', margin:'14px 0 18px', animation:'sweepRight 0.8s 0.2s both' }} />
+              <div style={{ width:42, height:1, background:'var(--copper)', margin:'14px 0 18px' }} />
               <h2 style={{ fontFamily:'var(--serif)', fontSize:'clamp(32px,5.5vw,66px)', fontWeight:300, color:'var(--cream)', lineHeight:1.0, letterSpacing:'-0.02em', margin:0 }}>
                 Five Regions.<br />
                 <em style={{ fontStyle:'italic', color:'rgba(245,237,216,0.36)' }}>Five Distinct Worlds.</em>
               </h2>
             </div>
-            <Link href="/destinations/" style={{ fontFamily:'var(--sans)', fontSize:9, fontWeight:700, letterSpacing:'0.22em', textTransform:'uppercase', color:'var(--copper)', textDecoration:'none', opacity:0.7, whiteSpace:'nowrap' }}>
-              All destinations →
-            </Link>
+            <Link href="/destinations/" style={{ fontFamily:'var(--sans)', fontSize:9, fontWeight:700, letterSpacing:'0.22em', textTransform:'uppercase', color:'var(--copper)', textDecoration:'none', opacity:0.7, whiteSpace:'nowrap' }}>All destinations →</Link>
           </div>
         </div>
 
-        {/* DESKTOP EDITORIAL GRID */}
-        <div className="desk-only" style={{ display:'grid', gridTemplateColumns:'1.65fr 1fr', gridTemplateRows:'520px 270px', gap:8, padding:'0 8px 8px' }}>
-          <RCard r={regions[0]} size="hero" />
+        {/* ── DESKTOP: 5 unique cards in asymmetric grid ── */}
+        <div className="desk-only" style={{ display:'grid', gridTemplateColumns:'1.65fr 1fr', gridTemplateRows:'540px 300px', gap:8, padding:'0 8px 8px' }}>
+
+          {/* ─── CARD 1: PEBBLE BEACH ─────────────────────
+              Luxury magazine cover. Giant price dominates.
+              Diagonal image split. Condé Nast Traveler.
+          ─────────────────────────────────────────────── */}
+          <Link href="/portfolio-item/monterey-and-pebble-beach/" style={{ textDecoration:'none', position:'relative', display:'block', overflow:'hidden', background:'#0D2A34', height:'100%' }}>
+            {/* Full bleed photo — top 60% */}
+            <div style={{ position:'absolute', top:0, left:0, right:0, height:'62%', backgroundImage:'url(https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=1400&q=92)', backgroundSize:'cover', backgroundPosition:'center 28%' }}>
+              <div style={{ position:'absolute', inset:0, background:'linear-gradient(to bottom, rgba(13,42,52,0.1) 0%, rgba(13,42,52,0.0) 50%, rgba(13,42,52,0.7) 85%, #0D2A34 100%)' }} />
+            </div>
+            {/* Diagonal cut separator */}
+            <div style={{ position:'absolute', top:'55%', left:0, right:0, height:80, background:'linear-gradient(172deg, transparent 49%, #0D2A34 50%)' }} />
+            {/* Bottom panel — dark teal with content */}
+            <div style={{ position:'absolute', bottom:0, left:0, right:0, height:'48%', background:'#0D2A34', padding:'0 36px 30px' }}>
+              {/* Giant price — THE hero element */}
+              <div style={{ fontFamily:'var(--serif)', fontSize:'clamp(72px,8vw,108px)', fontWeight:300, color:'#5ED8C8', lineHeight:0.88, letterSpacing:'-0.04em', marginBottom:0, marginTop:-14, textShadow:'0 0 60px rgba(94,216,200,0.25)' }}>
+                $675
+              </div>
+              <div style={{ display:'flex', alignItems:'flex-end', justifyContent:'space-between', marginTop:8 }}>
+                <div>
+                  <div style={{ fontFamily:'var(--sans)', fontSize:10, fontWeight:700, letterSpacing:'0.22em', textTransform:'uppercase', color:'rgba(94,216,200,0.65)', marginBottom:6 }}>per round · Pebble Beach Golf Links</div>
+                  <div style={{ fontFamily:'var(--serif)', fontSize:'clamp(18px,2vw,26px)', fontWeight:300, color:'var(--cream)', letterSpacing:'-0.01em', lineHeight:1.15 }}>Monterey &amp;<br/>Pebble Beach</div>
+                </div>
+                <div style={{ textAlign:'right', paddingBottom:2 }}>
+                  <div style={{ fontFamily:'var(--sans)', fontSize:8, fontWeight:700, letterSpacing:'0.18em', textTransform:'uppercase', color:'rgba(94,216,200,0.5)', marginBottom:4 }}>6× US Open host</div>
+                  <div style={{ fontFamily:'var(--sans)', fontSize:8, letterSpacing:'0.14em', textTransform:'uppercase', color:'rgba(94,216,200,0.35)' }}>Book 12–18 months out</div>
+                  <div style={{ marginTop:12, width:36, height:36, borderRadius:'50%', border:'1px solid rgba(94,216,200,0.4)', display:'flex', alignItems:'center', justifyContent:'center', marginLeft:'auto', color:'#5ED8C8', fontSize:14 }}>→</div>
+                </div>
+              </div>
+            </div>
+            {/* Top-left tag */}
+            <div style={{ position:'absolute', top:20, left:20, background:'rgba(13,42,52,0.8)', backdropFilter:'blur(8px)', padding:'6px 14px', border:'1px solid rgba(94,216,200,0.25)' }}>
+              <span style={{ fontFamily:'var(--sans)', fontSize:8, fontWeight:700, letterSpacing:'0.22em', textTransform:'uppercase', color:'#5ED8C8' }}>California Coast</span>
+            </div>
+          </Link>
+
+          {/* Right column: Tahoe + Vegas stacked */}
           <div style={{ display:'grid', gridTemplateRows:'1fr 1fr', gap:8 }}>
-            <RCard r={regions[1]} size="half" />
-            <RCard r={regions[2]} size="half" />
+
+            {/* ─── CARD 2: LAKE TAHOE ───────────────────────
+                Alpine topographic. SVG contour lines.
+                Deep indigo + glacial blue. Centered layout.
+                Feels like an outdoor gear brand lookbook.
+            ─────────────────────────────────────────────── */}
+            <Link href="/portfolio-item/lake-tahoe-and-northern-nevada/" style={{ textDecoration:'none', position:'relative', display:'block', overflow:'hidden', background:'#0E1830' }}>
+              {/* Photo at low opacity */}
+              <div style={{ position:'absolute', inset:0, backgroundImage:'url(https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=900&q=85)', backgroundSize:'cover', backgroundPosition:'center 35%', opacity:0.22 }} />
+              {/* Topographic SVG overlay */}
+              <svg style={{ position:'absolute', inset:0, width:'100%', height:'100%', opacity:0.18 }} viewBox="0 0 400 270" preserveAspectRatio="xMidYMid slice">
+                {[20,45,72,100,130,162,196,232,268].map((r2,i) => (
+                  <ellipse key={i} cx="200" cy="135" rx={r2*1.6} ry={r2} fill="none" stroke="#80C8F0" strokeWidth="0.8"/>
+                ))}
+                {[200,230,260].map((r2,i) => (
+                  <ellipse key={`s${i}`} cx="310" cy="80" rx={r2*0.4} ry={r2*0.25} fill="none" stroke="#80C8F0" strokeWidth="0.6"/>
+                ))}
+              </svg>
+              {/* Indigo gradient wash */}
+              <div style={{ position:'absolute', inset:0, background:'linear-gradient(135deg, rgba(14,24,48,0.85) 0%, rgba(26,32,72,0.6) 50%, rgba(14,24,48,0.9) 100%)' }} />
+              {/* Centered content */}
+              <div style={{ position:'absolute', inset:0, display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', padding:'20px 24px', textAlign:'center' }}>
+                <div style={{ fontFamily:'var(--sans)', fontSize:8, fontWeight:700, letterSpacing:'0.28em', textTransform:'uppercase', color:'rgba(128,200,240,0.6)', marginBottom:10 }}>Sierra Nevada</div>
+                {/* Elevation badge — rotated */}
+                <div style={{ transform:'rotate(-3deg)', border:'1px solid rgba(128,200,240,0.4)', padding:'8px 20px', marginBottom:12, display:'inline-block' }}>
+                  <span style={{ fontFamily:'var(--sans)', fontSize:11, fontWeight:700, letterSpacing:'0.2em', color:'#80C8F0' }}>6,200 FT</span>
+                </div>
+                <div style={{ fontFamily:'var(--serif)', fontSize:'clamp(18px,2.2vw,26px)', fontWeight:300, color:'var(--cream)', lineHeight:1.1, letterSpacing:'-0.02em', marginBottom:8 }}>
+                  Lake Tahoe &amp;<br/>Northern Nevada
+                </div>
+                <div style={{ fontFamily:'var(--sans)', fontSize:9, color:'rgba(128,200,240,0.5)', letterSpacing:'0.1em', marginBottom:14 }}>Ball flies 10% farther at altitude</div>
+                <div style={{ display:'flex', alignItems:'baseline', gap:4, justifyContent:'center' }}>
+                  <span style={{ fontFamily:'var(--serif)', fontSize:34, color:'#80C8F0', lineHeight:1, textShadow:'0 0 30px rgba(128,200,240,0.3)' }}>$275</span>
+                  <span style={{ fontSize:10, color:'rgba(128,200,240,0.45)' }}>/person · reno from</span>
+                </div>
+              </div>
+            </Link>
+
+            {/* ─── CARD 3: LAS VEGAS ────────────────────────
+                Casino / neon energy. Hard edges. No soft.
+                The price in a circle like a roulette chip.
+                SHADOW CREEK in marquee tracking. Ember red.
+            ─────────────────────────────────────────────── */}
+            <Link href="/portfolio-item/las-vegas-and-southern-nevada/" style={{ textDecoration:'none', position:'relative', display:'block', overflow:'hidden', background:'#0A0600' }}>
+              {/* Very dark photo */}
+              <div style={{ position:'absolute', inset:0, backgroundImage:'url(https://images.unsplash.com/photo-1605833556294-ea5c7a74f57d?w=900&q=85)', backgroundSize:'cover', backgroundPosition:'center', opacity:0.15 }} />
+              {/* Hard-edge gradient */}
+              <div style={{ position:'absolute', inset:0, background:'linear-gradient(145deg, #0A0600 0%, #1A0800 60%, #0A0400 100%)' }} />
+              {/* Roulette circle price */}
+              <div style={{ position:'absolute', top:'50%', right:24, transform:'translateY(-50%)', width:88, height:88, borderRadius:'50%', border:'1.5px solid rgba(248,192,48,0.5)', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', animation:'pulseGlow 3s ease-in-out infinite' }}>
+                <div style={{ fontFamily:'var(--serif)', fontSize:22, color:'#F8C030', lineHeight:1, fontWeight:300 }}>$1,250</div>
+                <div style={{ fontSize:7, letterSpacing:'0.12em', color:'rgba(248,192,48,0.5)', textTransform:'uppercase', marginTop:3 }}>per round</div>
+              </div>
+              <div style={{ position:'absolute', inset:0, padding:'18px 20px', display:'flex', flexDirection:'column', justifyContent:'center' }}>
+                {/* Marquee-style tracked title */}
+                <div style={{ fontFamily:'var(--sans)', fontSize:8, fontWeight:700, letterSpacing:'0.38em', textTransform:'uppercase', color:'rgba(248,192,48,0.6)', marginBottom:10 }}>SHADOW CREEK</div>
+                <div style={{ fontFamily:'var(--serif)', fontSize:'clamp(16px,1.8vw,22px)', fontWeight:300, color:'var(--cream)', lineHeight:1.15, letterSpacing:'-0.01em', maxWidth:160, marginBottom:8 }}>
+                  Las Vegas &amp;<br/>Southern Nevada
+                </div>
+                <div style={{ width:24, height:1, background:'rgba(248,192,48,0.4)', marginBottom:8 }} />
+                <div style={{ fontFamily:'var(--sans)', fontSize:8, letterSpacing:'0.12em', textTransform:'uppercase', color:'rgba(248,192,48,0.4)' }}>Limo + caddie · MGM guests only</div>
+              </div>
+              {/* Ember red corner accent */}
+              <div style={{ position:'absolute', top:0, right:0, width:0, height:0, borderStyle:'solid', borderWidth:'0 42px 42px 0', borderColor:`transparent #E84040 transparent transparent`, opacity:0.7 }} />
+            </Link>
           </div>
+
+          {/* Bottom row: SoCal + Somersett + CTA */}
           <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:8 }}>
-            <RCard r={regions[3]} size="sm" />
-            <RCard r={regions[4]} size="sm" />
+
+            {/* ─── CARD 4: SOUTHERN CALIFORNIA ─────────────
+                Vintage travel poster. Retro art deco.
+                Radiating sun lines SVG. Terracotta/citrus.
+                1940s Pacific Coast poster aesthetic.
+            ─────────────────────────────────────────────── */}
+            <Link href="/portfolio-item/monterey-and-pebble-beach-2/" style={{ textDecoration:'none', position:'relative', display:'block', overflow:'hidden', background:'#5A1A08' }}>
+              {/* Vintage poster gradient wash */}
+              <div style={{ position:'absolute', inset:0, background:'linear-gradient(160deg, #7A2410 0%, #3A0E04 55%, #1A0800 100%)' }} />
+              {/* Radiating sun lines SVG */}
+              <svg style={{ position:'absolute', top:'-10%', right:'-5%', width:'70%', height:'120%', opacity:0.12 }} viewBox="0 0 200 300">
+                {Array.from({length:18}, (_,i) => {
+                  const angle = (i/18)*360
+                  const rad = angle * Math.PI/180
+                  return <line key={i} x1="170" y1="100" x2={170+Math.cos(rad)*250} y2={100+Math.sin(rad)*250} stroke="#F5C030" strokeWidth="1.5"/>
+                })}
+                <circle cx="170" cy="100" r="22" fill="none" stroke="#F5C030" strokeWidth="1.5"/>
+              </svg>
+              {/* Photo low opacity */}
+              <div style={{ position:'absolute', inset:0, backgroundImage:'url(https://images.unsplash.com/photo-1559339352-11d035aa65de?w=900&q=85)', backgroundSize:'cover', backgroundPosition:'center 30%', opacity:0.2, mixBlendMode:'luminosity' }} />
+              {/* Content */}
+              <div style={{ position:'absolute', inset:0, padding:'20px 22px', display:'flex', flexDirection:'column', justifyContent:'space-between' }}>
+                <div>
+                  <div style={{ fontFamily:'var(--sans)', fontSize:7, fontWeight:700, letterSpacing:'0.32em', textTransform:'uppercase', color:'rgba(245,192,48,0.7)', marginBottom:8 }}>Year-Round Golf</div>
+                  <div style={{ fontFamily:'var(--serif)', fontSize:'clamp(17px,1.8vw,22px)', fontWeight:400, color:'#F5EDD8', lineHeight:1.1, letterSpacing:'0.01em' }}>
+                    Southern<br/>California
+                  </div>
+                </div>
+                <div>
+                  {/* Retro divider wave */}
+                  <svg viewBox="0 0 120 12" style={{ width:80, marginBottom:10, opacity:0.45 }}>
+                    <path d="M0,6 Q15,0 30,6 Q45,12 60,6 Q75,0 90,6 Q105,12 120,6" fill="none" stroke="#F5C030" strokeWidth="1.5"/>
+                  </svg>
+                  <div style={{ fontFamily:'var(--sans)', fontSize:8, letterSpacing:'0.1em', textTransform:'uppercase', color:'rgba(245,192,48,0.5)', marginBottom:6 }}>Torrey Pines · 2× US Open</div>
+                  <div style={{ display:'flex', alignItems:'baseline', gap:3 }}>
+                    <span style={{ fontFamily:'var(--serif)', fontSize:28, color:'#F5C842', lineHeight:1 }}>$2,950</span>
+                    <span style={{ fontSize:9, color:'rgba(245,200,66,0.45)' }}>/person</span>
+                  </div>
+                </div>
+              </div>
+            </Link>
+
+            {/* ─── CARD 5: SOMERSETT ────────────────────────
+                Private members card. LIGHT background.
+                Cream letterpress. Embossed seal. Dark type.
+                Completely inverts every other card's register.
+            ─────────────────────────────────────────────── */}
+            <Link href="/portfolio-item/somersett-golf-country-club/" style={{ textDecoration:'none', position:'relative', display:'block', overflow:'hidden', background:'#EDE0C4' }}>
+              {/* Subtle parchment texture via gradient */}
+              <div style={{ position:'absolute', inset:0, background:'radial-gradient(ellipse 80% 80% at 30% 30%, rgba(255,252,245,0.6) 0%, rgba(232,216,190,0.0) 70%)' }} />
+              {/* Embossed circle seal */}
+              <div style={{ position:'absolute', top:'50%', right:18, transform:'translateY(-50%)', width:72, height:72, borderRadius:'50%', border:'1px solid rgba(100,70,30,0.2)', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center' }}>
+                <div style={{ width:58, height:58, borderRadius:'50%', border:'1px solid rgba(100,70,30,0.15)', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center' }}>
+                  <div style={{ fontFamily:'var(--serif)', fontSize:8, color:'rgba(80,50,20,0.5)', textAlign:'center', letterSpacing:'0.08em', lineHeight:1.4 }}>EST<br/>2004</div>
+                </div>
+              </div>
+              {/* Content — dark ink on cream */}
+              <div style={{ position:'absolute', inset:0, padding:'20px 22px', display:'flex', flexDirection:'column', justifyContent:'space-between' }}>
+                <div>
+                  <div style={{ display:'flex', alignItems:'center', gap:8, marginBottom:12 }}>
+                    <div style={{ width:16, height:1, background:'rgba(80,50,20,0.35)' }} />
+                    <div style={{ fontFamily:'var(--sans)', fontSize:7, fontWeight:700, letterSpacing:'0.3em', textTransform:'uppercase', color:'rgba(120,40,24,0.7)' }}>Members Only</div>
+                  </div>
+                  <div style={{ fontFamily:'var(--serif)', fontSize:'clamp(15px,1.6vw,20px)', fontWeight:400, color:'#1A1008', lineHeight:1.15, letterSpacing:'-0.01em' }}>
+                    Somersett Golf<br/>&amp; Country Club
+                  </div>
+                </div>
+                <div>
+                  <div style={{ fontFamily:'var(--sans)', fontSize:7, letterSpacing:'0.12em', textTransform:'uppercase', color:'rgba(80,50,20,0.45)', marginBottom:4 }}>Golfweek Top Private · Reno NV</div>
+                  <div style={{ fontFamily:'var(--sans)', fontSize:7, letterSpacing:'0.12em', textTransform:'uppercase', color:'rgba(80,50,20,0.35)', marginBottom:8 }}>5,200 ft · Private Access</div>
+                  <div style={{ display:'flex', alignItems:'baseline', gap:3 }}>
+                    <span style={{ fontFamily:'var(--serif)', fontSize:28, color:'#8A5228', lineHeight:1 }}>$540</span>
+                    <span style={{ fontSize:9, color:'rgba(100,60,20,0.5)' }}>/person</span>
+                  </div>
+                </div>
+              </div>
+            </Link>
           </div>
-          {/* CTA inset card */}
+
+          {/* CTA slot — bottom right */}
           <div className="grain" style={{ background:'linear-gradient(145deg, rgba(200,121,65,0.1) 0%, rgba(61,24,64,0.2) 100%)', border:'1px solid rgba(200,121,65,0.18)', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', padding:'40px 32px', textAlign:'center', gap:18, position:'relative', overflow:'hidden' }}>
             <div style={{ position:'absolute', top:18, left:18, width:36, height:36, borderTop:'1px solid rgba(200,121,65,0.4)', borderLeft:'1px solid rgba(200,121,65,0.4)' }} />
             <div style={{ position:'absolute', bottom:18, right:18, width:36, height:36, borderBottom:'1px solid rgba(200,121,65,0.4)', borderRight:'1px solid rgba(200,121,65,0.4)' }} />
             <span style={{ fontFamily:'var(--sans)', fontSize:9, fontWeight:700, letterSpacing:'0.22em', textTransform:'uppercase', color:'var(--copper)', opacity:0.8 }}>Not sure which region?</span>
-            <div style={{ fontFamily:'var(--serif)', fontSize:'clamp(20px,2.2vw,30px)', fontWeight:300, color:'var(--cream)', lineHeight:1.15, letterSpacing:'-0.01em' }}>Tell us your budget.<br />We&apos;ll find your course.</div>
+            <div style={{ fontFamily:'var(--serif)', fontSize:'clamp(18px,2vw,28px)', fontWeight:300, color:'var(--cream)', lineHeight:1.15 }}>Tell us your budget.<br/>We&apos;ll find your course.</div>
             <p style={{ fontSize:13, color:'rgba(245,237,216,0.38)', lineHeight:1.65, maxWidth:220 }}>Response within 24 hrs. No commitment.</p>
             <Link href="/tour-inquiry/" className="btn btn-gold" style={{ padding:'12px 28px' }}><span>Get Free Plan</span></Link>
           </div>
         </div>
 
-        {/* MOBILE HORIZONTAL SCROLL */}
+        {/* ── MOBILE: 5 unique scroll cards ── */}
         <div className="mob-strip">
-          {regions.map(r => (
-            <Link key={r.id} href={r.href} className="mob-item rc" style={{ textDecoration:'none', height:400, position:'relative', background:r.bg, display:'block' }}>
-              <div className="rc-bg" style={{ position:'absolute', inset:0, backgroundImage:`url(${r.img})`, backgroundSize:'cover', backgroundPosition:r.pos, opacity:0.5 }} />
-              <div style={{ position:'absolute', inset:0, background:`linear-gradient(to top, ${r.bg}F8 0%, ${r.bg}CC 35%, transparent 65%)` }} />
-              <div className="rc-veil" style={{ background:`radial-gradient(ellipse at 50% 100%, rgba(${r.accentRgb},0.35) 0%, transparent 70%)` }} />
-              <div style={{ position:'absolute', top:0, left:0, right:0, height:3, background:`linear-gradient(90deg, ${r.accent}, transparent)` }} />
-              <div style={{ position:'absolute', top:14, right:14, background:`rgba(${r.accentRgb},0.12)`, border:`1px solid rgba(${r.accentRgb},0.35)`, padding:'4px 10px', fontSize:8, fontWeight:700, letterSpacing:'0.12em', color:r.accent, textTransform:'uppercase' }}>⚑ {r.urgency}</div>
-              <div style={{ position:'absolute', bottom:0, padding:'22px 18px' }}>
-                <div style={{ fontSize:8, fontWeight:700, letterSpacing:'0.2em', textTransform:'uppercase', color:r.accent, opacity:0.85, marginBottom:6 }}>{r.tag}</div>
-                <div style={{ fontFamily:'var(--serif)', fontSize:22, fontWeight:300, color:'var(--cream)', lineHeight:1.1, marginBottom:10 }}>{r.name}</div>
-                <div style={{ fontSize:11, color:'rgba(245,237,216,0.48)', lineHeight:1.65, marginBottom:12 }}>{r.fact}</div>
-                <span style={{ fontFamily:'var(--serif)', fontSize:32, color:r.accent, lineHeight:1 }}>{r.stat}</span>
-                <span style={{ fontSize:11, color:'rgba(245,237,216,0.35)', marginLeft:3 }}>{r.sub}</span>
+
+          {/* MOBILE CARD 1: PEBBLE BEACH — Magazine split */}
+          <Link href="/portfolio-item/monterey-and-pebble-beach/" className="mob-item" style={{ textDecoration:'none', display:'block', height:420, position:'relative', overflow:'hidden', background:'#0D2A34', flexShrink:0 }}>
+            <div style={{ position:'absolute', top:0, left:0, right:0, height:'52%', backgroundImage:'url(https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=700&q=88)', backgroundSize:'cover', backgroundPosition:'center 28%' }}>
+              <div style={{ position:'absolute', inset:0, background:'linear-gradient(to bottom, transparent 40%, #0D2A34 100%)' }} />
+            </div>
+            <div style={{ position:'absolute', top:14, left:14, background:'rgba(13,42,52,0.85)', backdropFilter:'blur(6px)', padding:'4px 12px', border:'1px solid rgba(94,216,200,0.3)' }}>
+              <span style={{ fontSize:8, fontWeight:700, letterSpacing:'0.2em', textTransform:'uppercase', color:'#5ED8C8' }}>California Coast</span>
+            </div>
+            <div style={{ position:'absolute', bottom:0, left:0, right:0, padding:'0 20px 22px' }}>
+              <div style={{ fontFamily:'var(--serif)', fontSize:64, fontWeight:300, color:'#5ED8C8', lineHeight:0.88, letterSpacing:'-0.04em', textShadow:'0 0 40px rgba(94,216,200,0.3)', marginBottom:4 }}>$675</div>
+              <div style={{ fontSize:9, fontWeight:700, letterSpacing:'0.16em', textTransform:'uppercase', color:'rgba(94,216,200,0.6)', marginBottom:8 }}>per round · Pebble Beach Golf Links</div>
+              <div style={{ fontFamily:'var(--serif)', fontSize:20, color:'var(--cream)', fontWeight:300, lineHeight:1.15, marginBottom:6 }}>Monterey &amp; Pebble Beach</div>
+              <div style={{ fontSize:10, color:'rgba(94,216,200,0.45)', letterSpacing:'0.08em' }}>6× US Open host · Book 12–18 months out →</div>
+            </div>
+          </Link>
+
+          {/* MOBILE CARD 2: LAKE TAHOE — Topographic centered */}
+          <Link href="/portfolio-item/lake-tahoe-and-northern-nevada/" className="mob-item" style={{ textDecoration:'none', display:'block', height:420, position:'relative', overflow:'hidden', background:'#0E1830', flexShrink:0 }}>
+            <div style={{ position:'absolute', inset:0, backgroundImage:'url(https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=700&q=85)', backgroundSize:'cover', backgroundPosition:'center 35%', opacity:0.2 }} />
+            <svg style={{ position:'absolute', inset:0, width:'100%', height:'100%', opacity:0.15 }} viewBox="0 0 300 420" preserveAspectRatio="xMidYMid slice">
+              {[18,42,68,96,128,164,202,244].map((r2,i) => <ellipse key={i} cx="150" cy="210" rx={r2*1.5} ry={r2} fill="none" stroke="#80C8F0" strokeWidth="0.7"/>)}
+            </svg>
+            <div style={{ position:'absolute', inset:0, background:'linear-gradient(135deg, rgba(14,24,48,0.82) 0%, rgba(26,32,72,0.6) 50%, rgba(14,24,48,0.88) 100%)' }} />
+            <div style={{ position:'absolute', inset:0, display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', textAlign:'center', padding:'24px 20px' }}>
+              <div style={{ fontSize:8, fontWeight:700, letterSpacing:'0.28em', textTransform:'uppercase', color:'rgba(128,200,240,0.55)', marginBottom:16 }}>Sierra Nevada</div>
+              <div style={{ border:'1px solid rgba(128,200,240,0.4)', padding:'8px 22px', transform:'rotate(-2deg)', marginBottom:18, display:'inline-block' }}>
+                <span style={{ fontFamily:'var(--sans)', fontSize:13, fontWeight:700, letterSpacing:'0.22em', color:'#80C8F0' }}>6,200 FT</span>
               </div>
-            </Link>
-          ))}
-          <Link href="/tour-inquiry/" className="mob-item" style={{ textDecoration:'none', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', height:400, background:'rgba(200,121,65,0.07)', border:'1px solid rgba(200,121,65,0.2)', padding:'28px 20px', textAlign:'center', gap:16 }}>
-            <div style={{ fontFamily:'var(--serif)', fontSize:26, fontWeight:300, color:'var(--cream)', lineHeight:1.1 }}>Not sure?<br />Tell us your budget.</div>
+              <div style={{ fontFamily:'var(--serif)', fontSize:24, fontWeight:300, color:'var(--cream)', lineHeight:1.15, letterSpacing:'-0.02em', marginBottom:10 }}>Lake Tahoe &amp;<br/>Northern Nevada</div>
+              <div style={{ fontSize:10, color:'rgba(128,200,240,0.45)', marginBottom:18 }}>Ball flies 10% farther at altitude</div>
+              <div style={{ display:'flex', alignItems:'baseline', gap:4 }}>
+                <span style={{ fontFamily:'var(--serif)', fontSize:40, color:'#80C8F0', lineHeight:1, textShadow:'0 0 24px rgba(128,200,240,0.3)' }}>$275</span>
+                <span style={{ fontSize:11, color:'rgba(128,200,240,0.45)' }}>/person · reno from</span>
+              </div>
+            </div>
+          </Link>
+
+          {/* MOBILE CARD 3: LAS VEGAS — Neon roulette */}
+          <Link href="/portfolio-item/las-vegas-and-southern-nevada/" className="mob-item" style={{ textDecoration:'none', display:'block', height:420, position:'relative', overflow:'hidden', background:'#0A0600', flexShrink:0 }}>
+            <div style={{ position:'absolute', inset:0, backgroundImage:'url(https://images.unsplash.com/photo-1605833556294-ea5c7a74f57d?w=700&q=85)', backgroundSize:'cover', backgroundPosition:'center', opacity:0.12 }} />
+            <div style={{ position:'absolute', inset:0, background:'linear-gradient(145deg, #0A0600 0%, #1A0800 100%)' }} />
+            {/* Big roulette circle */}
+            <div style={{ position:'absolute', top:'50%', left:'50%', transform:'translate(-50%,-50%)', width:160, height:160, borderRadius:'50%', border:'1.5px solid rgba(248,192,48,0.35)', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', animation:'pulseGlow 3s ease-in-out infinite' }}>
+              <div style={{ width:138, height:138, borderRadius:'50%', border:'1px solid rgba(248,192,48,0.2)', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center' }}>
+                <div style={{ fontFamily:'var(--serif)', fontSize:38, color:'#F8C030', lineHeight:0.88, fontWeight:300, textShadow:'0 0 30px rgba(248,192,48,0.4)' }}>$1,250</div>
+                <div style={{ fontSize:8, letterSpacing:'0.12em', color:'rgba(248,192,48,0.5)', textTransform:'uppercase', marginTop:4 }}>per round</div>
+              </div>
+            </div>
+            {/* Ember corner */}
+            <div style={{ position:'absolute', top:0, right:0, width:0, height:0, borderStyle:'solid', borderWidth:'0 50px 50px 0', borderColor:'transparent #E84040 transparent transparent', opacity:0.6 }} />
+            <div style={{ position:'absolute', bottom:0, left:0, right:0, padding:'20px 20px 24px' }}>
+              <div style={{ fontSize:8, fontWeight:700, letterSpacing:'0.38em', textTransform:'uppercase', color:'rgba(248,192,48,0.55)', marginBottom:6 }}>SHADOW CREEK</div>
+              <div style={{ fontFamily:'var(--serif)', fontSize:22, fontWeight:300, color:'var(--cream)', lineHeight:1.1, marginBottom:4 }}>Las Vegas &amp; Southern Nevada</div>
+              <div style={{ fontSize:9, letterSpacing:'0.1em', textTransform:'uppercase', color:'rgba(248,192,48,0.4)' }}>Limo + caddie · MGM guests Mon–Thu only →</div>
+            </div>
+          </Link>
+
+          {/* MOBILE CARD 4: SOCAL — Vintage poster */}
+          <Link href="/portfolio-item/monterey-and-pebble-beach-2/" className="mob-item" style={{ textDecoration:'none', display:'block', height:420, position:'relative', overflow:'hidden', background:'#5A1A08', flexShrink:0 }}>
+            <div style={{ position:'absolute', inset:0, background:'linear-gradient(160deg, #7A2410 0%, #3A0E04 55%, #1A0800 100%)' }} />
+            <svg style={{ position:'absolute', top:'-15%', left:'50%', transform:'translateX(-50%)', width:'140%', height:'70%', opacity:0.1 }} viewBox="0 0 300 200">
+              {Array.from({length:16}, (_,i) => {
+                const angle = (i/16)*360; const rad=angle*Math.PI/180
+                return <line key={i} x1="150" y1="100" x2={150+Math.cos(rad)*250} y2={100+Math.sin(rad)*250} stroke="#F5C030" strokeWidth="1.5"/>
+              })}
+              <circle cx="150" cy="100" r="28" fill="none" stroke="#F5C030" strokeWidth="1.5"/>
+            </svg>
+            <div style={{ position:'absolute', inset:0, backgroundImage:'url(https://images.unsplash.com/photo-1559339352-11d035aa65de?w=700&q=85)', backgroundSize:'cover', backgroundPosition:'center 30%', opacity:0.18, mixBlendMode:'luminosity' }} />
+            <div style={{ position:'absolute', inset:0, display:'flex', flexDirection:'column', justifyContent:'space-between', padding:'28px 22px 24px' }}>
+              <div>
+                <div style={{ fontSize:7, fontWeight:700, letterSpacing:'0.36em', textTransform:'uppercase', color:'rgba(245,200,66,0.65)', marginBottom:12 }}>Year-Round Golf</div>
+                <div style={{ fontFamily:'var(--serif)', fontSize:28, fontWeight:400, color:'#F5EDD8', lineHeight:1.0, letterSpacing:'0.01em' }}>Southern<br/>California</div>
+              </div>
+              <div>
+                <svg viewBox="0 0 120 12" style={{ width:80, marginBottom:14, opacity:0.4 }}>
+                  <path d="M0,6 Q15,0 30,6 Q45,12 60,6 Q75,0 90,6 Q105,12 120,6" fill="none" stroke="#F5C030" strokeWidth="1.5"/>
+                </svg>
+                <div style={{ fontSize:8, letterSpacing:'0.1em', textTransform:'uppercase', color:'rgba(245,192,48,0.5)', marginBottom:8 }}>Torrey Pines · 2× US Open · 365 days/yr</div>
+                <div style={{ display:'flex', alignItems:'baseline', gap:3 }}>
+                  <span style={{ fontFamily:'var(--serif)', fontSize:36, color:'#F5C842', lineHeight:1 }}>$2,950</span>
+                  <span style={{ fontSize:10, color:'rgba(245,200,66,0.45)' }}>/person · 5N/4R →</span>
+                </div>
+              </div>
+            </div>
+          </Link>
+
+          {/* MOBILE CARD 5: SOMERSETT — Cream members card */}
+          <Link href="/portfolio-item/somersett-golf-country-club/" className="mob-item" style={{ textDecoration:'none', display:'block', height:420, position:'relative', overflow:'hidden', background:'#EDE0C4', flexShrink:0 }}>
+            <div style={{ position:'absolute', inset:0, background:'radial-gradient(ellipse 80% 80% at 25% 25%, rgba(255,252,245,0.55) 0%, transparent 70%)' }} />
+            <div style={{ position:'absolute', inset:0, backgroundImage:'url(https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=700&q=85)', backgroundSize:'cover', backgroundPosition:'center 40%', opacity:0.1, mixBlendMode:'multiply' }} />
+            {/* Large embossed seal */}
+            <div style={{ position:'absolute', top:'50%', right:20, transform:'translateY(-50%)', width:100, height:100, borderRadius:'50%', border:'1px solid rgba(100,70,30,0.18)' }}>
+              <div style={{ position:'absolute', inset:6, borderRadius:'50%', border:'1px solid rgba(100,70,30,0.12)', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center' }}>
+                <div style={{ fontFamily:'var(--serif)', fontSize:9, color:'rgba(80,50,20,0.4)', textAlign:'center', letterSpacing:'0.05em', lineHeight:1.5 }}>PRIVATE<br/>CLUB<br/>EST. 2004</div>
+              </div>
+            </div>
+            <div style={{ position:'absolute', inset:0, display:'flex', flexDirection:'column', justifyContent:'space-between', padding:'28px 22px 24px' }}>
+              <div>
+                <div style={{ display:'flex', alignItems:'center', gap:8, marginBottom:14 }}>
+                  <div style={{ width:18, height:1, background:'rgba(80,50,20,0.3)' }} />
+                  <div style={{ fontSize:7, fontWeight:700, letterSpacing:'0.3em', textTransform:'uppercase', color:'rgba(120,40,24,0.65)' }}>Members Only</div>
+                  <div style={{ width:18, height:1, background:'rgba(80,50,20,0.3)' }} />
+                </div>
+                <div style={{ fontFamily:'var(--serif)', fontSize:24, fontWeight:400, color:'#1A1008', lineHeight:1.1, letterSpacing:'-0.01em' }}>Somersett Golf<br/>&amp; Country Club</div>
+              </div>
+              <div>
+                <div style={{ fontSize:8, letterSpacing:'0.12em', textTransform:'uppercase', color:'rgba(80,50,20,0.4)', marginBottom:4 }}>Golfweek Top Private Residential</div>
+                <div style={{ fontSize:8, letterSpacing:'0.12em', textTransform:'uppercase', color:'rgba(80,50,20,0.35)', marginBottom:10 }}>Reno NV · 5,200 ft elevation</div>
+                <div style={{ display:'flex', alignItems:'baseline', gap:3 }}>
+                  <span style={{ fontFamily:'var(--serif)', fontSize:36, color:'#8A5228', lineHeight:1 }}>$540</span>
+                  <span style={{ fontSize:10, color:'rgba(100,60,20,0.5)' }}>/person from →</span>
+                </div>
+              </div>
+            </div>
+          </Link>
+
+          {/* CTA card */}
+          <Link href="/tour-inquiry/" className="mob-item" style={{ textDecoration:'none', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', height:420, background:'rgba(200,121,65,0.07)', border:'1px solid rgba(200,121,65,0.2)', padding:'28px 20px', textAlign:'center', gap:16, flexShrink:0 }}>
+            <div style={{ fontFamily:'var(--serif)', fontSize:26, fontWeight:300, color:'var(--cream)', lineHeight:1.1 }}>Not sure?<br/>Tell us your budget.</div>
             <div style={{ fontSize:13, color:'rgba(245,237,216,0.45)', lineHeight:1.7 }}>We match you to the right region within 24 hours.</div>
             <span className="btn btn-gold" style={{ padding:'12px 24px', fontSize:11 }}><span>Get Free Plan</span></span>
           </Link>
@@ -506,40 +783,5 @@ export default function HomePage() {
   )
 }
 
-/* ──────────────────────────────────────────────────────
-   Region Card — desktop, 3 sizes
-────────────────────────────────────────────────────── */
-function RCard({ r, size }: { r: typeof regions[0]; size: 'hero'|'half'|'sm' }) {
-  const isHero = size === 'hero'
-  const isSm = size === 'sm'
-  const rgb = r.accentRgb
-  return (
-    <Link href={r.href} className="rc" style={{ textDecoration:'none', height:'100%', display:'block', background:r.bg }}>
-      <div className="rc-bg" style={{ position:'absolute', inset:0, backgroundImage:`url(${r.img})`, backgroundSize:'cover', backgroundPosition:r.pos, opacity: isSm ? 0.48 : 0.58 }} />
-      {/* Color flood */}
-      <div className="rc-veil" style={{ background:`radial-gradient(ellipse at 50% 100%, rgba(${rgb},0.32) 0%, transparent 65%)` }} />
-      {/* Gradient */}
-      <div style={{ position:'absolute', inset:0, background:`linear-gradient(to top, ${r.bg}FA 0%, ${r.bg}CC 28%, transparent 60%)` }} />
-      {/* Top accent bar */}
-      <div style={{ position:'absolute', top:0, left:0, right:0, height: isHero ? 4 : 3, background:`linear-gradient(90deg, ${r.accent} 0%, rgba(${rgb},0.2) 100%)` }} />
-      {/* Sliding bottom reveal bar */}
-      <div className="rc-bar" style={{ background:r.accent, opacity:0.7 }} />
-      {/* Urgency */}
-      <div style={{ position:'absolute', top: isHero ? 20 : 14, right: isHero ? 20 : 14, background:`rgba(${rgb},0.1)`, border:`1px solid rgba(${rgb},0.32)`, padding:'4px 10px', fontSize:8, fontWeight:700, letterSpacing:'0.12em', color:r.accent, textTransform:'uppercase', backdropFilter:'blur(6px)' }}>
-        ⚑ {r.urgency}
-      </div>
-      {/* Content */}
-      <div style={{ position:'absolute', bottom:0, left:0, right:0, padding: isHero ? '28px 32px' : isSm ? '16px 18px' : '18px 20px' }}>
-        <div style={{ fontSize:8, fontWeight:700, letterSpacing:'0.22em', textTransform:'uppercase', color:r.accent, opacity:0.85, marginBottom:5 }}>{r.tag}</div>
-        <h3 style={{ fontFamily:'var(--serif)', fontSize: isHero ? 'clamp(20px,2.2vw,32px)' : isSm ? 'clamp(14px,1.4vw,20px)' : 'clamp(15px,1.6vw,22px)', fontWeight:300, color:'var(--cream)', lineHeight:1.1, margin:'0 0 7px', letterSpacing:'-0.01em' }}>{r.name}</h3>
-        {isHero && <p style={{ fontSize:13, color:'rgba(245,237,216,0.48)', lineHeight:1.65, margin:'0 0 14px', maxWidth:360 }}>{r.fact}</p>}
-        <div style={{ display:'flex', alignItems:'baseline', gap:3 }}>
-          <span style={{ fontFamily:'var(--serif)', fontSize: isHero ? 32 : isSm ? 22 : 26, color:r.accent, lineHeight:1 }}>{r.stat}</span>
-          <span style={{ fontSize:10, color:'rgba(245,237,216,0.28)' }}>{r.sub}</span>
-          {!isSm && <span style={{ fontSize:9, color:'rgba(245,237,216,0.22)', letterSpacing:'0.05em', marginLeft:4 }}>{r.label}</span>}
-          <span className="rc-arrow" style={{ fontSize:13, color:r.accent, marginLeft:'auto', opacity:0.7 }}>→</span>
-        </div>
-      </div>
-    </Link>
-  )
-}
+
+
