@@ -240,3 +240,31 @@ d = json.load(sys.stdin)
 print(d.get('readyState'), d.get('url'))
 "
 ```
+
+
+## Apostrophe / Quote Handling in TSX — CRITICAL RULES
+
+**Never use Python string replacement to fix apostrophes in TSX files.**
+
+### Rule: Know where the apostrophe lives
+
+| Location | Correct Fix | Wrong Fix |
+|----------|-------------|-----------|
+| JS string literal: `'it\'s fine'` | Use `\'` escape OR switch to double quotes: `"it's fine"` | `\\'` (double escape) — breaks string |
+| JSX text node: `<p>it's fine</p>` | Use `&apos;`: `<p>it&apos;s fine</p>` | `\'` — ESLint error |
+| JSX attribute string: `title="it's"` | Already safe in double quotes | n/a |
+
+### Rule: Template literal backticks
+Python regex that replaces `'` patterns can accidentally escape backticks.
+Always verify the fix with `repr(line)` before pushing.
+Check: `\`` in file = BROKEN. Should be plain `` ` ``
+
+### Rule: Verify before pushing
+```python
+# After fix, print repr of changed lines to verify
+for i, (a, b) in enumerate(zip(original.split('\n'), fixed.split('\n')), 1):
+    if a != b:
+        print(f"Line {i}:")
+        print(f"  BEFORE: {repr(a)}")
+        print(f"  AFTER:  {repr(b)}")
+```
