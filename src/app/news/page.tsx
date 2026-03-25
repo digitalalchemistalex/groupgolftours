@@ -15,21 +15,21 @@ export const metadata: Metadata = {
 const featuredTopics = [
   {
     title: 'How Far in Advance Should You Book Pebble Beach?',
-    excerpt: 'Groups need 12–18 months lead time for Pebble Beach Golf Links. Here's exactly how the reservation system works — and why resort guests get preference.',
+    excerpt: 'Groups need 12–18 months lead time for Pebble Beach Golf Links. Here\'s exactly how the reservation system works — and why resort guests get preference.',
     tag: 'Destination Guide', tagColor: '#5ED8C8',
     href: '/portfolio-item/monterey-and-pebble-beach/',
     meta: 'Pebble Beach · Planning',
   },
   {
     title: 'Shadow Creek Las Vegas: The Complete Group Guide',
-    excerpt: 'At $1,250 per round with limo and caddie included, Shadow Creek is America's most expensive tee time. Here's who can access it and how to book.',
+    excerpt: 'At $1,250 per round with limo and caddie included, Shadow Creek is America\'s most expensive tee time. Here\'s who can access it and how to book.',
     tag: 'Course Guide', tagColor: '#F8C030',
     href: '/portfolio-item/las-vegas-and-southern-nevada/',
     meta: 'Las Vegas · Shadow Creek',
   },
   {
     title: 'Golf at Altitude: Lake Tahoe & Reno Group Packages from $275',
-    excerpt: 'At 6,200 feet your ball flies 8–10% farther. Here's why Edgewood Tahoe, Coyote Moon, and Reno casino packages make for exceptional group golf.',
+    excerpt: 'At 6,200 feet your ball flies 8–10% farther. Here\'s why Edgewood Tahoe, Coyote Moon, and Reno casino packages make for exceptional group golf.',
     tag: 'Destination Guide', tagColor: '#80C8F0',
     href: '/portfolio-item/lake-tahoe-and-northern-nevada/',
     meta: 'Lake Tahoe · Reno',
@@ -43,13 +43,13 @@ const featuredTopics = [
   },
   {
     title: 'Scotland vs Ireland: Which Should Your Group Play First?',
-    excerpt: 'Turnberry, St Andrews, Ballybunion, Royal Portrush. Both countries have iconic links. Here's how to choose — and what each costs for a group of 12.',
+    excerpt: 'Turnberry, St Andrews, Ballybunion, Royal Portrush. Both countries have iconic links. Here\'s how to choose — and what each costs for a group of 12.',
     tag: 'International', tagColor: '#98D060',
     href: '/destinations/',
     meta: 'Scotland · Ireland',
   },
   {
-    title: 'The Trip Captain's Guide to Group Golf Planning',
+    title: 'The Trip Captain\'s Guide to Group Golf Planning',
     excerpt: 'The one person who organises the trip always misses half the fun. This guide covers how to hand off the logistics — and actually play.',
     tag: 'Planning Tips', tagColor: '#D4A832',
     href: '/golf-buddy-trips/',
