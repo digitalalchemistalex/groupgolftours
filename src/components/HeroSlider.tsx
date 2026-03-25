@@ -297,12 +297,12 @@ export default function HeroSlider() {
           <div style={{ position:'absolute', inset:0, zIndex:3, pointerEvents:'none', background:'linear-gradient(to bottom,rgba(0,0,0,.18) 0%,transparent 35%,rgba(0,0,0,.55) 100%)' }} />
 
           {/* ── INTEL CARD ── */}
-          <div className={mounted?'hs-in':''} key={`intel-${active}`} style={{ position:'absolute', right:28, top:'50%', transform:'translateY(-48%)', zIndex:5, width:230, animationDelay:'.45s' }}>
+          <div className={mounted?'hs-in':''} key={`intel-${active}`} style={{ position:'absolute', right:20, top:'50%', transform:'translateY(-50%)', zIndex:5, width:'min(210px, calc(100% - 24px))', animationDelay:'.45s' }}>
 
             {/* Price block */}
-            <div className="hs-intel" style={{ borderTop:`3px solid ${s.accent}`, padding:'18px 20px 14px', marginBottom:2 }}>
+            <div className="hs-intel" style={{ borderTop:`3px solid ${s.accent}`, padding:'14px 16px 12px', marginBottom:2 }}>
               <div style={{ fontFamily:'var(--sans)', fontSize:9, fontWeight:700, letterSpacing:'.2em', textTransform:'uppercase', color:s.accent, marginBottom:8 }}>{s.tag}</div>
-              <div style={{ fontFamily:'var(--serif)', fontSize:48, fontWeight:300, color:'#fff', lineHeight:1, marginBottom:4 }}>{s.facts[0].n}</div>
+              <div style={{ fontFamily:'var(--serif)', fontSize:40, fontWeight:300, color:'#fff', lineHeight:1, marginBottom:4 }}>{s.facts[0].n}</div>
               <div style={{ fontFamily:'var(--sans)', fontSize:10, color:'rgba(255,255,255,.6)', marginBottom:14, lineHeight:1.4 }}>{s.facts[0].l}</div>
 
               {/* Sample package */}
@@ -345,7 +345,7 @@ export default function HeroSlider() {
             </div>
 
             {/* Season strip */}
-            <div className="hs-intel" style={{ padding:'12px 16px', marginBottom:2 }}>
+            <div className="hs-intel" style={{ padding:'10px 14px', marginBottom:2 }}>
               <div style={{ fontFamily:'var(--sans)', fontSize:8, fontWeight:700, letterSpacing:'.16em', textTransform:'uppercase', color:'rgba(255,255,255,.4)', marginBottom:8 }}>Best Season</div>
               <div style={{ display:'flex', gap:3, alignItems:'center' }}>
                 {s.season.map((v, i) => (
@@ -370,7 +370,7 @@ export default function HeroSlider() {
             </div>
 
             {/* Courses + non-golf */}
-            <div className="hs-intel" style={{ padding:'12px 16px' }}>
+            <div className="hs-intel" style={{ padding:'10px 14px' }}>
               <div style={{ fontFamily:'var(--sans)', fontSize:8, fontWeight:700, letterSpacing:'.16em', textTransform:'uppercase', color:'rgba(255,255,255,.4)', marginBottom:8 }}>Courses We Book</div>
               {s.courses.map((c,i) => (
                 <div key={c} className="hs-course">
