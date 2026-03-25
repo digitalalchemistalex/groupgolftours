@@ -36,7 +36,7 @@ const featuredTopics = [
   },
   {
     title: 'Corporate Golf Incentive Trips: What Actually Works',
-    excerpt: 'After 10,000+ outings, we know which elements make a corporate golf event memorable — and which ones get cut from next year's budget. A frank guide.',
+    excerpt: 'After 10,000+ outings, we know which elements make a corporate golf event memorable — and which ones get cut from next year\'s budget. A frank guide.',
     tag: 'Planning Tips', tagColor: '#F87050',
     href: '/corporate-and-incentive-golf-travel/',
     meta: 'Corporate · Incentive',
