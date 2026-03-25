@@ -196,17 +196,19 @@ export default function HeroSlider() {
 
         @media(max-width:900px){
           .hs-right{display:none!important}
-          .hs-headline{font-size:clamp(28px,8vw,48px)!important}
+          .hs-headline{font-size:clamp(26px,7.5vw,44px)!important}
           .hs-pills{display:none!important}
           .hs-mob-strip{display:flex!important}
           .hs-fact-cards{display:none!important}
-          .hs-dots-row{bottom:166px!important}
+          .hs-dots-row{bottom:152px!important}
+          .hs-section{height:auto!important;min-height:0!important}
+          .hs-left{height:auto!important;min-height:0!important;padding-top:72px!important;padding-bottom:220px!important}
         }
         @media(min-width:901px){
           .hs-mob-strip{display:none!important}
         }
         @media(max-width:680px){
-          .hs-region-strip{height:58px}
+          .hs-region-strip{height:52px}
           .hs-region-label{font-size:8px}
           .hs-region-stat{font-size:11px!important}
           .hs-region-item.active .hs-region-stat{font-size:13px!important}
@@ -219,11 +221,18 @@ export default function HeroSlider() {
           scroll-snap-type:x mandatory;
           -webkit-overflow-scrolling:touch;
           scrollbar-width:none;
-          gap:2px; padding:0 16px 0;
-          background:rgba(0,0,0,.6);
+          gap:2px; padding:0 0;
+          background:rgba(0,0,0,.72);
           backdrop-filter:blur(16px);
-          border-top:1px solid rgba(255,255,255,.1);
+          border-top:1px solid rgba(255,255,255,.12);
           border-bottom:1px solid rgba(255,255,255,.08);
+          height:72px;
+        }
+        @media(max-width:900px){
+          .hs-mob-strip {
+            position:absolute;
+            bottom:58px;
+          }
         }
         .hs-mob-strip::-webkit-scrollbar{display:none}
         .hs-mob-card {
@@ -246,10 +255,10 @@ export default function HeroSlider() {
         }
       `}</style>
 
-      <section style={{ display:'flex', height:'100vh', minHeight:680, overflow:'hidden', position:'relative' }}>
+      <section style={{ display:'flex', height:'100vh', minHeight:680, overflow:'hidden', position:'relative' }} className="hs-section">
 
         {/* ── LEFT PANEL ── */}
-        <div style={{
+        <div className="hs-left" style={{
           width:'clamp(320px,46%,580px)', flexShrink:0,
           background: s.panelBg,
           display:'flex', flexDirection:'column', justifyContent:'center',
