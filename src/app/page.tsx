@@ -319,8 +319,6 @@ export default function HomePage() {
         <div style={{ position:'absolute', top:0, left:0, right:0, height:3, background:'linear-gradient(90deg,#C9981A 0%,rgba(201,152,26,.3) 50%,transparent 100%)', zIndex:10 }} />
       </section>
 
-          § 2  STATS BAR — cream background
-      ═══════════════════════════════════════ */}
       <div style={{ background:'var(--parchment)', borderBottom:'1px solid rgba(0,0,0,.08)' }}>
         <div className="wrap stats-grid" style={{ display:'grid', gridTemplateColumns:'repeat(5,1fr)' }}>
           {[
