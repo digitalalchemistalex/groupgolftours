@@ -55,16 +55,50 @@ export default function HeroSlider() {
         .hs-fact { background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);padding:14px 16px;text-align:center }
         .hs-card { background:rgba(0,0,0,.6);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.15);padding:22px 26px }
         @media(max-width:900px){.hs-right{display:none!important}.hs-headline{font-size:clamp(34px,9vw,56px)!important}.hs-pills{display:none!important}}
+
+        /* Region anchor strip */
+        .hs-region-strip { position:absolute; bottom:0; left:0; right:0; z-index:20; display:flex; height:88px }
+        .hs-region-item {
+          flex:1; position:relative; overflow:hidden; cursor:pointer;
+          border:none; padding:0; background:transparent;
+          border-right:1px solid rgba(255,255,255,.08);
+          transition: flex .5s cubic-bezier(.22,1,.36,1);
+        }
+        .hs-region-item:last-child { border-right:none }
+        .hs-region-item.active { flex:2 }
+        .hs-region-bg {
+          position:absolute; inset:0; background-size:cover; background-position:center;
+          transition:transform .7s cubic-bezier(.22,1,.36,1);
+          filter:brightness(.45) saturate(.6);
+        }
+        .hs-region-item.active .hs-region-bg { filter:brightness(.55) saturate(.8); transform:scale(1.04) }
+        .hs-region-item:hover:not(.active) .hs-region-bg { filter:brightness(.5) saturate(.7); transform:scale(1.03) }
+        .hs-region-overlay {
+          position:absolute; inset:0;
+          background:linear-gradient(to top, rgba(0,0,0,.75) 0%, rgba(0,0,0,.2) 60%, transparent 100%);
+          transition:opacity .3s;
+        }
+        .hs-region-item.active .hs-region-overlay { background:linear-gradient(to top, rgba(0,0,0,.5) 0%, rgba(0,0,0,.1) 60%, transparent 100%) }
+        .hs-region-content { position:relative; z-index:2; height:100%; display:flex; flex-direction:column; justify-content:flex-end; padding:0 16px 12px }
+        .hs-region-item.active .hs-region-content { padding:0 20px 14px }
+        .hs-region-name { font-family:var(--sans); font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#fff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; transition:color .3s }
+        .hs-region-price { font-family:var(--serif); font-size:15px; font-weight:300; color:rgba(255,255,255,.6); transition:all .3s; white-space:nowrap }
+        .hs-region-item.active .hs-region-price { font-size:18px; color:var(--accent-color) }
+        .hs-region-bar { position:absolute; bottom:0; left:0; right:0; height:2px; background:rgba(255,255,255,.15); transition:background .3s }
+        .hs-region-item.active .hs-region-bar { height:3px }
+        .hs-region-number { position:absolute; top:10px; right:12px; font-family:var(--sans); font-size:9px; font-weight:700; color:rgba(255,255,255,.3); letter-spacing:.08em; opacity:0; transition:opacity .3s }
+        .hs-region-item.active .hs-region-number { opacity:1 }
+        @media(max-width:700px){.hs-region-strip{height:60px}.hs-region-item.active{flex:2.5}.hs-region-name{font-size:8px}.hs-region-price{font-size:13px}}
       `}</style>
 
-      <section style={{ display:'flex', height:'100vh', minHeight:660, overflow:'hidden' }}>
+      <section style={{ display:'flex', height:'100vh', minHeight:660, overflow:'hidden', position:'relative' }}>
 
         {/* LEFT — solid dark panel with all text content */}
         <div style={{
           width:'clamp(320px,46%,600px)', flexShrink:0,
           background: s.panelBg,
           display:'flex', flexDirection:'column', justifyContent:'center',
-          padding:'80px clamp(24px,4vw,60px) 100px',
+          padding:'80px clamp(24px,4vw,60px) 120px',
           position:'relative',
         }}>
           {/* Accent left strip */}
@@ -182,6 +216,45 @@ export default function HeroSlider() {
 
         {/* Top accent line */}
         <div style={{ position:'absolute', top:0, left:0, right:0, height:3, background:`linear-gradient(90deg, ${s.accent}, rgba(255,255,255,.1) 60%, transparent)`, zIndex:10, transition:'background 1s' }} />
+
+        {/* Region anchor strip — full width, bottom of hero */}
+        <div className="hs-region-strip">
+          {slides.map((sl, i) => (
+            <button
+              key={sl.id}
+              className={`hs-region-item${i === active ? ' active' : ''}`}
+              onClick={() => goTo(i)}
+              aria-label={sl.region}
+              style={{ '--accent-color': sl.accent } as React.CSSProperties}
+            >
+              {/* Photo background */}
+              <div
+                className="hs-region-bg"
+                style={{ backgroundImage:`url(${sl.img})` }}
+              />
+              {/* Dark gradient overlay */}
+              <div className="hs-region-overlay" />
+              {/* Accent bar at bottom */}
+              <div
+                className="hs-region-bar"
+                style={{ background: i === active ? sl.accent : 'rgba(255,255,255,.15)' }}
+              />
+              {/* Slide number */}
+              <div className="hs-region-number">
+                {String(i+1).padStart(2,'0')}
+              </div>
+              {/* Text content */}
+              <div className="hs-region-content">
+                <div className="hs-region-name" style={{ color: i === active ? sl.accent : '#fff' }}>
+                  {sl.region}
+                </div>
+                <div className="hs-region-price">
+                  {sl.stat} <span style={{ fontSize:'0.75em', opacity:.7 }}>{sl.statSub.split('·')[0].trim()}</span>
+                </div>
+              </div>
+            </button>
+          ))}
+        </div>
       </section>
     </>
   )
