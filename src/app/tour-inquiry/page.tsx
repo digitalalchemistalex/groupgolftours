@@ -67,7 +67,7 @@ export default function TourInquiry() {
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
               {[
-                { icon: '⛳', title: 'Tee times others can\'t get', body: 'Pebble Beach (18-month advance), Shadow Creek (MGM guests only), Edgewood Tahoe — we hold relationships the public doesn\'t.' },
+                { icon: '⛳', title: "Tee times others can't get", body: "Pebble Beach (18-month advance), Shadow Creek (MGM guests only), Edgewood Tahoe — we hold relationships the public doesn't." },
                 { icon: '🏨', title: 'Hotel blocks held on inquiry', body: 'Atlantis, Peppermill, MGM properties, The Lodge at Pebble Beach. We hold your rooms the day you call — before they sell.' },
                 { icon: '📋', title: 'One contact, one invoice', body: 'Tee times, hotels, shuttles, dining, insurance. One call, one itinerary. No forwarded emails, no chasing vendors.' },
                 { icon: '🛡', title: 'Licensed & fully protected', body: 'Registered Seller of Travel — Nevada + Florida (ST37472). 72-hour free cancellation. Your deposit is protected.' },
@@ -108,7 +108,7 @@ export default function TourInquiry() {
                   { n: '01', t: 'You submit this form', b: 'Takes 2 minutes. No commitment.' },
                   { n: '02', t: 'Specialist reviews within 24hrs', b: 'We match you to the right package and expert.' },
                   { n: '03', t: 'You get a custom itinerary', b: 'Tee times, hotel, transport, dining — fully built.' },
-                  { n: '04', t: 'Approve and we book everything', b: 'No payment until you\'re happy with the plan.' },
+                  { n: '04', t: 'Approve and we book everything', b: "No payment until you're happy with the plan." },
                 ].map(step => (
                   <div key={step.n} style={{ display: 'flex', gap: 14, paddingBottom: 14, marginBottom: 14, borderBottom: '1px solid rgba(26,20,8,0.1)' }}>
                     <div style={{ fontFamily: 'var(--serif)', fontSize: 22, color: 'var(--copper)', lineHeight: 1, flexShrink: 0, minWidth: 28 }}>{step.n}</div>
