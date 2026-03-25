@@ -310,6 +310,7 @@ export default function HomePage() {
           {/* Right: feature image with overlay card */}
           <div className="sr sd2" style={{ position:'relative' }}>
             <div style={{ aspectRatio:'4/5', overflow:'hidden' }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=800&q=88"
                 alt="Golf group on course"
@@ -524,7 +525,7 @@ export default function HomePage() {
                 img:'https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=900&q=85',
                 cta:'Plan a Corporate Event',
               },
-            ].map((t, i) => (
+            ].map((t) => (
               <Link key={t.href} href={t.href} className="dc" style={{ textDecoration:'none', display:'block', background:'#111' }}>
                 <div className="dc-img" style={{ position:'absolute', inset:0, backgroundImage:`url(${t.img})`, backgroundSize:'cover', backgroundPosition:'center', opacity:.7 }} />
                 <div style={{ position:'absolute', inset:0, background:'linear-gradient(to bottom, rgba(0,0,0,.1) 0%, rgba(0,0,0,.75) 100%)' }} />
