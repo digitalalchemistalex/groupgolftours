@@ -32,13 +32,25 @@ const schema = {
 export default function TourInquiry() {
   return (
     <>
+      <style>{`
+        @media(min-width:768px){
+          .ti-hero-grid{grid-template-columns:1fr 1fr!important}
+          .ti-form-grid{grid-template-columns:1fr 380px!important}
+          .ti-sidebar{display:flex!important}
+        }
+        @media(max-width:767px){
+          .ti-sidebar{display:none}
+          .ti-stats{grid-template-columns:1fr 1fr!important}
+          .ti-cards{margin-top:0!important}
+        }
+      `}</style>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 
       {/* Hero */}
       <section className="grain" style={{ background: '#080806', padding: 'clamp(96px,12vw,160px) 0 clamp(64px,8vw,100px)', position: 'relative', overflow: 'hidden', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
         <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 70% 70% at 30% 50%, rgba(168,72,32,0.14) 0%, transparent 55%), radial-gradient(ellipse 50% 50% at 80% 30%, rgba(61,24,64,0.1) 0%, transparent 55%)', pointerEvents: 'none' }} />
         <div className="section-wrap" style={{ maxWidth: 'var(--max)', position: 'relative', zIndex: 1 }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(40px,6vw,96px)', alignItems: 'center' }}>
+          <div className="ti-hero-grid" style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr)', gap: 'clamp(32px,5vw,96px)', alignItems: 'start' }}>
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
                 <div style={{ width: 28, height: 1, background: 'var(--copper)' }} />
@@ -51,7 +63,7 @@ export default function TourInquiry() {
               <p style={{ fontSize: 16, lineHeight: 1.85, color: 'rgba(245,237,216,0.58)', maxWidth: 460, marginBottom: 36, fontWeight: 300 }}>
                 Two minutes. Tell us destination, group size, and budget. A specialist builds a fully custom itinerary — tee times, hotel, transport, dining, insurance — and calls back within 24 hours.
               </p>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, paddingTop: 28, borderTop: '1px solid rgba(200,121,65,0.15)', maxWidth: 420 }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, paddingTop: 24, borderTop: '1px solid rgba(200,121,65,0.15)', maxWidth: 420 }}>
                 {[
                   { n: '10,000+', l: 'Outings Planned' },
                   { n: '20+', l: 'Years Experience' },
@@ -88,12 +100,12 @@ export default function TourInquiry() {
       {/* Form */}
       <section style={{ padding: 'clamp(64px,9vw,112px) 0', background: 'var(--parchment)' }}>
         <div className="section-wrap" style={{ maxWidth: 'var(--max)' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 'clamp(40px,5vw,80px)', alignItems: 'start' }}>
+          <div className="ti-form-grid" style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr)', gap: 'clamp(32px,5vw,80px)', alignItems: 'start' }}>
             <div>
               <TourInquiryForm />
             </div>
             {/* Sidebar */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 16, position: 'sticky', top: 88 }}>
+            <div className="ti-sidebar" style={{ display: 'flex', flexDirection: 'column', gap: 16, position: 'sticky', top: 88 }}>
               {/* Contact direct */}
               <div style={{ background: 'var(--ink)', padding: '28px 24px' }}>
                 <div style={{ fontFamily: 'var(--sans)', fontSize: 9, fontWeight: 700, letterSpacing: '0.24em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: 14 }}>Prefer to Talk Now?</div>
