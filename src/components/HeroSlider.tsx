@@ -521,9 +521,7 @@ export default function HeroSlider() {
           onMouseLeave={() => setStripPaused(false)}
         >
 
-          {/* Ambient glow blobs — primary accent + complementary colour */}
-          <div className="hs-strip-glow1" style={{ width:'140px', height:'72px', background:s.accent, left:'15%', top:'-30%', opacity:.18 }} />
-          <div className="hs-strip-glow2" style={{ width:'110px', height:'72px', background:s.complement, right:'20%', top:'-15%', opacity:.12 }} />
+
           {/* Single ticker track — cards + duplicate for seamless loop, one animation */}
           {(() => {
             const hex = s.accent.replace('#','')
