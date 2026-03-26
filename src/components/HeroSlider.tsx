@@ -20,10 +20,11 @@ const slides = [
     nonGolf: 'Big Sur · 17-Mile Drive · Carmel-by-the-Sea',
     courses: ['Pebble Beach GL','Spyglass Hill','Spanish Bay','Del Monte'],
     badge: 'Summer 2026 tee sheets filling now',
-    img: 'https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=1600&q=92',
+    img: 'https://images.unsplash.com/photo-1592919505780-303950717480?w=1600&q=92',
     imgPos: 'center 55%',
     panelBg: '#03140E',
     accent: '#3EC99E',
+    complement: '#E07040',
   },
   {
     id: 'tahoe',
@@ -45,6 +46,7 @@ const slides = [
     imgPos: 'center 35%',
     panelBg: '#030E18',
     accent: '#5BAADF',
+    complement: '#E6BE2A',
   },
   {
     id: 'vegas',
@@ -66,6 +68,7 @@ const slides = [
     imgPos: 'center 45%',
     panelBg: '#120900',
     accent: '#E6BE2A',
+    complement: '#3EC99E',
   },
   {
     id: 'socal',
@@ -87,6 +90,7 @@ const slides = [
     imgPos: 'center 30%',
     panelBg: '#150600',
     accent: '#E07040',
+    complement: '#5BAADF',
   },
   {
     id: 'somersett',
@@ -108,6 +112,7 @@ const slides = [
     imgPos: 'center 40%',
     panelBg: '#060F03',
     accent: '#72BE3E',
+    complement: '#E6BE2A',
   },
 ]
 
