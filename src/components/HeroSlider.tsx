@@ -172,6 +172,8 @@ export default function HeroSlider() {
           will-change: transform;
         }
         .hs-ticker-track.paused { animation-play-state:paused }
+        /* Strip container: clip overflow but allow touch drag to override */
+        .hs-mob-strip { touch-action:pan-x; }
         @keyframes fadeInOut { 0%,100%{opacity:0} 20%,80%{opacity:1} }
         .hs-swipe-hint { animation: swipeHint 1.8s ease-in-out 1.2s 3 both }
 
@@ -245,8 +247,11 @@ export default function HeroSlider() {
         .hs-mob-strip {
           position:absolute; left:0; right:0; bottom:58px; z-index:15;
           display:none;
-          overflow:hidden;
-          touch-action:pan-y;
+          overflow-x:auto;
+          overflow-y:hidden;
+          touch-action:pan-x;
+          scrollbar-width:none;
+          -webkit-overflow-scrolling:touch;
           gap:2px; padding:0 0;
           background:rgba(0,0,0,.72);
           backdrop-filter:blur(16px);
@@ -510,64 +515,66 @@ export default function HeroSlider() {
           {/* Ambient glow blobs — behind track */}
           <div className="hs-strip-glow1" style={{ width:'140px', height:'72px', background:s.accent, left:'15%', top:'-30%', opacity:.15 }} />
           <div className="hs-strip-glow2" style={{ width:'120px', height:'72px', background:s.accent, right:'25%', top:'-20%', opacity:.1 }} />
-          {/* Ticker track — cards duplicated for seamless infinite loop */}
-          {[0,1].map(copy => (
-            <div key={copy} className={`hs-ticker-track${stripPaused?' paused':''}`} aria-hidden={copy===1} style={{ animationDelay: copy===0?'0s':'0s' }}>
-              {/* Price */}
-              <div className="hs-mob-card">
-                <div className="hs-mob-label">{s.tag}</div>
-                <div className="hs-mob-val" style={{ color:s.accent }}>{s.facts[0].n}</div>
-                <div className="hs-mob-sub">{s.facts[0].l}</div>
-              </div>
-              {/* Package */}
-              <div className="hs-mob-card">
-                <div className="hs-mob-label">Package</div>
-                <div className="hs-mob-val" style={{ color:s.accent }}>{s.package.price}</div>
-                <div className="hs-mob-sub">{s.package.nights}N · {s.package.rounds}R · {s.package.note.split('·')[0].trim()}</div>
-              </div>
-              {/* Booking urgency */}
-              <div className="hs-mob-card" style={{ minWidth:160 }}>
-                <div className="hs-mob-label">Books out</div>
-                <div className="hs-mob-val" style={{ color:s.accent, fontSize:16 }}>{s.booking.value}</div>
-                <div className="hs-mob-sub">{s.booking.tip}</div>
-              </div>
-              {/* Season */}
-              <div className="hs-mob-card" style={{ minWidth:170 }}>
-                <div className="hs-mob-label" style={{ marginBottom:5 }}>Best Season</div>
-                <div style={{ display:'grid', gridTemplateColumns:'repeat(12,1fr)', gap:2, height:20, alignItems:'flex-end', marginBottom:3 }}>
-                  {s.season.map((v, mi) => {
-                    const hex = s.accent.replace('#','')
-                    const [r,g,b] = [0,2,4].map(o => parseInt(hex.slice(o,o+2),16))
-                    return <div key={mi} style={{ width:'100%', height:Math.round(v*16)+2, borderRadius:1.5, background:v>=0.8?s.accent:v>=0.45?`rgba(${r},${g},${b},.5)`:'rgba(255,255,255,.18)', boxShadow:mi===NOW_MONTH?'0 0 0 1px #fff':'none' }} />
-                  })}
+          {/* Single ticker track — cards + duplicate for seamless loop, one animation */}
+          {(() => {
+            const hex = s.accent.replace('#','')
+            const [r,g,b] = [0,2,4].map(o => parseInt(hex.slice(o,o+2),16))
+            const cards = (
+              <>
+                <div className="hs-mob-card">
+                  <div className="hs-mob-label">{s.tag}</div>
+                  <div className="hs-mob-val" style={{ color:s.accent }}>{s.facts[0].n}</div>
+                  <div className="hs-mob-sub">{s.facts[0].l}</div>
                 </div>
-                <div style={{ display:'grid', gridTemplateColumns:'repeat(12,1fr)', gap:2 }}>
-                  {['J','F','M','A','M','J','J','A','S','O','N','D'].map((m,mi) => (
-                    <div key={mi} style={{ textAlign:'center' }}>
-                      <span style={{ fontFamily:'var(--sans)', fontSize:7, color:mi===NOW_MONTH?s.accent:s.season[mi]>=0.8?'rgba(255,255,255,.65)':'rgba(255,255,255,.3)', fontWeight:mi===NOW_MONTH?800:400 }}>{m}</span>
+                <div className="hs-mob-card">
+                  <div className="hs-mob-label">Package</div>
+                  <div className="hs-mob-val" style={{ color:s.accent }}>{s.package.price}</div>
+                  <div className="hs-mob-sub">{s.package.nights}N · {s.package.rounds}R · {s.package.note.split('·')[0].trim()}</div>
+                </div>
+                <div className="hs-mob-card" style={{ minWidth:160 }}>
+                  <div className="hs-mob-label">Books out</div>
+                  <div className="hs-mob-val" style={{ color:s.accent, fontSize:16 }}>{s.booking.value}</div>
+                  <div className="hs-mob-sub">{s.booking.tip}</div>
+                </div>
+                <div className="hs-mob-card" style={{ minWidth:170 }}>
+                  <div className="hs-mob-label" style={{ marginBottom:5 }}>Best Season</div>
+                  <div style={{ display:'grid', gridTemplateColumns:'repeat(12,1fr)', gap:2, height:20, alignItems:'flex-end', marginBottom:3 }}>
+                    {s.season.map((v, mi) => (
+                      <div key={mi} style={{ width:'100%', height:Math.round(v*16)+2, borderRadius:1.5, background:v>=0.8?s.accent:v>=0.45?`rgba(${r},${g},${b},.5)`:'rgba(255,255,255,.18)', boxShadow:mi===NOW_MONTH?'0 0 0 1px #fff':'none' }} />
+                    ))}
+                  </div>
+                  <div style={{ display:'grid', gridTemplateColumns:'repeat(12,1fr)', gap:2 }}>
+                    {['J','F','M','A','M','J','J','A','S','O','N','D'].map((m,mi) => (
+                      <div key={mi} style={{ textAlign:'center' }}>
+                        <span style={{ fontFamily:'var(--sans)', fontSize:7, color:mi===NOW_MONTH?s.accent:s.season[mi]>=0.8?'rgba(255,255,255,.65)':'rgba(255,255,255,.3)', fontWeight:mi===NOW_MONTH?800:400 }}>{m}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="hs-mob-card" style={{ minWidth:150 }}>
+                  <div className="hs-mob-label" style={{ marginBottom:5 }}>Courses</div>
+                  {s.courses.slice(0,3).map((c,ci) => (
+                    <div key={c} style={{ display:'flex', alignItems:'center', gap:6, padding:'2px 0' }}>
+                      <div style={{ width:4, height:4, borderRadius:'50%', background:ci===0?s.accent:'rgba(255,255,255,.25)', flexShrink:0 }} />
+                      <span style={{ fontFamily:'var(--sans)', fontSize:9, color:ci===0?'rgba(255,255,255,.85)':'rgba(255,255,255,.45)', fontWeight:ci===0?600:400 }}>{c}</span>
                     </div>
                   ))}
                 </div>
+                <div className="hs-mob-card" style={{ minWidth:150 }}>
+                  <div className="hs-mob-label" style={{ marginBottom:5 }}>Non-Golf</div>
+                  <div className="hs-mob-sub" style={{ lineHeight:1.6, whiteSpace:'normal' }}>{s.nonGolf}</div>
+                </div>
+                <div style={{ width:1, background:'rgba(255,255,255,.1)', margin:'12px 8px', alignSelf:'stretch', flexShrink:0 }} />
+              </>
+            )
+            return (
+              <div className={`hs-ticker-track${stripPaused?' paused':''}`}>
+                {cards}
+                {/* Duplicate — seamless loop, screen-reader hidden */}
+                <div aria-hidden="true" style={{ display:'contents' }}>{cards}</div>
               </div>
-              {/* Courses */}
-              <div className="hs-mob-card" style={{ minWidth:150 }}>
-                <div className="hs-mob-label" style={{ marginBottom:5 }}>Courses</div>
-                {s.courses.slice(0,3).map((c,ci) => (
-                  <div key={c} style={{ display:'flex', alignItems:'center', gap:6, padding:'2px 0' }}>
-                    <div style={{ width:4, height:4, borderRadius:'50%', background:ci===0?s.accent:'rgba(255,255,255,.25)', flexShrink:0 }} />
-                    <span style={{ fontFamily:'var(--sans)', fontSize:9, color:ci===0?'rgba(255,255,255,.85)':'rgba(255,255,255,.45)', fontWeight:ci===0?600:400 }}>{c}</span>
-                  </div>
-                ))}
-              </div>
-              {/* Non-golf */}
-              <div className="hs-mob-card" style={{ minWidth:150 }}>
-                <div className="hs-mob-label" style={{ marginBottom:5 }}>Non-Golf</div>
-                <div className="hs-mob-sub" style={{ lineHeight:1.6, whiteSpace:'normal' }}>{s.nonGolf}</div>
-              </div>
-              {/* Divider dot between loops */}
-              <div style={{ width:1, background:'rgba(255,255,255,.1)', margin:'12px 8px', flexShrink:0 }} />
-            </div>
-          ))}
+            )
+          })()}
         </div>
         </div>
 
