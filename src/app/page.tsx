@@ -479,7 +479,7 @@ export default function HomePage() {
           MOBILE:  Phone number LARGE + primary button — action-first
       ─── */}
       <section style={{ background:'#0A1208', padding:'clamp(72px,11vw,140px) 0', position:'relative', overflow:'hidden' }}>
-        <div style={{ position:'absolute', inset:0, backgroundImage:"url('https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=1600&q=60')", backgroundSize:'cover', backgroundPosition:'center', opacity:.06 }} />
+        <div style={{ position:'absolute', inset:0, backgroundImage:"url('/images/dest-tahoe.jpg')", backgroundSize:'cover', backgroundPosition:'center', opacity:.06 }} />
         <div style={{ position:'absolute', inset:0, background:'linear-gradient(to bottom, rgba(10,18,8,.5), rgba(10,18,8,.97))' }} />
         <div className="wrap" style={{ position:'relative', zIndex:1, textAlign:'center', maxWidth:620, margin:'0 auto' }}>
           <div className="sec-label-lt" style={{ display:'inline-block' }}>No Obligation · Free Quote Within 24 Hours</div>
