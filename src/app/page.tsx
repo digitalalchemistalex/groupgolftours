@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import HeroSlider from '@/components/HeroSlider'
+import TestimonialCarousel from '@/components/TestimonialCarousel'
 
 export const metadata: Metadata = {
   title: 'Group Golf Tours — Pebble Beach, Shadow Creek, Edgewood Tahoe | From $275/person',
@@ -280,29 +281,7 @@ export default function HomePage() {
       </section>
 
       {/* ─── 6. TESTIMONIALS ─── */}
-      <section style={{ background:'#F7F3EC', padding:'clamp(72px,9vw,110px) 0' }}>
-        <div className="wrap">
-          <div className="sr" style={{ textAlign:'center', maxWidth:500, margin:'0 auto 48px' }}>
-            <div className="sec-label" style={{ display:'inline-block' }}>What Golfers Say</div>
-            <div className="sec-rule" style={{ margin:'12px auto 20px' }} />
-            <h2 className="sec-h">Don&apos;t take our word for it.</h2>
-          </div>
-          <div className="three-col" style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:3 }}>
-            {testimonials.map((t, i) => (
-              <div key={i} className={`sr d${i+1}`} style={{ background:'#fff', padding:'clamp(22px,3vw,36px)', border:'1px solid #E8E4DC' }}>
-                <div style={{ fontFamily:'var(--serif)', fontSize:32, color:'#D4A832', lineHeight:1, marginBottom:16 }}>&ldquo;</div>
-                <p style={{ fontFamily:'var(--serif)', fontSize:'clamp(15px,1.5vw,19px)', fontWeight:300, color:'#1A1408', lineHeight:1.7, marginBottom:22, fontStyle:'italic' }}>
-                  {t.quote}
-                </p>
-                <div style={{ borderTop:'1px solid #E8E4DC', paddingTop:16 }}>
-                  <div style={{ fontFamily:'var(--sans)', fontSize:13, fontWeight:700, color:'#1A1408', marginBottom:3 }}>{t.name}</div>
-                  <div style={{ fontFamily:'var(--sans)', fontSize:11, color:'rgba(26,20,8,.5)' }}>{t.detail}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <TestimonialCarousel testimonials={testimonials} />
 
       {/* ─── 7. TRIP TYPES ─── */}
       <section style={{ background:'#1A1408', padding:'clamp(72px,9vw,110px) 0' }}>
