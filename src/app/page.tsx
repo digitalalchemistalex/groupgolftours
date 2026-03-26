@@ -110,7 +110,7 @@ export default function HomePage() {
           .dest-r { display:none !important }
           .dest-main { grid-template-columns:1fr !important }
           .dest-bot { grid-template-columns:1fr !important }
-          .stats-bar { grid-template-columns:1fr 1fr !important }
+          .stats-bar { grid-template-columns:1fr 1fr !important; gap:0 !important; max-width:100% !important; padding:0 !important }
         }
         @media(max-width:540px) {
           .three-col { grid-template-columns:1fr !important }
@@ -123,9 +123,9 @@ export default function HomePage() {
 
       {/* ─── 2. STATS BAR ─── */}
       <div style={{ background:'#1A1408', borderBottom:'1px solid rgba(255,255,255,.08)' }}>
-        <div className="wrap stats-bar" style={{ display:'grid', gridTemplateColumns:'repeat(5,1fr)' }}>
+        <div className="stats-bar" style={{ display:'grid', gridTemplateColumns:'repeat(5,1fr)' }}>
           {[{n:'20+',l:'Years in Business'},{n:'10,000+',l:'Outings Planned'},{n:'$275',l:'Packages From'},{n:'200+',l:'Courses'},{n:'NV + FL',l:'Licensed Seller of Travel'}].map((s,i) => (
-            <div key={s.n} style={{ padding:'clamp(18px,3vw,30px) clamp(12px,2vw,20px)', borderLeft:i>0?'1px solid rgba(255,255,255,.08)':'none', textAlign:'center' }}>
+            <div key={s.n} style={{ padding:'clamp(18px,3vw,30px) clamp(12px,2vw,20px)', borderLeft:i>0?'1px solid rgba(255,255,255,.08)':'none', borderBottom:'1px solid rgba(255,255,255,.08)', textAlign:'center' }}>
               <div style={{ fontFamily:'var(--serif)', fontSize:'clamp(22px,3vw,40px)', fontWeight:300, color:'#D4A832', lineHeight:1 }}>{s.n}</div>
               <div style={{ fontFamily:'var(--sans)', fontSize:11, fontWeight:600, letterSpacing:'.16em', textTransform:'uppercase', color:'rgba(255,255,255,.55)', marginTop:6 }}>{s.l}</div>
             </div>
