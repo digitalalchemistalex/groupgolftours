@@ -512,9 +512,7 @@ export default function HeroSlider() {
           onMouseEnter={() => setStripPaused(true)}
           onMouseLeave={() => setStripPaused(false)}
         >
-          {/* Ambient glow blobs — behind track */}
-          <div className="hs-strip-glow1" style={{ width:'140px', height:'72px', background:s.accent, left:'15%', top:'-30%', opacity:.15 }} />
-          <div className="hs-strip-glow2" style={{ width:'120px', height:'72px', background:s.accent, right:'25%', top:'-20%', opacity:.1 }} />
+
           {/* Single ticker track — cards + duplicate for seamless loop, one animation */}
           {(() => {
             const hex = s.accent.replace('#','')
