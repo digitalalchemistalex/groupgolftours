@@ -277,6 +277,15 @@ export default function HeroSlider() {
           }
         }
         .hs-mob-strip::-webkit-scrollbar{display:none}
+        /* Hero panel glow blobs — mobile only */
+        .hs-hero-glow { display:none; position:absolute; border-radius:50%; pointer-events:none; z-index:0 }
+        @media(max-width:900px){
+          .hs-hero-glow { display:block }
+        }
+        .hs-hero-glow-1 { width:280px; height:280px; top:-60px; right:-80px; filter:blur(80px); animation:glowDrift  11s ease-in-out infinite; opacity:.18 }
+        .hs-hero-glow-2 { width:220px; height:220px; bottom:100px; left:-60px; filter:blur(70px); animation:glowDrift2 14s ease-in-out infinite; opacity:.13 }
+        .hs-hero-glow-3 { width:160px; height:160px; top:40%; left:30%; filter:blur(60px); animation:glowDrift  17s 3s ease-in-out infinite; opacity:.09 }
+
         .hs-mob-card {
           flex:0 0 auto; scroll-snap-align:start;
           padding:10px 14px; min-width:140px;
@@ -310,30 +319,35 @@ export default function HeroSlider() {
           {/* Accent left strip */}
           <div style={{ position:'absolute', left:0, top:'12%', bottom:'12%', width:3, background:`linear-gradient(to bottom,transparent,${s.accent},transparent)` }} />
 
+          {/* Ambient glow blobs — mobile only, desktop panel is solid so they're hidden */}
+          <div className="hs-hero-glow hs-hero-glow-1" style={{ background:s.accent }} />
+          <div className="hs-hero-glow hs-hero-glow-2" style={{ background:s.accent }} />
+          <div className="hs-hero-glow hs-hero-glow-3" style={{ background:s.accent }} />
+
           {/* Tag */}
-          <div className={mounted?'hs-in':''} style={{ display:'flex', alignItems:'center', gap:10, marginBottom:18, animationDelay:'.04s' }}>
+          <div className={mounted?'hs-in':''} style={{ display:'flex', alignItems:'center', gap:10, marginBottom:18, animationDelay:'.04s', position:'relative', zIndex:1 }}>
             <div style={{ width:22, height:2, background:s.accent, flexShrink:0 }} />
             <span style={{ fontFamily:'var(--sans)', fontSize:11, fontWeight:700, letterSpacing:'.22em', textTransform:'uppercase', color:s.accent }}>{s.tag}</span>
           </div>
 
           {/* Headline */}
-          <h1 className={`hs-headline${mounted?' hs-in':''}`} style={{ fontFamily:'var(--serif)', fontSize:'clamp(34px,4vw,62px)', fontWeight:300, lineHeight:.93, letterSpacing:'-.02em', color:'#fff', marginBottom:13, animationDelay:'.11s' }}>
+          <h1 className={`hs-headline${mounted?' hs-in':''}`} style={{ fontFamily:'var(--serif)', fontSize:'clamp(34px,4vw,62px)', fontWeight:300, lineHeight:.93, letterSpacing:'-.02em', color:'#fff', marginBottom:13, animationDelay:'.11s', position:'relative', zIndex:1 }}>
             {s.headline}<br />
             <em style={{ fontStyle:'italic', color:s.accent }}>{s.emphasis}</em>
           </h1>
 
           {/* Sub */}
-          <p className={mounted?'hs-in':''} style={{ fontSize:14, lineHeight:1.8, color:'rgba(255,255,255,.7)', maxWidth:360, marginBottom:18, fontWeight:300, animationDelay:'.19s' }}>
+          <p className={mounted?'hs-in':''} style={{ fontSize:14, lineHeight:1.8, color:'rgba(255,255,255,.7)', maxWidth:360, marginBottom:18, fontWeight:300, animationDelay:'.19s', position:'relative', zIndex:1 }}>
             {s.sub}
           </p>
 
           {/* Pills */}
-          <div className={`hs-pills${mounted?' hs-in':''}`} style={{ display:'flex', flexWrap:'wrap', gap:5, marginBottom:22, animationDelay:'.26s' }}>
+          <div className={`hs-pills${mounted?' hs-in':''}`} style={{ display:'flex', flexWrap:'wrap', gap:5, marginBottom:22, animationDelay:'.26s', position:'relative', zIndex:1 }}>
             {s.pills.map(pill => <span key={pill} className="hs-pill">{pill}</span>)}
           </div>
 
           {/* CTAs */}
-          <div className={mounted?'hs-in':''} style={{ display:'flex', gap:8, flexWrap:'wrap', marginBottom:24, animationDelay:'.32s' }}>
+          <div className={mounted?'hs-in':''} style={{ display:'flex', gap:8, flexWrap:'wrap', marginBottom:24, animationDelay:'.32s', position:'relative', zIndex:1 }}>
             <Link href="/tour-inquiry/" style={{ display:'inline-flex', alignItems:'center', padding:'12px 24px', background:s.accent, color:'#050805', fontFamily:'var(--sans)', fontSize:11, fontWeight:700, letterSpacing:'.14em', textTransform:'uppercase', textDecoration:'none' }}>
               Plan My Trip
             </Link>
