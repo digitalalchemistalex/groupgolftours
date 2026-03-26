@@ -119,8 +119,16 @@ export default function HeroSlider() {
   const [prev, setPrev] = useState<number | null>(null)
   const [animating, setAnimating] = useState(false)
   const [mounted, setMounted] = useState(false)
+  const [paused, setPaused] = useState(false)
+  const pauseTimer = typeof window !== 'undefined' ? { current: null as ReturnType<typeof setTimeout> | null } : { current: null }
 
   useEffect(() => { setMounted(true) }, [])
+
+  const pauseAndResume = () => {
+    setPaused(true)
+    if (pauseTimer.current) clearTimeout(pauseTimer.current)
+    pauseTimer.current = setTimeout(() => setPaused(false), 5000)
+  }
 
   const goTo = useCallback((idx: number) => {
     if (animating || idx === active) return
@@ -131,9 +139,10 @@ export default function HeroSlider() {
   }, [active, animating])
 
   useEffect(() => {
+    if (paused) return
     const t = setInterval(() => goTo((active + 1) % slides.length), 7000)
     return () => clearInterval(t)
-  }, [active, goTo])
+  }, [active, goTo, paused])
 
   const s = slides[active]
   const p = prev !== null ? slides[prev] : null
@@ -204,7 +213,7 @@ export default function HeroSlider() {
           .hs-mob-strip{display:flex!important}
           .hs-mob-wrap{display:block!important}
           .hs-fact-cards{display:none!important}
-          .hs-dots-row{bottom:156px!important}
+          .hs-dots-row{display:none!important}
           .hs-section{height:auto!important;min-height:0!important}
           .hs-left{height:auto!important;min-height:0!important;padding-top:72px!important;padding-bottom:228px!important}
         }
@@ -225,6 +234,7 @@ export default function HeroSlider() {
           scroll-snap-type:x mandatory;
           -webkit-overflow-scrolling:touch;
           scrollbar-width:none;
+          touch-action:pan-x;
           gap:2px; padding:0 0;
           background:rgba(0,0,0,.72);
           backdrop-filter:blur(16px);
@@ -259,7 +269,7 @@ export default function HeroSlider() {
         }
       `}</style>
 
-      <section style={{ display:'flex', height:'100vh', minHeight:680, overflow:'hidden', position:'relative' }} className="hs-section">
+      <section style={{ display:'flex', height:'100vh', minHeight:680, overflow:'hidden', position:'relative' }} className="hs-section" onMouseEnter={pauseAndResume} onTouchStart={pauseAndResume}>
 
         {/* ── LEFT PANEL ── */}
         <div className="hs-left" style={{
@@ -317,11 +327,11 @@ export default function HeroSlider() {
           {/* Nav dots + arrows */}
           <div className="hs-dots-row" style={{ position:'absolute', bottom:104, left:'clamp(22px,4vw,56px)', display:'flex', alignItems:'center', gap:6 }}>
             {slides.map((sl, i) => (
-              <button key={sl.id} className={`hs-dot${i===active?' on':''}`} style={{ background:i===active?s.accent:'transparent' }} onClick={() => goTo(i)} />
+              <button key={sl.id} className={`hs-dot${i===active?' on':''}`} style={{ background:i===active?s.accent:'transparent' }} onClick={() => { goTo(i); pauseAndResume() }} />
             ))}
             <div style={{ marginLeft:10, display:'flex', gap:6 }}>
-              <button className="hs-nav" onClick={() => goTo((active-1+slides.length)%slides.length)}>&#8592;</button>
-              <button className="hs-nav" onClick={() => goTo((active+1)%slides.length)}>&#8594;</button>
+              <button className="hs-nav" onClick={() => { goTo((active-1+slides.length)%slides.length); pauseAndResume() }}><svg width='14' height='14' viewBox='0 0 14 14' fill='none'><path d='M9 2L4 7l5 5' stroke='white' strokeWidth='1.8' strokeLinecap='round' strokeLinejoin='round'/></svg></button>
+              <button className="hs-nav" onClick={() => { goTo((active+1)%slides.length); pauseAndResume() }}><svg width='14' height='14' viewBox='0 0 14 14' fill='none'><path d='M5 2l5 5-5 5' stroke='white' strokeWidth='1.8' strokeLinecap='round' strokeLinejoin='round'/></svg></button>
             </div>
             <span style={{ marginLeft:12, fontFamily:'var(--sans)', fontSize:11, color:'rgba(255,255,255,.3)', letterSpacing:'.1em' }}>
               {String(active+1).padStart(2,'0')} / {String(slides.length).padStart(2,'0')}
@@ -540,7 +550,7 @@ export default function HeroSlider() {
             <button
               key={sl.id}
               className={`hs-region-item${i===active?' active':''}`}
-              onClick={() => goTo(i)}
+              onClick={() => { goTo(i); pauseAndResume() }}
               aria-label={sl.region}
             >
               <div className="hs-region-bg" style={{ backgroundImage:`url(${sl.img})` }} />
