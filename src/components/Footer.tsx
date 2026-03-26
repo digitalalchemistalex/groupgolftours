@@ -40,7 +40,10 @@ export default function Footer() {
   return (
     <>
       <style>{`
-        .fl { color:rgba(244,239,228,0.42); text-decoration:none; font-size:13px; line-height:2.1; font-family:var(--sans); transition:color 0.15s; display:block; }
+        @media(max-width:768px){
+  .footer-links-grid { grid-template-columns:1fr 1fr !important; gap:clamp(24px,5vw,40px) clamp(16px,4vw,32px) !important }
+}
+.fl { color:rgba(244,239,228,0.42); text-decoration:none; font-size:13px; line-height:2.1; font-family:var(--sans); transition:color 0.15s; display:block; }
         .fl:hover { color:var(--gold); }
         .fcol-head { font-family:var(--sans); font-size:9px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--gold); margin-bottom:14px; display:block; }
       `}</style>
@@ -64,7 +67,7 @@ export default function Footer() {
         </div>
 
         {/* 4-column link grid */}
-        <div className="wrap" style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(170px,1fr))', gap:44, paddingBottom:64 }}>
+        <div className="wrap footer-links-grid" style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(170px,1fr))', gap:44, paddingBottom:64 }}>
           {/* Brand column */}
           <div>
             <div style={{ fontFamily:'var(--serif)', fontSize:22, color:'var(--cream)', marginBottom:6 }}>Group Golf Tours</div>
