@@ -143,7 +143,7 @@ export default function HeroSlider() {
 
   useEffect(() => {
     if (paused) return
-    const t = setInterval(() => goTo((active + 1) % slides.length), 9000)
+    const t = setInterval(() => goTo((active + 1) % slides.length), 10000)
     return () => clearInterval(t)
   }, [active, goTo, paused])
 
@@ -168,7 +168,7 @@ export default function HeroSlider() {
         @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
         .hs-ticker-track {
           display:flex; width:max-content;
-          animation: ticker 14s linear infinite;
+          animation: ticker 8s linear infinite;
           will-change: transform;
         }
         .hs-ticker-track.paused { animation-play-state:paused }
@@ -179,7 +179,7 @@ export default function HeroSlider() {
         .hs-img-in  { animation: hsImgIn .7s ease both }
         .hs-img-kb  { animation: hsKB 14s ease-in-out infinite alternate }
         .hs-img-out { animation: hsOut .55s ease both }
-        .hs-bar     { animation: hsBar 9s linear both }
+        .hs-bar     { animation: hsBar 10s linear both }
 
         .hs-dot { width:8px;height:8px;border-radius:50%;border:1.5px solid rgba(255,255,255,.4);background:transparent;cursor:pointer;transition:all .3s;padding:0;flex-shrink:0 }
         .hs-dot.on { width:24px;border-radius:4px;border-color:transparent }
