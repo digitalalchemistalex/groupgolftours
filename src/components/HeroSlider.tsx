@@ -168,7 +168,7 @@ export default function HeroSlider() {
         @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
         .hs-ticker-track {
           display:flex; width:max-content;
-          animation: ticker 10s linear infinite;
+          animation: ticker 13s linear infinite;
           will-change: transform;
         }
         .hs-ticker-track.paused { animation-play-state:paused }
