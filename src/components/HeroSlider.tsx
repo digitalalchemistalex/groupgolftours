@@ -313,10 +313,10 @@ export default function HeroSlider() {
           {/* Accent left strip */}
           <div style={{ position:'absolute', left:0, top:'12%', bottom:'12%', width:3, background:`linear-gradient(to bottom,transparent,${s.accent},transparent)` }} />
 
-          {/* Ambient glow blobs — mobile only, desktop panel is solid so they're hidden */}
+          {/* Ambient glow blobs — mobile only, dual colour */}
           <div className="hs-hero-glow hs-hero-glow-1" style={{ background:s.accent }} />
-          <div className="hs-hero-glow hs-hero-glow-2" style={{ background:s.accent }} />
-          <div className="hs-hero-glow hs-hero-glow-3" style={{ background:s.accent }} />
+          <div className="hs-hero-glow hs-hero-glow-2" style={{ background:s.complement }} />
+          <div className="hs-hero-glow hs-hero-glow-3" style={{ background:s.complement }} />
 
           {/* Tag */}
           <div className={mounted?'hs-in':''} style={{ display:'flex', alignItems:'center', gap:10, marginBottom:18, animationDelay:'.04s', position:'relative', zIndex:1 }}>
@@ -505,9 +505,9 @@ export default function HeroSlider() {
 
         {/* Top accent line */}
         <div style={{ position:'absolute', top:0, left:0, right:0, height:3, background:`linear-gradient(90deg,${s.accent},rgba(255,255,255,.1) 60%,transparent)`, zIndex:10, transition:'background 1s' }} />
-        {/* Hero ambient glows — right panel top corners, dual colour */}
-        <div style={{ position:'absolute', top:-60, right:'30%', width:220, height:220, borderRadius:'50%', background:s.accent, filter:'blur(70px)', opacity:.12, zIndex:1, pointerEvents:'none', transition:'background 1s' }} />
-        <div style={{ position:'absolute', top:-40, right:'8%', width:180, height:180, borderRadius:'50%', background:s.complement, filter:'blur(60px)', opacity:.1, zIndex:1, pointerEvents:'none', transition:'background 1s' }} />
+        {/* Hero ambient glows — right panel, dual colour, inside section */}
+        <div style={{ position:'absolute', top:'15%', right:'25%', width:300, height:300, borderRadius:'50%', background:s.accent, filter:'blur(90px)', opacity:.14, zIndex:1, pointerEvents:'none', transition:'background 1s' }} />
+        <div style={{ position:'absolute', bottom:'20%', right:'5%', width:240, height:240, borderRadius:'50%', background:s.complement, filter:'blur(80px)', opacity:.11, zIndex:1, pointerEvents:'none', transition:'background 1s' }} />
 
         {/* ── MOBILE INTEL STRIP ── */}
         <div style={{ position:'absolute', left:0, right:0, bottom:52, zIndex:15, display:'none' }} className="hs-mob-wrap">
