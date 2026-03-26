@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import HeroSlider from '@/components/HeroSlider'
 import TestimonialCarousel from '@/components/TestimonialCarousel'
+import ServiceAccordion from '@/components/ServiceAccordion'
 
 export const metadata: Metadata = {
   title: 'Group Golf Tours — Pebble Beach, Shadow Creek, Edgewood Tahoe | From $275/person',
@@ -467,35 +468,8 @@ export default function HomePage() {
           </div>
 
           {/* MOBILE: accordion */}
-          <div className="svc-accordion" style={{ display:'none', border:'1px solid #E8E4DC' }}>
-            {services.map((s, i) => (
-              <div key={s.href} className="acc-item" id={`acc-${i}`} style={{ background:'#fff' }}>
-                <button
-                  className="acc-head"
-                  onClick={() => {
-                    const item = document.getElementById(`acc-${i}`)
-                    const body = document.getElementById(`acc-body-${i}`)
-                    const isOpen = item?.classList.contains('open')
-                    // Close all
-                    document.querySelectorAll('.acc-item').forEach(el => el.classList.remove('open'))
-                    document.querySelectorAll('.acc-body').forEach(el => el.classList.remove('open'))
-                    if (!isOpen && item && body) { item.classList.add('open'); body.classList.add('open') }
-                  }}
-                  style={{ padding:'14px 16px' }}
-                >
-                  <span style={{ fontSize:18, flexShrink:0 }}>{s.icon}</span>
-                  <span style={{ fontFamily:'var(--sans)', fontSize:14, fontWeight:700, color:'#1A1408', flex:1, textAlign:'left', paddingLeft:10 }}>{s.label}</span>
-                  <svg className="acc-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none">
-                    <path d="M3 5l4 4 4-4" stroke="#C87941" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </button>
-                <div id={`acc-body-${i}`} className="acc-body">
-                  <div style={{ padding:'0 16px 14px 48px', fontFamily:'var(--sans)', fontSize:13, color:'rgba(26,20,8,.58)', lineHeight:1.6 }}>
-                    {s.note} <Link href={s.href} style={{ color:'var(--copper)', fontWeight:700, marginLeft:6, textDecoration:'none' }}>Learn more →</Link>
-                  </div>
-                </div>
-              </div>
-            ))}
+          <div className="svc-accordion" style={{ display:'none' }}>
+            <ServiceAccordion services={services} />
           </div>
         </div>
       </section>
