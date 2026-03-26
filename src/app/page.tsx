@@ -66,7 +66,7 @@ export default function HomePage() {
         .d4{transition-delay:.24s}.d5{transition-delay:.30s}.d6{transition-delay:.36s}
 
         /* Destination cards */
-        .dc { position:relative; overflow:hidden; display:block; text-decoration:none; cursor:pointer }
+        .dc { position:relative; overflow:hidden; display:block; text-decoration:none; cursor:pointer; min-height:280px }
         .dc-img { transition:transform .85s cubic-bezier(.22,1,.36,1) }
         .dc:hover .dc-img { transform:scale(1.05) }
         .dc-arr { transition:transform .22s ease }
@@ -85,7 +85,7 @@ export default function HomePage() {
         .svc:last-child { border-bottom:none }
 
         /* Trip type cards */
-        .tc { position:relative; overflow:hidden; display:block; text-decoration:none; min-height:380px }
+        .tc { position:relative; overflow:hidden; display:block; text-decoration:none; min-height:380px; background:#111 }
         .tc-img { transition:transform .85s cubic-bezier(.22,1,.36,1) }
         .tc:hover .tc-img { transform:scale(1.04) }
         .tc-arr { transition:transform .22s ease }
@@ -110,6 +110,8 @@ export default function HomePage() {
           .dest-r { display:none !important }
           .dest-main { grid-template-columns:1fr !important }
           .dest-bot { grid-template-columns:1fr !important }
+          .dest-main .dc { min-height:320px !important }
+          .dest-bot .dc { min-height:260px !important }
           .stats-bar { grid-template-columns:1fr 1fr !important; gap:0 !important; max-width:100% !important; padding:0 !important }
         }
         @media(max-width:540px) {
@@ -180,7 +182,7 @@ export default function HomePage() {
           {/* Featured + right col */}
           <div className="dest-main" style={{ display:'grid', gridTemplateColumns:'1.5fr 1fr', gap:3, marginBottom:3 }}>
             {/* Pebble — large featured */}
-            <Link href={destinations[0].href} className="dc" style={{ background:'#0D1A14', minHeight:460 }}>
+            <Link href={destinations[0].href} className="dc" style={{ background:'#0D1A14', minHeight:460, position:'relative' }}>
               <div className="dc-img" style={{ position:'absolute', inset:0, backgroundImage:`url(${destinations[0].img})`, backgroundSize:'cover', backgroundPosition:'center 28%' }} />
               <div style={{ position:'absolute', inset:0, background:'linear-gradient(to bottom, rgba(0,0,0,.1) 0%, rgba(0,0,0,.15) 40%, rgba(0,0,0,.82) 100%)' }} />
               {/* Fact pills */}
@@ -205,7 +207,7 @@ export default function HomePage() {
             {/* Right: Tahoe + Vegas stacked */}
             <div style={{ display:'grid', gridTemplateRows:'1fr 1fr', gap:3 }}>
               {[destinations[1], destinations[2]].map(d => (
-                <Link key={d.href} href={d.href} className="dc" style={{ background:'#111', minHeight:220 }}>
+                <Link key={d.href} href={d.href} className="dc" style={{ background:'#111', minHeight:220, position:'relative' }}>
                   <div className="dc-img" style={{ position:'absolute', inset:0, backgroundImage:`url(${d.img})`, backgroundSize:'cover', backgroundPosition:'center' }} />
                   <div style={{ position:'absolute', inset:0, background:'linear-gradient(to bottom, rgba(0,0,0,.1) 0%, rgba(0,0,0,.8) 100%)' }} />
                   {/* Pills */}
@@ -231,7 +233,7 @@ export default function HomePage() {
           {/* Bottom row: SoCal + Somersett */}
           <div className="dest-bot" style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:3 }}>
             {[destinations[3], destinations[4]].map(d => (
-              <Link key={d.href} href={d.href} className="dc" style={{ background:'#111', minHeight:240 }}>
+              <Link key={d.href} href={d.href} className="dc" style={{ background:'#111', minHeight:240, position:'relative' }}>
                 <div className="dc-img" style={{ position:'absolute', inset:0, backgroundImage:`url(${d.img})`, backgroundSize:'cover', backgroundPosition:'center' }} />
                 <div style={{ position:'absolute', inset:0, background:'linear-gradient(to bottom, rgba(0,0,0,.1) 0%, rgba(0,0,0,.8) 100%)' }} />
                 <div style={{ position:'absolute', top:16, left:16, display:'flex', gap:5, flexWrap:'wrap' }}>
@@ -296,7 +298,7 @@ export default function HomePage() {
               { title:'Golf Buddy Trips', href:'/golf-buddy-trips/', sub:'4–24 Players', desc:'The trip your group has talked about for years. Tee times at courses you can\'t book independently. Hotel blocks held. Transport arranged. You just play.', img:'https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=900&q=88', cta:'Plan a Buddy Trip', pills:['Groups 4–24','All Destinations','Flexible Budget'] },
               { title:'Corporate & Incentive', href:'/corporate-and-incentive-golf-travel/', sub:'20–200 Players', desc:'Your top performers deserve Pebble Beach — not the local muni. Events people fight to earn an invitation back to. Group rates, premium access, full logistics.', img:'https://images.unsplash.com/photo-1592919505780-303950717480?w=900&q=88', cta:'Plan a Corporate Event', pills:['Groups 20–200','Premium Access','Full Logistics'] },
             ].map(t => (
-              <Link key={t.href} href={t.href} className="tc" style={{ textDecoration:'none', background:'#111' }}>
+              <Link key={t.href} href={t.href} className="tc" style={{ textDecoration:'none', background:'#111', position:'relative' }}>
                 <div className="tc-img" style={{ position:'absolute', inset:0, backgroundImage:`url(${t.img})`, backgroundSize:'cover', backgroundPosition:'center', opacity:.75 }} />
                 <div style={{ position:'absolute', inset:0, background:'linear-gradient(to bottom, rgba(0,0,0,.1) 0%, rgba(0,0,0,.82) 100%)' }} />
                 <div style={{ position:'relative', zIndex:1, padding:'clamp(24px,4vw,48px)', height:'100%', display:'flex', flexDirection:'column', justifyContent:'flex-end' }}>
