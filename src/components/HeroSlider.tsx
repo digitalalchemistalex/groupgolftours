@@ -570,8 +570,7 @@ export default function HeroSlider() {
             return (
               <div className={`hs-ticker-track${stripPaused?' paused':''}`}>
                 {cards}
-                {/* Duplicate — seamless loop, screen-reader hidden */}
-                <div aria-hidden="true" style={{ display:'contents' }}>{cards}</div>
+
               </div>
             )
           })()}
