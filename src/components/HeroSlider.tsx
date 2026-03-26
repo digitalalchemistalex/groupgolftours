@@ -121,27 +121,9 @@ export default function HeroSlider() {
   const [mounted, setMounted] = useState(false)
   const [paused, setPaused] = useState(false)
   const pauseTimer = typeof window !== 'undefined' ? { current: null as ReturnType<typeof setTimeout> | null } : { current: null }
-  const stripRef = typeof window !== 'undefined' ? { current: null as HTMLDivElement | null } : { current: null }
-  const stripPaused = typeof window !== 'undefined' ? { current: false } : { current: false }
+  const [stripPaused, setStripPaused] = useState(false)
 
-  // Auto-scroll the intel strip slowly
-  useEffect(() => {
-    const strip = stripRef.current
-    if (!strip) return
-    let frame: number
-    let pos = 0
-    const speed = 0.4 // px per frame — slow drift
-    const scroll = () => {
-      if (!stripPaused.current && strip) {
-        pos += speed
-        if (pos >= strip.scrollWidth / 2) pos = 0
-        strip.scrollLeft = pos
-      }
-      frame = requestAnimationFrame(scroll)
-    }
-    frame = requestAnimationFrame(scroll)
-    return () => cancelAnimationFrame(frame)
-  }, [active])
+
 
   useEffect(() => { setMounted(true) }, [])
 
@@ -183,8 +165,13 @@ export default function HeroSlider() {
         @keyframes stripScroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
         .hs-strip-glow1 { position:absolute;inset:0;pointer-events:none;z-index:0;border-radius:50%;filter:blur(32px);animation:glowDrift 7s ease-in-out infinite }
         .hs-strip-glow2 { position:absolute;inset:0;pointer-events:none;z-index:0;border-radius:50%;filter:blur(28px);animation:glowDrift2 9s ease-in-out infinite }
-        .hs-strip-inner { display:flex;transition:none }
-        .hs-strip-inner.scrolling { animation:none }
+        @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+        .hs-ticker-track {
+          display:flex; width:max-content;
+          animation: ticker 28s linear infinite;
+          will-change: transform;
+        }
+        .hs-ticker-track.paused { animation-play-state:paused }
         @keyframes fadeInOut { 0%,100%{opacity:0} 20%,80%{opacity:1} }
         .hs-swipe-hint { animation: swipeHint 1.8s ease-in-out 1.2s 3 both }
 
@@ -258,11 +245,8 @@ export default function HeroSlider() {
         .hs-mob-strip {
           position:absolute; left:0; right:0; bottom:58px; z-index:15;
           display:none;
-          overflow-x:auto; overflow-y:hidden;
-          scroll-snap-type:x mandatory;
-          -webkit-overflow-scrolling:touch;
-          scrollbar-width:none;
-          touch-action:pan-x;
+          overflow:hidden;
+          touch-action:pan-y;
           gap:2px; padding:0 0;
           background:rgba(0,0,0,.72);
           backdrop-filter:blur(16px);
@@ -528,72 +512,72 @@ export default function HeroSlider() {
         <div
           className="hs-mob-strip"
           key={`mob-${active}`}
-          ref={(el) => { stripRef.current = el }}
-          onTouchStart={() => { stripPaused.current = true }}
-          onTouchEnd={() => { setTimeout(() => { stripPaused.current = false }, 3000) }}
-          onMouseEnter={() => { stripPaused.current = true }}
-          onMouseLeave={() => { stripPaused.current = false }}
+          onTouchStart={() => setStripPaused(true)}
+          onTouchEnd={() => setTimeout(() => setStripPaused(false), 3000)}
+          onMouseEnter={() => setStripPaused(true)}
+          onMouseLeave={() => setStripPaused(false)}
         >
-          {/* Ambient glow blobs */}
-          <div className="hs-strip-glow1" style={{ width:'120px', height:'60px', background:s.accent, left:'10%', top:'-20%', opacity:.18 }} />
-          <div className="hs-strip-glow2" style={{ width:'100px', height:'50px', background:s.accent, right:'20%', top:'-10%', opacity:.12 }} />
-          {/* Price */}
-          <div className="hs-mob-card">
-            <div className="hs-mob-label">{s.tag}</div>
-            <div className="hs-mob-val" style={{ color:s.accent }}>{s.facts[0].n}</div>
-            <div className="hs-mob-sub">{s.facts[0].l}</div>
-          </div>
-          {/* Package */}
-          <div className="hs-mob-card">
-            <div className="hs-mob-label">Package</div>
-            <div className="hs-mob-val" style={{ color:s.accent }}>{s.package.price}</div>
-            <div className="hs-mob-sub">{s.package.nights}N · {s.package.rounds}R · {s.package.note.split('·')[0].trim()}</div>
-          </div>
-          {/* Booking */}
-          <div className="hs-mob-card" style={{ minWidth:160 }}>
-            <div className="hs-mob-label">Books out</div>
-            <div className="hs-mob-val" style={{ color:s.accent, fontSize:16 }}>{s.booking.value}</div>
-            <div className="hs-mob-sub">{s.booking.tip}</div>
-          </div>
-          {/* Season */}
-          <div className="hs-mob-card" style={{ minWidth:170 }}>
-            <div className="hs-mob-label" style={{ marginBottom:5 }}>Best Season</div>
-            <div style={{ display:'grid', gridTemplateColumns:'repeat(12,1fr)', gap:1.5, height:20, alignItems:'flex-end', marginBottom:3 }}>
-              {s.season.map((v, i) => {
-                const hex = s.accent.replace('#','')
-                const [r,g,b] = [0,2,4].map(o => parseInt(hex.slice(o,o+2),16))
-                return (
-                  <div key={i} style={{
-                    width:'100%', height: Math.round(v*16)+2, borderRadius:1.5,
-                    background: v>=0.8 ? s.accent : v>=0.45 ? `rgba(${r},${g},${b},.5)` : 'rgba(255,255,255,.18)',
-                    boxShadow: i===NOW_MONTH ? '0 0 0 1px #fff' : 'none',
-                  }} />
-                )
-              })}
-            </div>
-            <div style={{ display:'grid', gridTemplateColumns:'repeat(12,1fr)', gap:1.5 }}>
-              {['J','F','M','A','M','J','J','A','S','O','N','D'].map((m,i) => (
-                <div key={i} style={{ textAlign:'center' }}>
-                  <span style={{ fontFamily:'var(--sans)', fontSize:7, color: i===NOW_MONTH ? s.accent : s.season[i]>=0.8 ? 'rgba(255,255,255,.65)' : 'rgba(255,255,255,.3)', fontWeight: i===NOW_MONTH?800:400 }}>{m}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-          {/* Courses */}
-          <div className="hs-mob-card" style={{ minWidth:150 }}>
-            <div className="hs-mob-label" style={{ marginBottom:5 }}>Courses</div>
-            {s.courses.slice(0,3).map((c,i) => (
-              <div key={c} style={{ display:'flex', alignItems:'center', gap:6, padding:'2px 0' }}>
-                <div style={{ width:4, height:4, borderRadius:'50%', background: i===0?s.accent:'rgba(255,255,255,.25)', flexShrink:0 }} />
-                <span style={{ fontFamily:'var(--sans)', fontSize:9, color: i===0?'rgba(255,255,255,.85)':'rgba(255,255,255,.45)', fontWeight:i===0?600:400 }}>{c}</span>
+          {/* Ambient glow blobs — behind track */}
+          <div className="hs-strip-glow1" style={{ width:'140px', height:'72px', background:s.accent, left:'15%', top:'-30%', opacity:.15 }} />
+          <div className="hs-strip-glow2" style={{ width:'120px', height:'72px', background:s.accent, right:'25%', top:'-20%', opacity:.1 }} />
+          {/* Ticker track — cards duplicated for seamless infinite loop */}
+          {[0,1].map(copy => (
+            <div key={copy} className={`hs-ticker-track${stripPaused?' paused':''}`} aria-hidden={copy===1} style={{ animationDelay: copy===0?'0s':'0s' }}>
+              {/* Price */}
+              <div className="hs-mob-card">
+                <div className="hs-mob-label">{s.tag}</div>
+                <div className="hs-mob-val" style={{ color:s.accent }}>{s.facts[0].n}</div>
+                <div className="hs-mob-sub">{s.facts[0].l}</div>
               </div>
-            ))}
-          </div>
-          {/* Non-golf */}
-          <div className="hs-mob-card" style={{ minWidth:150 }}>
-            <div className="hs-mob-label" style={{ marginBottom:5 }}>Non-Golf</div>
-            <div className="hs-mob-sub" style={{ lineHeight:1.6, whiteSpace:'normal' }}>{s.nonGolf}</div>
-          </div>
+              {/* Package */}
+              <div className="hs-mob-card">
+                <div className="hs-mob-label">Package</div>
+                <div className="hs-mob-val" style={{ color:s.accent }}>{s.package.price}</div>
+                <div className="hs-mob-sub">{s.package.nights}N · {s.package.rounds}R · {s.package.note.split('·')[0].trim()}</div>
+              </div>
+              {/* Booking urgency */}
+              <div className="hs-mob-card" style={{ minWidth:160 }}>
+                <div className="hs-mob-label">Books out</div>
+                <div className="hs-mob-val" style={{ color:s.accent, fontSize:16 }}>{s.booking.value}</div>
+                <div className="hs-mob-sub">{s.booking.tip}</div>
+              </div>
+              {/* Season */}
+              <div className="hs-mob-card" style={{ minWidth:170 }}>
+                <div className="hs-mob-label" style={{ marginBottom:5 }}>Best Season</div>
+                <div style={{ display:'grid', gridTemplateColumns:'repeat(12,1fr)', gap:2, height:20, alignItems:'flex-end', marginBottom:3 }}>
+                  {s.season.map((v, mi) => {
+                    const hex = s.accent.replace('#','')
+                    const [r,g,b] = [0,2,4].map(o => parseInt(hex.slice(o,o+2),16))
+                    return <div key={mi} style={{ width:'100%', height:Math.round(v*16)+2, borderRadius:1.5, background:v>=0.8?s.accent:v>=0.45?`rgba(${r},${g},${b},.5)`:'rgba(255,255,255,.18)', boxShadow:mi===NOW_MONTH?'0 0 0 1px #fff':'none' }} />
+                  })}
+                </div>
+                <div style={{ display:'grid', gridTemplateColumns:'repeat(12,1fr)', gap:2 }}>
+                  {['J','F','M','A','M','J','J','A','S','O','N','D'].map((m,mi) => (
+                    <div key={mi} style={{ textAlign:'center' }}>
+                      <span style={{ fontFamily:'var(--sans)', fontSize:7, color:mi===NOW_MONTH?s.accent:s.season[mi]>=0.8?'rgba(255,255,255,.65)':'rgba(255,255,255,.3)', fontWeight:mi===NOW_MONTH?800:400 }}>{m}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              {/* Courses */}
+              <div className="hs-mob-card" style={{ minWidth:150 }}>
+                <div className="hs-mob-label" style={{ marginBottom:5 }}>Courses</div>
+                {s.courses.slice(0,3).map((c,ci) => (
+                  <div key={c} style={{ display:'flex', alignItems:'center', gap:6, padding:'2px 0' }}>
+                    <div style={{ width:4, height:4, borderRadius:'50%', background:ci===0?s.accent:'rgba(255,255,255,.25)', flexShrink:0 }} />
+                    <span style={{ fontFamily:'var(--sans)', fontSize:9, color:ci===0?'rgba(255,255,255,.85)':'rgba(255,255,255,.45)', fontWeight:ci===0?600:400 }}>{c}</span>
+                  </div>
+                ))}
+              </div>
+              {/* Non-golf */}
+              <div className="hs-mob-card" style={{ minWidth:150 }}>
+                <div className="hs-mob-label" style={{ marginBottom:5 }}>Non-Golf</div>
+                <div className="hs-mob-sub" style={{ lineHeight:1.6, whiteSpace:'normal' }}>{s.nonGolf}</div>
+              </div>
+              {/* Divider dot between loops */}
+              <div style={{ width:1, background:'rgba(255,255,255,.1)', margin:'12px 8px', flexShrink:0 }} />
+            </div>
+          ))}
         </div>
         </div>
 
