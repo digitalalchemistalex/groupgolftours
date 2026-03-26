@@ -121,6 +121,27 @@ export default function HeroSlider() {
   const [mounted, setMounted] = useState(false)
   const [paused, setPaused] = useState(false)
   const pauseTimer = typeof window !== 'undefined' ? { current: null as ReturnType<typeof setTimeout> | null } : { current: null }
+  const stripRef = typeof window !== 'undefined' ? { current: null as HTMLDivElement | null } : { current: null }
+  const stripPaused = typeof window !== 'undefined' ? { current: false } : { current: false }
+
+  // Auto-scroll the intel strip slowly
+  useEffect(() => {
+    const strip = stripRef.current
+    if (!strip) return
+    let frame: number
+    let pos = 0
+    const speed = 0.4 // px per frame — slow drift
+    const scroll = () => {
+      if (!stripPaused.current && strip) {
+        pos += speed
+        if (pos >= strip.scrollWidth / 2) pos = 0
+        strip.scrollLeft = pos
+      }
+      frame = requestAnimationFrame(scroll)
+    }
+    frame = requestAnimationFrame(scroll)
+    return () => cancelAnimationFrame(frame)
+  }, [active])
 
   useEffect(() => { setMounted(true) }, [])
 
@@ -157,6 +178,13 @@ export default function HeroSlider() {
         @keyframes hsBar   { from{width:0%} to{width:100%} }
         @keyframes urgencyFill { from{width:0} to{width:var(--uw)} }
         @keyframes swipeHint { 0%{transform:translateX(0);opacity:.7} 60%{transform:translateX(10px);opacity:1} 100%{transform:translateX(0);opacity:.7} }
+        @keyframes glowDrift { 0%{transform:translateX(-30%) translateY(0) scale(1);opacity:.5} 33%{transform:translateX(10%) translateY(-20%) scale(1.15);opacity:.7} 66%{transform:translateX(50%) translateY(10%) scale(.9);opacity:.5} 100%{transform:translateX(-30%) translateY(0) scale(1);opacity:.5} }
+        @keyframes glowDrift2 { 0%{transform:translateX(60%) translateY(10%) scale(1);opacity:.4} 40%{transform:translateX(10%) translateY(-15%) scale(1.2);opacity:.6} 100%{transform:translateX(60%) translateY(10%) scale(1);opacity:.4} }
+        @keyframes stripScroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+        .hs-strip-glow1 { position:absolute;inset:0;pointer-events:none;z-index:0;border-radius:50%;filter:blur(32px);animation:glowDrift 7s ease-in-out infinite }
+        .hs-strip-glow2 { position:absolute;inset:0;pointer-events:none;z-index:0;border-radius:50%;filter:blur(28px);animation:glowDrift2 9s ease-in-out infinite }
+        .hs-strip-inner { display:flex;transition:none }
+        .hs-strip-inner.scrolling { animation:none }
         @keyframes fadeInOut { 0%,100%{opacity:0} 20%,80%{opacity:1} }
         .hs-swipe-hint { animation: swipeHint 1.8s ease-in-out 1.2s 3 both }
 
@@ -211,7 +239,7 @@ export default function HeroSlider() {
           .hs-headline{font-size:clamp(26px,7.5vw,44px)!important}
           .hs-pills{display:none!important}
           .hs-mob-strip{display:flex!important}
-          .hs-mob-wrap{display:block!important}
+          .hs-mob-wrap{display:block!important;position:absolute!important}
           .hs-fact-cards{display:none!important}
           .hs-dots-row{display:none!important}
           .hs-section{height:auto!important;min-height:0!important}
@@ -483,7 +511,18 @@ export default function HeroSlider() {
               <span style={{ fontFamily:'var(--sans)', fontSize:7, fontWeight:700, letterSpacing:'.1em', textTransform:'uppercase', color:'rgba(255,255,255,.5)' }}>swipe</span>
             </div>
           </div>
-        <div className="hs-mob-strip" key={`mob-${active}`}>
+        <div
+          className="hs-mob-strip"
+          key={`mob-${active}`}
+          ref={(el) => { stripRef.current = el }}
+          onTouchStart={() => { stripPaused.current = true }}
+          onTouchEnd={() => { setTimeout(() => { stripPaused.current = false }, 3000) }}
+          onMouseEnter={() => { stripPaused.current = true }}
+          onMouseLeave={() => { stripPaused.current = false }}
+        >
+          {/* Ambient glow blobs */}
+          <div className="hs-strip-glow1" style={{ width:'120px', height:'60px', background:s.accent, left:'10%', top:'-20%', opacity:.18 }} />
+          <div className="hs-strip-glow2" style={{ width:'100px', height:'50px', background:s.accent, right:'20%', top:'-10%', opacity:.12 }} />
           {/* Price */}
           <div className="hs-mob-card">
             <div className="hs-mob-label">{s.tag}</div>
