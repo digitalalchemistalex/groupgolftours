@@ -500,6 +500,14 @@ export default function HeroSlider() {
 
         {/* Top accent line */}
         <div style={{ position:'absolute', top:0, left:0, right:0, height:3, background:`linear-gradient(90deg,${s.accent},rgba(255,255,255,.1) 60%,transparent)`, zIndex:10, transition:'background 1s' }} />
+        {/* Hero ambient glows — right panel top corners */}
+        {{
+          const complement = { monterey:'#E07040', tahoe:'#E6BE2A', vegas:'#3EC99E', socal:'#5BAADF', somersett:'#E6BE2A' }[s.id] || '#ffffff'
+          return <>
+            <div style={{ position:'absolute', top:-60, right:'30%', width:220, height:220, borderRadius:'50%', background:s.accent, filter:'blur(70px)', opacity:.12, zIndex:1, pointerEvents:'none', transition:'background 1s' }} />
+            <div style={{ position:'absolute', top:-40, right:'8%', width:180, height:180, borderRadius:'50%', background:complement, filter:'blur(60px)', opacity:.1, zIndex:1, pointerEvents:'none' }} />
+          </>
+        }}
 
         {/* ── MOBILE INTEL STRIP ── */}
         <div style={{ position:'absolute', left:0, right:0, bottom:52, zIndex:15, display:'none' }} className="hs-mob-wrap">
@@ -513,9 +521,14 @@ export default function HeroSlider() {
           onMouseLeave={() => setStripPaused(false)}
         >
 
-          {/* Ambient glow blobs */}
-          <div className="hs-strip-glow1" style={{ width:'140px', height:'72px', background:s.accent, left:'15%', top:'-30%', opacity:.15 }} />
-          <div className="hs-strip-glow2" style={{ width:'120px', height:'72px', background:s.accent, right:'25%', top:'-20%', opacity:.1 }} />
+          {/* Ambient glow blobs — primary accent + complementary colour */}
+          {{
+            const complement = { monterey:'#E07040', tahoe:'#E6BE2A', vegas:'#3EC99E', socal:'#5BAADF', somersett:'#E6BE2A' }[s.id] || '#ffffff'
+            return <>
+              <div className="hs-strip-glow1" style={{ width:'140px', height:'72px', background:s.accent, left:'15%', top:'-30%', opacity:.18 }} />
+              <div className="hs-strip-glow2" style={{ width:'110px', height:'72px', background:complement, right:'20%', top:'-15%', opacity:.12 }} />
+            </>
+          }}
           {/* Single ticker track — cards + duplicate for seamless loop, one animation */}
           {(() => {
             const hex = s.accent.replace('#','')
