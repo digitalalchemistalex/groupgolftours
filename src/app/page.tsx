@@ -1,3 +1,4 @@
+// build: 1774501736
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import HeroSlider from '@/components/HeroSlider'
