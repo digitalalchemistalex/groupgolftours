@@ -33,7 +33,7 @@ export default function TravelInsurance() {
           <div style={{ width:36, height:1, background:'var(--copper)', marginTop:10, marginBottom:32 }} />
           <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(280px,1fr))', gap:2 }}>
             {[
-              { icon:'🔐', t:'Tee Time Deposit Protection', b:'Non-refundable deposits at Pebble Beach, Shadow Creek, Edgewood Tahoe, and other premium courses are often $200–From $675/person. Insurance reimburses these deposits on covered cancellations.', color:'#5ED8C8' },
+              { icon:'🔐', t:'Tee Time Deposit Protection', b:'Non-refundable deposits at Pebble Beach, Shadow Creek, Edgewood Tahoe, and other premium courses are often From $200–From $675/person. Insurance reimburses these deposits on covered cancellations.', color:'#5ED8C8' },
               { icon:'🏨', t:'Hotel Block Protection', b:'Group hotel blocks involve non-refundable deposits, especially at casino resorts. A single cancellation mid-trip shouldn\'t leave your group eating the room cost.', color:'#80C8F0' },
               { icon:'✈️', t:'Flight & Trip Cancellation', b:'If the trip cancels due to covered reasons — illness, weather, family emergency — trip cancellation coverage reimburses prepaid, non-refundable expenses including flights.', color:'#F8C030' },
               { icon:'🏥', t:'Medical & Emergency Evacuation', b:'A medical emergency in remote locations (Graeagle, CA; Scottish Highlands; Bandon Dunes coastal) can cost From $15,000+ without insurance. Emergency evacuation coverage is essential on international tours.', color:'#F87050' },

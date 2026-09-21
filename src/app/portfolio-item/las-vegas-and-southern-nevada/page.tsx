@@ -53,7 +53,7 @@ export default function LasVegasSouthernNevada() {
         },
         {
           q: 'How much does Shadow Creek cost in 2025?',
-          a: 'Shadow Creek\'s green fee is $1,250 per player in 2025. This is the most expensive public tee time in the United States. The rate includes round-trip private limousine transportation from your MGM hotel, a personal caddie, and use of all Shadow Creek amenities. Caddie gratuity of $75–From $100 per bag is recommended and not included in the green fee.',
+          a: 'Shadow Creek\'s green fee is $1,250 per player in 2025. This is the most expensive public tee time in the United States. The rate includes round-trip private limousine transportation from your MGM hotel, a personal caddie, and use of all Shadow Creek amenities. Caddie gratuity of From $75–From $100 per bag is recommended and not included in the green fee.',
         },
         {
           q: 'What are the best group golf packages in Las Vegas?',

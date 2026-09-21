@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 export default function TourPackages() {
   const packages = [
     { name:'Reno Starter', price:'From $275', sub:'/person', nights:'1 night', rounds:'2 rounds', course:'Lakeridge Golf Course', hotel:'Reno Casino Hotel', players:'Groups 4+', href:'/portfolio-item/lake-tahoe-and-northern-nevada/', color:'#80C8F0' },
-    { name:'Reno Golf Weekend', price:'$395–From $499', sub:'/person', nights:'2–4 nights', rounds:'2–3 rounds', course:'Wolf Run or Red Hawk', hotel:'Reno Casino Resort', players:'Groups 4–24', href:'/portfolio-item/lake-tahoe-and-northern-nevada/', color:'#80C8F0' },
+    { name:'Reno Golf Weekend', price:'From $395–From $499', sub:'/person', nights:'2–4 nights', rounds:'2–3 rounds', course:'Wolf Run or Red Hawk', hotel:'Reno Casino Resort', players:'Groups 4–24', href:'/portfolio-item/lake-tahoe-and-northern-nevada/', color:'#80C8F0' },
     { name:'Tahoe / Truckee', price:'$449–$1,362', sub:'/person', nights:'2–5 nights', rounds:'2–5 rounds', course:'Incline Village · Coyote Moon · Edgewood', hotel:'Mountain Lodge or Tahoe Resort', players:'Groups 4–24', href:'/portfolio-item/lake-tahoe-and-northern-nevada/', color:'#5ED8C8' },
     { name:'Graeagle Golf Escape', price:'$379–$1,310', sub:'/person', nights:'2–4 nights', rounds:'2–4 rounds', course:'Grizzly Ranch · Whitehawk Ranch', hotel:'Plumas Pines Resort Townhomes', players:'Groups 8–24', href:'/portfolio-item/lake-tahoe-and-northern-nevada/', color:'#98D060' },
     { name:'Mesquite / St. George', price:'$1,275–$3,420', sub:'/person', nights:'3–5 nights', rounds:'3–8 rounds', course:'Oasis Golf · The Ledges · Wolf Creek', hotel:'Oasis Resort', players:'Groups 4–32', href:'/portfolio-item/las-vegas-and-southern-nevada/', color:'#F8C030' },

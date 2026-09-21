@@ -11,7 +11,7 @@ const courses = [
   { name:'Pebble Beach Golf Links', region:'Monterey, CA', fee:'From $675/round', note:'18-month advance · Resort stay required', href:'/portfolio-item/monterey-and-pebble-beach/', color:'#5ED8C8' },
   { name:'Shadow Creek', region:'Las Vegas, NV', fee:'$1,250/round', note:'MGM guests only · Limo + caddie included', href:'/portfolio-item/las-vegas-and-southern-nevada/', color:'#F8C030' },
   { name:'Edgewood Tahoe', region:'South Lake Tahoe, CA', fee:'~From $350/round', note:'6,200 ft elevation · Golf Digest Top 100', href:'/portfolio-item/lake-tahoe-and-northern-nevada/', color:'#80C8F0' },
-  { name:'Torrey Pines (South)', region:'La Jolla, CA', fee:'$277–From $345/round', note:'2× US Open host · Non-resident rate', href:'/portfolio-item/monterey-and-pebble-beach-2/', color:'#F87050' },
+  { name:'Torrey Pines (South)', region:'La Jolla, CA', fee:'From $277–From $345/round', note:'2× US Open host · Non-resident rate', href:'/portfolio-item/monterey-and-pebble-beach-2/', color:'#F87050' },
   { name:'Spyglass Hill', region:'Pebble Beach, CA', fee:'From $395/round', note:'AT&T Pro-Am rotation · 3-month advance', href:'/portfolio-item/monterey-and-pebble-beach/', color:'#5ED8C8' },
   { name:'Wolf Run / Red Hawk / ArrowCreek', region:'Reno, NV', fee:'From $275/person pkg', note:'Packages from $275/person with casino hotel', href:'/portfolio-item/lake-tahoe-and-northern-nevada/', color:'#80C8F0' },
   { name:'Somersett Golf & CC', region:'Reno, NV', fee:'From $540/person pkg', note:'Golfweek top private residential · Access by arrangement', href:'/portfolio-item/somersett-golf-country-club/', color:'#98D060' },
@@ -103,7 +103,7 @@ export default function GolfCourses() {
               { label:'Lake Tahoe & Northern Nevada', href:'/portfolio-item/lake-tahoe-and-northern-nevada/', sub:'Wolf Run · Red Hawk · Edgewood Tahoe · From $275/person' },
               { label:'Las Vegas & Southern Nevada', href:'/portfolio-item/las-vegas-and-southern-nevada/', sub:'Shadow Creek $1,250 · TPC Las Vegas · Cascata' },
               { label:'Monterey & Pebble Beach', href:'/portfolio-item/monterey-and-pebble-beach/', sub:'Pebble Beach From $675 · Spyglass Hill · Spanish Bay' },
-              { label:'Southern California', href:'/portfolio-item/monterey-and-pebble-beach-2/', sub:'Torrey Pines $277–From $345 · Pelican Hill · PGA West' },
+              { label:'Southern California', href:'/portfolio-item/monterey-and-pebble-beach-2/', sub:'Torrey Pines From $277–From $345 · Pelican Hill · PGA West' },
               { label:'Somersett Golf & Country Club', href:'/portfolio-item/somersett-golf-country-club/', sub:'Golfweek Top Private · Reno NV · From $540/person' },
             ].map(d => (
               <Link key={d.href} href={d.href} style={{ display:'block', padding:'14px 18px', background:'rgba(255,255,255,0.025)', textDecoration:'none', borderLeft:'2px solid transparent', transition:'all 0.18s' }} className="dest-xl">

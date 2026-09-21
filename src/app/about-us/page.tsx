@@ -77,7 +77,7 @@ export default function AboutUs() {
               { label:'Lake Tahoe & Northern Nevada', href:'/portfolio-item/lake-tahoe-and-northern-nevada/', sub:'From $275/person · Sierra Nevada' },
               { label:'Las Vegas & Southern Nevada', href:'/portfolio-item/las-vegas-and-southern-nevada/', sub:'Shadow Creek $1,250/round' },
               { label:'Monterey & Pebble Beach', href:'/portfolio-item/monterey-and-pebble-beach/', sub:'Pebble Beach From $675/round · Coast' },
-              { label:'Southern California', href:'/portfolio-item/monterey-and-pebble-beach-2/', sub:'Torrey Pines $277–From $345 · Year-Round' },
+              { label:'Southern California', href:'/portfolio-item/monterey-and-pebble-beach-2/', sub:'Torrey Pines From $277–From $345 · Year-Round' },
               { label:'Somersett Golf & CC', href:'/portfolio-item/somersett-golf-country-club/', sub:'Private Club · Reno NV' },
               { label:'All Destinations', href:'/destinations/', sub:'International: Ireland · Scotland · Portugal' },
             ].map(d => (

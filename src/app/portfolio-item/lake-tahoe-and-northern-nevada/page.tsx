@@ -60,7 +60,7 @@ export default function LakeTahoeNorthernNevada() {
         },
         {
           q: 'What casino hotels in Reno work best for golf groups?',
-          a: 'We regularly book golf groups at Atlantis Casino Resort, Peppermill Resort, Eldorado (Caesars), Silver Legacy, and Grand Sierra Resort. All offer group room blocks, on-site dining and entertainment, and easy 15–25 minute drives to the top Reno courses. Casino hotel rates for group blocks typically run $99–From $189/night depending on season.',
+          a: 'We regularly book golf groups at Atlantis Casino Resort, Peppermill Resort, Eldorado (Caesars), Silver Legacy, and Grand Sierra Resort. All offer group room blocks, on-site dining and entertainment, and easy 15–25 minute drives to the top Reno courses. Casino hotel rates for group blocks typically run From $99–From $189/night depending on season.',
         },
         {
           q: 'How far is Reno from Lake Tahoe and Truckee courses?',
@@ -68,7 +68,7 @@ export default function LakeTahoeNorthernNevada() {
         },
         {
           q: 'What is Edgewood Tahoe Golf Course green fee?',
-          a: 'Edgewood Tahoe\'s green fee for non-lodge guests runs approximately $300–From $350/round. Lodge guests have preferred tee time access booked up to 60 days in advance. Our stay-and-play packages start at $1,362/person for 4 nights/3 rounds including lodging at The Lodge at Edgewood Tahoe or nearby properties.',
+          a: 'Edgewood Tahoe\'s green fee for non-lodge guests runs approximately From $300–From $350/round. Lodge guests have preferred tee time access booked up to 60 days in advance. Our stay-and-play packages start at $1,362/person for 4 nights/3 rounds including lodging at The Lodge at Edgewood Tahoe or nearby properties.',
         },
       ]}
       prevDest={{ name: 'Somersett G&CC', href: '/portfolio-item/somersett-golf-country-club/' }}
