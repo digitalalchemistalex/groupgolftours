@@ -26,8 +26,9 @@ interface TripRecap {
 }
 
 async function getTrip(slug: string): Promise<TripRecap | null> {
-  const url = process.env.MSG_SUPABASE_URL!;
-  const key = process.env.MSG_SUPABASE_SERVICE_KEY!;
+  const url = process.env.MSG_SUPABASE_URL;
+  const key = process.env.MSG_SUPABASE_SERVICE_KEY;
+  if (!url || !key) return null;
   const res = await fetch(
     `${url}/rest/v1/trip_recaps?select=slug,raw_data&slug=eq.${slug}&published=eq.true&limit=1`,
     { headers: { apikey: key, Authorization: `Bearer ${key}` }, next: { revalidate: 3600 } }
@@ -38,15 +39,20 @@ async function getTrip(slug: string): Promise<TripRecap | null> {
 }
 
 export async function generateStaticParams() {
-  const url = process.env.MSG_SUPABASE_URL!;
-  const key = process.env.MSG_SUPABASE_SERVICE_KEY!;
-  const res = await fetch(
-    `${url}/rest/v1/trip_recaps?select=slug&published=eq.true`,
-    { headers: { apikey: key, Authorization: `Bearer ${key}` } }
-  );
-  if (!res.ok) return [];
-  const rows: { slug: string }[] = await res.json();
-  return rows.map((r) => ({ slug: r.slug }));
+  const url = process.env.MSG_SUPABASE_URL;
+  const key = process.env.MSG_SUPABASE_SERVICE_KEY;
+  if (!url || !key) return [];
+  try {
+    const res = await fetch(
+      `${url}/rest/v1/trip_recaps?select=slug&published=eq.true`,
+      { headers: { apikey: key, Authorization: `Bearer ${key}` } }
+    );
+    if (!res.ok) return [];
+    const rows: { slug: string }[] = await res.json();
+    return rows.map((r) => ({ slug: r.slug }));
+  } catch {
+    return [];
+  }
 }
 
 export default async function TripRecapPage({ params }: { params: Promise<{ slug: string }> }) {
