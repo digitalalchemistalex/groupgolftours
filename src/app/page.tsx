@@ -24,15 +24,15 @@ const schema = {
 }
 
 const destinations = [
-  { name: 'Monterey & Pebble Beach', sub: 'California Coast', href: '/portfolio-item/monterey-and-pebble-beach/', stat: '$675', statNote: 'per round', note: 'Pebble Beach Golf Links', img: '/images/dest-monterey.jpg', accent: '#3EC99E', pills: ['6× US Open', '18-Month Advance', '#1 Public Course'] },
-  { name: 'Lake Tahoe & Northern Nevada', sub: 'Sierra Nevada · 6,200 ft', href: '/portfolio-item/lake-tahoe-and-northern-nevada/', stat: '$275', statNote: 'from / person', note: 'Reno casino packages', img: '/images/dest-tahoe.jpg', accent: '#5BAADF', pills: ['6,200 ft Elevation', 'Casino Hotels', 'Golf Digest Top 100'] },
+  { name: 'Monterey & Pebble Beach', sub: 'California Coast', href: '/portfolio-item/monterey-and-pebble-beach/', stat: 'From $675', statNote: 'per round', note: 'Pebble Beach Golf Links', img: '/images/dest-monterey.jpg', accent: '#3EC99E', pills: ['6× US Open', '18-Month Advance', '#1 Public Course'] },
+  { name: 'Lake Tahoe & Northern Nevada', sub: 'Sierra Nevada · 6,200 ft', href: '/portfolio-item/lake-tahoe-and-northern-nevada/', stat: 'From $275', statNote: 'from / person', note: 'Reno casino packages', img: '/images/dest-tahoe.jpg', accent: '#5BAADF', pills: ['6,200 ft Elevation', 'Casino Hotels', 'Golf Digest Top 100'] },
   { name: 'Las Vegas & Southern Nevada', sub: 'Desert Southwest', href: '/portfolio-item/las-vegas-and-southern-nevada/', stat: '$1,250', statNote: 'per round', note: 'Shadow Creek · limo + caddie', img: '/images/dest-vegas.jpg', accent: '#E6BE2A', pills: ['Limo + Caddie', 'MGM Guests Only', 'Mon–Thu Only'] },
   { name: 'Southern California', sub: 'Year-Round Golf', href: '/portfolio-item/monterey-and-pebble-beach-2/', stat: '$2,950', statNote: 'per person', note: 'Torrey Pines · PGA West', img: '/images/dest-socal.jpg', accent: '#E07040', pills: ['2× US Open Host', '365 Days/Year', 'Non-Resident Access'] },
-  { name: 'Somersett Golf & CC', sub: 'Private Club · Reno NV', href: '/portfolio-item/somersett-golf-country-club/', stat: '$540', statNote: 'from / person', note: 'Golfweek Top Private', img: '/images/dest-somersett.jpg', accent: '#72BE3E', pills: ['Golfweek Top Ranked', 'Best of Reno 2021', '5,200 ft'] },
+  { name: 'Somersett Golf & CC', sub: 'Private Club · Reno NV', href: '/portfolio-item/somersett-golf-country-club/', stat: 'From $540', statNote: 'from / person', note: 'Golfweek Top Private', img: '/images/dest-somersett.jpg', accent: '#72BE3E', pills: ['Golfweek Top Ranked', 'Best of Reno 2021', '5,200 ft'] },
 ]
 
 const problems = [
-  { icon: '🔐', title: 'Pebble Beach shuts groups out', body: 'Without a resort stay you can only book 24 hours in advance. We coordinate hotel and tee times together — giving your group the 18-month window.', course: 'Pebble Beach Golf Links', price: '$675 / round', accent: '#3EC99E' },
+  { icon: '🔐', title: 'Pebble Beach shuts groups out', body: 'Without a resort stay you can only book 24 hours in advance. We coordinate hotel and tee times together — giving your group the 18-month window.', course: 'Pebble Beach Golf Links', price: 'From $675 / round', accent: '#3EC99E' },
   { icon: '🎰', title: 'Shadow Creek is MGM-only', body: 'Available to MGM hotel guests, Mon–Thu only. Most groups find out after booking flights. We package the MGM stay with tee times, limo, and caddie.', course: 'Shadow Creek · Las Vegas', price: '$1,250 / round', accent: '#E6BE2A' },
   { icon: '🏨', title: 'Room blocks vanish fast', body: 'Late-booking groups get split across three hotels. We hold your block the day you inquire — Atlantis, Peppermill, MGM, The Lodge. Your group stays together.', course: 'All Destinations', price: 'Group rates', accent: '#5BAADF' },
   { icon: '💰', title: 'Retail pricing kills budgets', body: 'Corporate groups paying full rate for 30+ tee times burn through budget in round one. Volume relationships mean group rates on everything.', course: 'Corporate Events', price: 'Volume pricing', accent: '#E07040' },
@@ -170,7 +170,7 @@ export default function HomePage() {
       {/* ─── 2. STATS BAR — desktop only (mobile has hero intel strip) ─── */}
       <div className="stats-mob-hide" style={{ background:'#1A1408', borderBottom:'1px solid rgba(255,255,255,.08)' }}>
         <div className="wrap stats-bar">
-          {[{n:'20+',l:'Years in Business'},{n:'10,000+',l:'Outings Planned'},{n:'$275',l:'Packages From'},{n:'200+',l:'Courses'},{n:'NV + FL',l:'Licensed Seller of Travel'}].map((s,i) => (
+          {[{n:'20+',l:'Years in Business'},{n:'10,000+',l:'Outings Planned'},{n:'From $275',l:'Packages From'},{n:'200+',l:'Courses'},{n:'NV + FL',l:'Licensed Seller of Travel'}].map((s,i) => (
             <div key={s.n} style={{ padding:'clamp(18px,3vw,30px) clamp(12px,2vw,20px)', borderLeft:i>0?'1px solid rgba(255,255,255,.08)':'none', textAlign:'center' }}>
               <div style={{ fontFamily:'var(--serif)', fontSize:'clamp(22px,3vw,40px)', fontWeight:300, color:'#D4A832', lineHeight:1 }}>{s.n}</div>
               <div style={{ fontFamily:'var(--sans)', fontSize:11, fontWeight:600, letterSpacing:'.16em', textTransform:'uppercase', color:'rgba(255,255,255,.55)', marginTop:6 }}>{s.l}</div>

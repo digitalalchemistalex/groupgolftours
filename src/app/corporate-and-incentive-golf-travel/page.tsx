@@ -60,7 +60,7 @@ export default function CorporateIncentiveGolf() {
           <div style={{ width:36, height:1, background:'var(--gold)', marginTop:10, marginBottom:22 }} />
           <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(220px,1fr))', gap:2 }}>
             {[
-              { label:'Monterey & Pebble Beach', href:'/portfolio-item/monterey-and-pebble-beach/', sub:'The prestige destination · $675/round · Book 18 months out' },
+              { label:'Monterey & Pebble Beach', href:'/portfolio-item/monterey-and-pebble-beach/', sub:'The prestige destination · From $675/round · Book 18 months out' },
               { label:'Las Vegas & Southern Nevada', href:'/portfolio-item/las-vegas-and-southern-nevada/', sub:'Shadow Creek $1,250 + Vegas entertainment · Groups 20–200' },
               { label:'Lake Tahoe & Northern Nevada', href:'/portfolio-item/lake-tahoe-and-northern-nevada/', sub:'Casino hotels for large groups · Multi-course options · From $275pp' },
               { label:'Southern California', href:'/portfolio-item/monterey-and-pebble-beach-2/', sub:'Torrey Pines · Pelican Hill · Year-round scheduling' },

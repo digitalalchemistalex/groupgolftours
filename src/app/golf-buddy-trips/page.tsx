@@ -63,7 +63,7 @@ export default function GolfBuddyTrips() {
             {[
               { label:'Lake Tahoe & Northern Nevada', href:'/portfolio-item/lake-tahoe-and-northern-nevada/', sub:'From $275/person · Casino hotels · 6 courses' },
               { label:'Las Vegas & Southern Nevada', href:'/portfolio-item/las-vegas-and-southern-nevada/', sub:'Shadow Creek $1,250 · Entertainment after rounds' },
-              { label:'Monterey & Pebble Beach', href:'/portfolio-item/monterey-and-pebble-beach/', sub:'Pebble Beach $675 · Bucket-list round' },
+              { label:'Monterey & Pebble Beach', href:'/portfolio-item/monterey-and-pebble-beach/', sub:'Pebble Beach From $675 · Bucket-list round' },
               { label:'Southern California', href:'/portfolio-item/monterey-and-pebble-beach-2/', sub:'Torrey Pines + ocean views + year-round golf' },
               { label:'Somersett Golf & CC', href:'/portfolio-item/somersett-golf-country-club/', sub:'Private Reno course · Groups rarely get on' },
               { label:'All Destinations', href:'/destinations/', sub:'Ireland · Scotland · Portugal · Spain · Arizona' },

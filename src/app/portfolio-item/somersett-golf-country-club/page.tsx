@@ -26,7 +26,7 @@ export default function SomersettGolfCountryClub() {
       stat2={{ n: '5,200 ft', label: 'Elevation · Extra Distance' }}
       stat3={{ n: 'Private', label: 'Golfweek Top Residential' }}
       openingCopy="Somersett Golf and Country Club sits in the foothills of the Sierra Nevada in Northwest Reno, backed against Peavine Mountain with views across the valley floor toward the eastern Sierra. At approximately 5,200 feet elevation, the thin air adds 6–10% distance to every shot. The course features 62 white sand bunkers, seven lakes, and significant elevation changes across bluegrass fairways. It has been ranked among Golfweek's top private residential courses and voted Best of Reno by the Reno Gazette-Journal. From four tee options: Sierra Tees (7,252 yards), Truckee Tees (6,393 yards), Peavine Tees (5,912 yards), and Rose Tees (5,216 yards) — there's a challenge level for every player in your group. Access is by arrangement only, through our established network."
-      tripCaptainHook="Somersett is a private country club. Members don't just hand out access, and there's no tee time booking website. The way groups play here is through long-standing relationships with the club — which we have. Our 2-night/2-round Reno packages that include Somersett start at $540/person, pairing the private course with a Reno casino hotel stay. Your group gets to play the course most Reno visitors never see. That's the kind of thing Trip Captains get remembered for."
+      tripCaptainHook="Somersett is a private country club. Members don't just hand out access, and there's no tee time booking website. The way groups play here is through long-standing relationships with the club — which we have. Our 2-night/2-round Reno packages that include Somersett start at From $540/person, pairing the private course with a Reno casino hotel stay. Your group gets to play the course most Reno visitors never see. That's the kind of thing Trip Captains get remembered for."
       highlights={[
         { icon: '⛰️', title: 'Peavine Mountain backdrop', desc: '5,200 ft elevation with dramatic Sierra Nevada views. The ball carries farther than at sea level — groups consistently report unexpected extra distance.' },
         { icon: '🔒', title: 'Private club access', desc: 'Most groups visiting Reno never get on this course. Our network relationships make it possible. Access is by arrangement through Group Golf Tours.' },
@@ -50,7 +50,7 @@ export default function SomersettGolfCountryClub() {
       faqs={[
         {
           q: 'How do you get access to Somersett Golf and Country Club in Reno?',
-          a: 'Somersett Golf and Country Club is a private country club with no public tee time booking. Access requires a member guest or pre-arranged relationship with the club. Group Golf Tours has established network access at Somersett and coordinates group rounds as part of Reno golf packages. Our 2-night/2-round packages including Somersett start at $540/person when combined with Reno casino hotel accommodations.',
+          a: 'Somersett Golf and Country Club is a private country club with no public tee time booking. Access requires a member guest or pre-arranged relationship with the club. Group Golf Tours has established network access at Somersett and coordinates group rounds as part of Reno golf packages. Our 2-night/2-round packages including Somersett start at From $540/person when combined with Reno casino hotel accommodations.',
         },
         {
           q: 'What makes Somersett Golf Club special compared to other Reno courses?',

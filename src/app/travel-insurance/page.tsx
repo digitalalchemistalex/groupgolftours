@@ -15,10 +15,10 @@ export default function TravelInsurance() {
           <span style={{ fontFamily:'var(--sans)', fontSize:9, fontWeight:700, letterSpacing:'0.28em', textTransform:'uppercase', color:'var(--copper)' }}>Services · Travel Insurance</span>
           <div style={{ width:36, height:1, background:'var(--copper)', margin:'14px 0 22px' }} />
           <h1 style={{ fontFamily:'var(--serif)', fontSize:'clamp(38px,6vw,80px)', fontWeight:300, color:'var(--cream)', lineHeight:0.95, letterSpacing:'-0.025em', marginBottom:24 }}>
-            Protect a<br /><em style={{ fontStyle:'italic', color:'var(--gold)' }}>$675/round investment.</em>
+            Protect a<br /><em style={{ fontStyle:'italic', color:'var(--gold)' }}>From $675/round investment.</em>
           </h1>
           <p style={{ fontSize:17, lineHeight:1.82, color:'rgba(245,237,216,0.62)', maxWidth:580, marginBottom:36, fontWeight:300 }}>
-            A Pebble Beach group trip for 16 players involves $10,800+ in tee time deposits alone — before hotel, flights, or transport. One medical emergency, one family cancellation, one winter storm closing 17-Mile Drive. Travel insurance is not optional on a trip this size. We help groups choose the right coverage for their trip value, group size, and destination.
+            A Pebble Beach group trip for 16 players involves From $10,800+ in tee time deposits alone — before hotel, flights, or transport. One medical emergency, one family cancellation, one winter storm closing 17-Mile Drive. Travel insurance is not optional on a trip this size. We help groups choose the right coverage for their trip value, group size, and destination.
           </p>
           <div style={{ display:'flex', gap:12, flexWrap:'wrap' }}>
             <Link href="/tour-inquiry/" className="btn btn-gold"><span>Ask About Coverage</span></Link>
@@ -33,10 +33,10 @@ export default function TravelInsurance() {
           <div style={{ width:36, height:1, background:'var(--copper)', marginTop:10, marginBottom:32 }} />
           <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(280px,1fr))', gap:2 }}>
             {[
-              { icon:'🔐', t:'Tee Time Deposit Protection', b:'Non-refundable deposits at Pebble Beach, Shadow Creek, Edgewood Tahoe, and other premium courses are often $200–$675/person. Insurance reimburses these deposits on covered cancellations.', color:'#5ED8C8' },
+              { icon:'🔐', t:'Tee Time Deposit Protection', b:'Non-refundable deposits at Pebble Beach, Shadow Creek, Edgewood Tahoe, and other premium courses are often $200–From $675/person. Insurance reimburses these deposits on covered cancellations.', color:'#5ED8C8' },
               { icon:'🏨', t:'Hotel Block Protection', b:'Group hotel blocks involve non-refundable deposits, especially at casino resorts. A single cancellation mid-trip shouldn\'t leave your group eating the room cost.', color:'#80C8F0' },
               { icon:'✈️', t:'Flight & Trip Cancellation', b:'If the trip cancels due to covered reasons — illness, weather, family emergency — trip cancellation coverage reimburses prepaid, non-refundable expenses including flights.', color:'#F8C030' },
-              { icon:'🏥', t:'Medical & Emergency Evacuation', b:'A medical emergency in remote locations (Graeagle, CA; Scottish Highlands; Bandon Dunes coastal) can cost $15,000+ without insurance. Emergency evacuation coverage is essential on international tours.', color:'#F87050' },
+              { icon:'🏥', t:'Medical & Emergency Evacuation', b:'A medical emergency in remote locations (Graeagle, CA; Scottish Highlands; Bandon Dunes coastal) can cost From $15,000+ without insurance. Emergency evacuation coverage is essential on international tours.', color:'#F87050' },
               { icon:'🌧', t:'Weather & Force Majeure', b:'Coastal fog at Pebble Beach, desert flash floods in Las Vegas, Sierra snowstorms at Lake Tahoe — golf trips are weather-dependent. Course closure coverage protects against acts of nature.', color:'#98D060' },
               { icon:'💼', t:'Lost Clubs & Luggage', b:'Traveling with $3,000 custom clubs and a week\'s worth of golf gear? Baggage coverage reimburses for lost, stolen, or damaged equipment. Golf-specific policies cover clubs up to $3,000 per set.', color:'#B89860' },
             ].map(s => (
@@ -59,7 +59,7 @@ export default function TravelInsurance() {
             Zoomaway provides a 72-hour cancellation window on most services. For large group outings, a separate contract governs cancellation terms specific to your booking. For certain vendors (courses, hotels) we pass on the vendor&apos;s own cancellation policy directly to you.
           </p>
           <p style={{ fontSize:15, lineHeight:1.88, color:'rgba(26,20,8,0.62)', marginBottom:24 }}>
-            Travel insurance provides protection beyond the 72-hour window for covered reasons — illness, injury, weather events, and other qualifying circumstances. We strongly recommend insurance for any trip with non-refundable deposits over $500/person.
+            Travel insurance provides protection beyond the 72-hour window for covered reasons — illness, injury, weather events, and other qualifying circumstances. We strongly recommend insurance for any trip with non-refundable deposits over From $500/person.
           </p>
           <div style={{ display:'flex', gap:12, flexWrap:'wrap' }}>
             <Link href="/tour-inquiry/" className="btn btn-gold"><span style={{color:'#120C04'}}>Ask About Coverage</span></Link>
@@ -76,7 +76,7 @@ export default function TravelInsurance() {
             {[
               { label:'Lake Tahoe & Northern Nevada', href:'/portfolio-item/lake-tahoe-and-northern-nevada/', sub:'Sierra weather · Elevation access · From $275/person packages' },
               { label:'Las Vegas & Southern Nevada', href:'/portfolio-item/las-vegas-and-southern-nevada/', sub:'Shadow Creek $1,250/round deposits · MGM hotel blocks' },
-              { label:'Monterey & Pebble Beach', href:'/portfolio-item/monterey-and-pebble-beach/', sub:'Coastal fog · $675/round Pebble deposits · 18-month lead time' },
+              { label:'Monterey & Pebble Beach', href:'/portfolio-item/monterey-and-pebble-beach/', sub:'Coastal fog · From $675/round Pebble deposits · 18-month lead time' },
               { label:'Southern California', href:'/portfolio-item/monterey-and-pebble-beach-2/', sub:'$2,950/person packages · Year-round weather generally mild' },
               { label:'Somersett Golf & CC', href:'/portfolio-item/somersett-golf-country-club/', sub:'Private access deposits · Reno NV' },
             ].map(d => (

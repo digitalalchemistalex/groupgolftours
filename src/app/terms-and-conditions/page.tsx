@@ -31,7 +31,7 @@ export default function TermsAndConditions() {
           <p style={{ marginBottom: 16 }}>No more than 8 rooms may be booked online for the same hotel and stay dates. Groups of 9 or more rooms must contact our group specialists directly at <a href="tel:8885848232" style={{ color: 'var(--copper)', textDecoration: 'none' }}>888-584-8232</a> or <a href="mailto:customerservice@zoomaway.com" style={{ color: 'var(--copper)', textDecoration: 'none' }}>customerservice@zoomaway.com</a>.</p>
 
           <h2 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 300, color: '#1A1408', margin: '28px 0 10px' }}>Fees and Payment</h2>
-          <p style={{ marginBottom: 16 }}>A $25 change/cancellation fee applies for unpublished and call-center-only rates. No fee is charged on published rates. Credit cards are charged in full at the time of booking.</p>
+          <p style={{ marginBottom: 16 }}>A From $25 change/cancellation fee applies for unpublished and call-center-only rates. No fee is charged on published rates. Credit cards are charged in full at the time of booking.</p>
 
           <h2 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 300, color: '#1A1408', margin: '28px 0 10px' }}>Licensing</h2>
           <p style={{ marginBottom: 16 }}>Zoomaway Technologies Inc. is a registered seller of travel in the State of Nevada. CONSUMER CLUB, INC DBA: WWW.ZOOMAWAY is registered with the State of Florida as a Seller of Travel. Registration No. ST37472.</p>

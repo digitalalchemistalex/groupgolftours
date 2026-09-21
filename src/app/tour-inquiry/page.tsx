@@ -163,7 +163,7 @@ export default function TourInquiry() {
           <div style={{ width: 36, height: 1, background: 'var(--gold)', marginTop: 10, marginBottom: 22 }} />
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px,1fr))', gap: 2 }}>
             {[
-              { label: 'Pebble Beach & Monterey', href: '/portfolio-item/monterey-and-pebble-beach/', note: '$675/round · Book 12–18 months out' },
+              { label: 'Pebble Beach & Monterey', href: '/portfolio-item/monterey-and-pebble-beach/', note: 'From $675/round · Book 12–18 months out' },
               { label: 'Lake Tahoe & Northern Nevada', href: '/portfolio-item/lake-tahoe-and-northern-nevada/', note: 'From $275/person · Reno packages' },
               { label: 'Las Vegas & Southern Nevada', href: '/portfolio-item/las-vegas-and-southern-nevada/', note: 'Shadow Creek $1,250 · MGM guests only' },
               { label: 'Southern California', href: '/portfolio-item/monterey-and-pebble-beach-2/', note: 'Torrey Pines · Year-round golf' },
