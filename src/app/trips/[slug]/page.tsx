@@ -1,4 +1,3 @@
-import { createClient } from "@supabase/supabase-js";
 import { notFound } from "next/navigation";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -24,31 +23,30 @@ interface TripRecapData {
 interface TripRecap {
   slug: string;
   raw_data: TripRecapData;
-  published: boolean;
 }
 
 async function getTrip(slug: string): Promise<TripRecap | null> {
-  const supabase = createClient(
-    process.env.MSG_SUPABASE_URL!,
-    process.env.MSG_SUPABASE_SERVICE_KEY!
+  const url = process.env.MSG_SUPABASE_URL!;
+  const key = process.env.MSG_SUPABASE_SERVICE_KEY!;
+  const res = await fetch(
+    `${url}/rest/v1/trip_recaps?select=slug,raw_data&slug=eq.${slug}&published=eq.true&limit=1`,
+    { headers: { apikey: key, Authorization: `Bearer ${key}` }, next: { revalidate: 3600 } }
   );
-  const { data, error } = await supabase
-    .from("trip_recaps")
-    .select("slug, raw_data, published")
-    .eq("slug", slug)
-    .eq("published", true)
-    .single();
-  if (error || !data) return null;
-  return data as TripRecap;
+  if (!res.ok) return null;
+  const rows = await res.json();
+  return rows[0] ?? null;
 }
 
 export async function generateStaticParams() {
-  const supabase = createClient(
-    process.env.MSG_SUPABASE_URL!,
-    process.env.MSG_SUPABASE_SERVICE_KEY!
+  const url = process.env.MSG_SUPABASE_URL!;
+  const key = process.env.MSG_SUPABASE_SERVICE_KEY!;
+  const res = await fetch(
+    `${url}/rest/v1/trip_recaps?select=slug&published=eq.true`,
+    { headers: { apikey: key, Authorization: `Bearer ${key}` } }
   );
-  const { data } = await supabase.from("trip_recaps").select("slug").eq("published", true);
-  return (data || []).map((row: { slug: string }) => ({ slug: row.slug }));
+  if (!res.ok) return [];
+  const rows: { slug: string }[] = await res.json();
+  return rows.map((r) => ({ slug: r.slug }));
 }
 
 export default async function TripRecapPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -69,7 +67,7 @@ export default async function TripRecapPage({ params }: { params: Promise<{ slug
         {d.synopsis && <p className="text-lg text-gray-700 mb-6">{d.synopsis}</p>}
         {d.price_per_person && d.price_per_person > 0 && (
           <p className="text-xl font-semibold text-green-700 mb-6">
-            From \${d.price_per_person.toLocaleString()} per person
+            From ${d.price_per_person.toLocaleString()} per person
           </p>
         )}
         {d.highlights && d.highlights.length > 0 && (

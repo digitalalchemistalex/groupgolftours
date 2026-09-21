@@ -1,4 +1,3 @@
-import { createClient } from "@supabase/supabase-js";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -15,17 +14,14 @@ interface TripRecap {
 }
 
 async function getTrips(): Promise<TripRecap[]> {
-  const supabase = createClient(
-    process.env.MSG_SUPABASE_URL!,
-    process.env.MSG_SUPABASE_SERVICE_KEY!
+  const url = process.env.MSG_SUPABASE_URL!;
+  const key = process.env.MSG_SUPABASE_SERVICE_KEY!;
+  const res = await fetch(
+    `${url}/rest/v1/trip_recaps?select=slug,raw_data&published=eq.true&order=created_at.desc`,
+    { headers: { apikey: key, Authorization: `Bearer ${key}` }, next: { revalidate: 3600 } }
   );
-  const { data, error } = await supabase
-    .from("trip_recaps")
-    .select("slug, raw_data")
-    .eq("published", true)
-    .order("created_at", { ascending: false });
-  if (error) throw new Error(error.message);
-  return (data as TripRecap[]) || [];
+  if (!res.ok) return [];
+  return res.json();
 }
 
 export default async function TripsPage() {
